@@ -1,16 +1,16 @@
-speeches:
-  name: speeches
-  description: Some of the greatest words ever spoken.
-  cover: assets/images/speeches.jpg
-fiction:
-  name: fiction
-  description: False
-  cover: False
-fables:
-  name: fables
-  description: A series of short stories that make you think.
-  cover: assets/images/fables.jpg
-getting-started:
-  name: getting-started
-  description: False
+ls:
+  name: ls
+  description: Showcase of my projects. 
+  cover: assets/images/speeches.jpg # Need projects jpg
+journalctl:
+  name: journalctl
+  description: Detailed Daily Logs and Journal entires focused on work and side projects.
+  cover: False # need log jpg
+config:
+  name: config
+  description: Post about my Setup. Configuration, Customization and Tools.
+  cover: assets/images/fables.jpg # Need tools jpg
+who-am-i:
+  name: WhoamI/
+  description: command that prints username of current user. This tag is for content like my background, personal story, personal blog, etc.
   cover: False

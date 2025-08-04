@@ -1,10 +1,10 @@
-ghost:
-  username: ghost
-  name: Ghost
+thomas:
+  username: thomas
+  name: Thomas M
   url_full: http://jekyllt.github.io/jasper2/
   url: jekyllt.github.io/jasper2
-  bio: The professional publishing platform
-  picture: assets/images/ghost.png
+  bio: Self-taught Fullstack Engineer, endlessly curious and introspective. I love challenges and believe in Kaizen> improving a little every day. Growth, learning, and continuous improvement drive me, both in tech and in life.
+  picture: assets/images/owl.png
   facebook: ghost
   twitter: tryghost
   cover: False
