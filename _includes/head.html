@@ -17,8 +17,8 @@
     <meta property="article:published_time" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% elsif post.date %}{{ post.date | date_to_xmlschema }}{% endif %}" />
     <meta property="article:modified_time" content="{% if page.date %}{{ page.date | date_to_xmlschema }}{% elsif post.date %}{{ post.date | date_to_xmlschema }}{% endif %}" />{% endif %}{% if page.tags.size > 0 %}
     <meta property="article:tag" content="{{ page.tags | first | capitalizeall }}" />{% endif %}
-    <meta name="linkedin:card" content="summary_large_image" />
-    <meta name="linkedin:title" content="{% if title %}{{ title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
+    <meta name="og:card" content="summary_large_image" />
+    <meta name="og:title" content="{% if title %}{{ title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}" />
     <meta name="linkedin:description" content="{% if excerpt %}{{ excerpt }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
     <meta name="linkedin:url" content="{{ site.url }}{{ site.baseurl }}" />
     <meta name="linkedin:image" content="{{ site.url }}{{ site.baseurl }}{% if page.cover %}{{ page.cover }}{% else %}{{ site.cover }}{% endif %}" />

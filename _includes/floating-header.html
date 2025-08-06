@@ -1,6 +1,6 @@
 <div class="floating-header">
     <div class="floating-header-logo">
-        <a href="{{ site.url }}{{ site.baseurl }}">
+        <a href="{{ site.baseurl }}">
             {% if site.logo_dark %}
                 <img src="{{ site.baseurl }}{{ site.logo_dark }}" alt="{{ site.title }} icon" />
             {% endif %}
@@ -11,16 +11,20 @@
     <div class="floating-header-title">{{ page.title }}</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this {% include point.html %}</div>
-        <a class="floating-header-share-linkedin" href="https://www.linkedin.com/in/{{ site.linkedin }}"
-            onclick="window.open(this.href, 'share-linkedin', 'width=1600,height=400');return false;">
+        <a class="floating-header-share-linkedin" 
+           href="https://www.linkedin.com/sharing/share-offsite/?url={{ site.production_url }}{{ page.url | remove_first: '/' }}"
+           aria-label="Share on LinkedIn"
+           onclick="window.open(this.href, 'share-linkedin', 'width=600,height=400');return false;">
             {% include linkedin.html %}
         </a>
-        <a class="floating-header-share-github" href="https://github.com/share?url={{ site.production_url }}{{ page.url | remove_first: '/' }}&amp;title={{ page.title | url_encode }}&amp;shortlink={{ page.title | url_encode }}"
-            onclick="window.open(this.href, 'share-github','width=600,height=400');return false;">
+        <a class="floating-header-share-github" 
+           href="https://github.com/{{ site.github_username }}" 
+           aria-label="View on GitHub"
+           target="_blank">
             {% include github.html %}
         </a>
     </div>
-    <progress class="progress" value="0">
+    <progress class="progress" value="0" max="100">
         <div class="progress-container">
             <span class="progress-bar"></span>
         </div>

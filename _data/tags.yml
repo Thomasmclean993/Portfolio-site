@@ -1,16 +1,69 @@
-ls:
-  name: ls
-  description: Showcase of my projects. 
-  cover: assets/images/speeches.jpg # Need projects jpg
-journalctl:
-  name: journalctl
-  description: Detailed Daily Logs and Journal entires focused on work and side projects.
-  cover: False # need log jpg
-config:
-  name: config
-  description: Post about my Setup. Configuration, Customization and Tools.
-  cover: assets/images/fables.jpg # Need tools jpg
-who-am-i:
-  name: WhoamI/
-  description: command that prints username of current user. This tag is for content like my background, personal story, personal blog, etc.
-  cover: False
+projects:
+  name: projects
+  description: Showcase of my projects and case studies.
+  cover: assets/images/projects.jpg # Need projects jpg
+
+experience:
+  name: experience
+  description: Work history, roles, and impact.
+  cover: assets/images/experience.jpg # Need experience jpg
+
+tech-stack:
+  name: tech-stack
+  description: Technologies, languages, and frameworks I use.
+  cover: assets/images/tech-stack.jpg # Need tech stack jpg
+
+blog:
+  name: blog
+  description: Technical articles, tutorials, and personal insights.
+  cover: assets/images/blog.jpg # Need blog jpg
+
+WhoamI:
+  name: WhoamI
+  description: My background, story, and personal blog.
+  cover: assets/images/about.jpg # Need about jpg
+
+open-source:
+  name: open-source
+  description: Contributions to open source projects.
+  cover: assets/images/open-source.jpg # Need open source jpg
+
+devops:
+  name: devops
+  description: CI/CD, infrastructure, and automation topics.
+  cover: assets/images/devops.jpg # Need devops jpg
+
+architecture:
+  name: architecture
+  description: System design, scalability, and architecture decisions.
+  cover: assets/images/architecture.jpg # Need architecture jpg
+
+testing:
+  name: testing
+  description: Testing strategies, tools, and best practices.
+  cover: assets/images/testing.jpg # Need testing jpg
+
+performance:
+  name: performance
+  description: Performance tuning, profiling, and optimization.
+  cover: assets/images/performance.jpg # Need performance jpg
+
+learning:
+  name: learning
+  description: Books, courses, and new technologies I’m exploring.
+  cover: assets/images/learning.jpg # Need learning jpg
+
+mentorship:
+  name: mentorship
+  description: Coaching, mentoring, and helping others grow.
+  cover: assets/images/mentorship.jpg # Need mentorship jpg
+
+tooling:
+  name: tooling
+  description: Custom tools, scripts, and productivity setups.
+  cover: assets/images/tooling.jpg # Need tooling jpg
+
+contact:
+  name: contact
+  description: How to reach me.
+  cover: assets/images/contact.jpg # Need contact jpg
