@@ -56,34 +56,39 @@
         {% endif %}
 
         <!-- The footer at the very bottom of the screen -->
-        <footer class="site-footer outer">
-            <div class="site-footer-content inner">
-                <section class="copyright"><a href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a> &copy; {{  site.time | date: '%Y' }}</section>
-                <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
-                    <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
-                    <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
-                <nav class="site-footer-nav">
-                    <a href="{{ site.baseurl }}">Latest Posts</a>
-                    {% if site.facebook %}<a href="https://facebook.com/{{ site.facebook }}" target="_blank" rel="noopener">Facebook</a>{% endif %}
-                    {% if site.twitter %}<a href="https://twitter.com/{{ site.twitter }}" target="_blank" rel="noopener">Twitter</a>{% endif %}
-                    <a href="https://ghost.org" target="_blank" rel="noopener">Portfolio</a>
-                </nav>
-            </div>
-        </footer>
+  <!-- The footer at the very bottom of the screen -->
+<footer class="site-footer outer">
+    <div class="site-footer-content inner">
+        <section class="copyright"><a href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a> &copy; {{ site.time | date: '%Y' }}</section>
+        <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
+            <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
+            <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
+        <nav class="site-footer-nav">
+            <a href="{{ site.baseurl }}">Latest Posts</a>
+            {% if site.github %}
+                <a href="https://github.com/{{ site.github }}" target="_blank" rel="noopener">GitHub</a>
+            {% endif %}
+            {% if site.linkedin %}
+                <a href="https://linkedin.com/in/{{ site.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+            {% endif %}
+            <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
+        </nav>
+    </div>
+</footer>
 
     </div>
 
     <!-- The big email subscribe modal content -->
     {% if site.subscribers %}
-        <div id="subscribe" class="subscribe-overlay">
-            <a class="subscribe-overlay-close" href="#"></a>
-            <div class="subscribe-overlay-content">
+        <div id="contact-me" class="contact-me-overlay">
+            <a class="contact-me=overlay-close" href="#"></a>
+            <div class="contact-me-overlay-content">
                 {% if site.logo %}
-                    <img class="subscribe-overlay-logo" src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}" />
+                    <img class="contact-me-overlay-logo" src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}" />
                 {% endif %}
-                <h1 class="subscribe-overlay-title">Subscribe to {{ site.title }}</h1>
-                <p class="subscribe-overlay-description">Stay up to date! Get all the latest &amp; greatest posts delivered straight to your inbox</p>
-                {% include subscribe-form.html placeholder="youremail@example.com" %}
+                <h1 class="contact-me-overlay-title">Want to schedule a conversation or have questions?</h1>
+                <p class="contact-me-overlay-description">Let's talk! My contact information is below.</p>
+                {% include contact-me-form.html placeholder="youremail@example.com" %}
             </div>
         </div>
     {% endif %}

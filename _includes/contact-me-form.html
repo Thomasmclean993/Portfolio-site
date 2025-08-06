@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Me</title>
+</head>
+<body>
+    <p><strong>Email:</strong> <a href="mailto:ThomasMcLean993+Contact@gmail.com">ThomasMcLean993+Contact@gmail.com</a></p>
+    <p><strong>Phone:</strong> (614)596-9565</p>
+    <p><strong>Location:</strong> Philiadelphia, PA</p>
+
+    <button onclick="contactMe()">Use Email Client</button>
+
+    <script type="text/javascript">
+        function contactMe() {
+            const name = document.querySelector('.contact-name').value;
+            const email = document.querySelector('.contact-email').value;
+            const details = document.querySelector('.contact-details').value;
+
+            const emailSubject = "Contact Me Request";
+            const emailBody = `Name: ${name}\n\nEmail: ${email}\n\nMessage: ${details}`;
+
+            // Open the email client with the user's email
+            window.location.href = `mailto:ThomasMcLean993+Contact@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+        }
+    </script>
+</body>
+</html>

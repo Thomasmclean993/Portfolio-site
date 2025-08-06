@@ -11,14 +11,14 @@ production stylesheet in assets/built/screen.css
 5.  Site Navigation
 6.  Post Feed
 7.  Single Post
-  7.1. Subscribe Form
+  7.1. Contact Me Form
   7.2. Post Footer
   7.3. Comments
   7.4. Related Posts
   7.5. Floating Header
 8.  Author Template
 9.  Error Template
-10. Subscribe Overlay
+10. Contact Me Overlay
 11. Site Footer
 
 */
@@ -242,7 +242,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 .site-nav-logo img {
     display: block;
     width: auto;
-    height: 21px;
+    height: 140px;
 }
 
 .nav {
@@ -286,7 +286,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
 }
 
 .social-links a:last-of-type {
-    padding-right: 20px;
+    padding-right: 120px;
 }
 
 .social-link {
@@ -324,7 +324,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     height: 1.9rem;
 }
 
-.subscribe-button {
+.contact-me-button {
     display: block;
     padding: 4px 10px;
     border: #fff 1px solid;
@@ -335,7 +335,7 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     opacity: 0.8;
 }
 
-.subscribe-button:hover {
+.contact-me-button:hover {
     text-decoration: none;
     opacity: 1;
 }
@@ -1067,19 +1067,19 @@ Usage (In Ghost editor):
 }
 
 
-/* 7.1. Subscribe Form
+/* 7.1. Contact Form
 /* ---------------------------------------------------------- */
 
-.subscribe-form {
-    margin: 1.5em 0;
+.contact-me-form {
+    margin: 15em 0;
     padding: 6.5vw 7vw 7vw;
-    border: color(var(--whitegrey) l(+2%)) 1px solid;
+    border: color(var(--whitegrey) l(+2%)) 5px solid;
     text-align: center;
     background: color(var(--whitegrey) l(+4%));
     border-radius: 7px;
 }
 
-.subscribe-form-title {
+.contact-me-form-title {
     margin: 0 0 3px 0;
     padding: 0;
     color: var(--darkgrey);
@@ -1088,7 +1088,7 @@ Usage (In Ghost editor):
     font-weight: 700;
 }
 
-.subscribe-form p {
+.contact-me-form p {
     margin-bottom: 1em;
     color: var(--midgrey);
     font-size: 2.2rem;
@@ -1096,7 +1096,7 @@ Usage (In Ghost editor):
     letter-spacing: 0.2px;
 }
 
-.subscribe-form form {
+.contact-me-form form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1104,11 +1104,20 @@ Usage (In Ghost editor):
     max-width: 420px;
 }
 
-.subscribe-form .form-group {
+.contact-me-form .form-group {
     flex-grow: 1;
+    margin-bottom: 15px
 }
 
-.subscribe-email {
+.contact-me-form .form-group textarea {
+    width: 100%;
+        padding: 10px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+.contact-me-email {
     display: block;
     padding: 10px;
     width: 100%;
@@ -1124,12 +1133,12 @@ Usage (In Ghost editor):
     -webkit-appearance: none;
 }
 
-.subscribe-email:focus {
+.contact-me-email:focus {
     outline: 0;
     border-color: color(var(--lightgrey) l(-2%));
 }
 
-.subscribe-form button {
+.contact-me-form button {
     display: inline-block;
     margin: 0 0 0 10px;
     padding: 0 20px;
@@ -1153,28 +1162,28 @@ Usage (In Ghost editor):
     -webkit-font-smoothing: subpixel-antialiased;
 }
 
-.subscribe-form button:active,
-.subscribe-form button:focus {
+.contact-me-form button:active,
+.contact-me-form button:focus {
     background: color(var(--blue) lightness(-9%) saturation(-10%));
 }
 
 @media (max-width: 650px) {
-    .subscribe-form-title {
+    .contact-me-form-title {
         font-size: 2.4rem;
     }
-    .subscribe-form p {
+    .contact-me-form p {
         font-size: 1.6rem;
     }
 }
 
 @media (max-width: 500px) {
-    .subscribe-form form {
+    .contact-me-form form {
         flex-direction: column;
     }
-    .subscribe-form .form-group {
+    .contact-me-form .form-group {
         width: 100%;
     }
-    .subscribe-form button {
+    .contact-me-form button {
         margin: 10px 0 0 0;
         width: 100%;
     }
@@ -1725,10 +1734,10 @@ Usage (In Ghost editor):
 }
 
 
-/* 10. Subscribe Overlay
+/* 10. Contact-Me Overlay
 /* ---------------------------------------------------------- */
 
-.subscribe-overlay {
+.contact-me-overlay {
     position: fixed;
     top: 0;
     right: 0;
@@ -1746,12 +1755,12 @@ Usage (In Ghost editor):
     backdrop-filter: blur(3px);
 }
 
-.subscribe-overlay:target {
+.contact-me-overlay:target {
     opacity: 1;
     pointer-events: auto;
 }
 
-.subscribe-overlay-content {
+.contact-me-overlay-content {
     position: relative;
     z-index: 9999;
     margin: 0 0 5vw 0;
@@ -1760,21 +1769,21 @@ Usage (In Ghost editor):
     text-align: center;
 }
 
-.subscribe-overlay-logo {
+.contact-me-overlay-logo {
     position: fixed;
     top: 23px;
     left: 30px;
     height: 30px;
 }
 
-.subscribe-overlay-title {
+.contact-me-overlay-title {
     display: inline-block;
     margin: 0 0 10px 0;
     font-size: 6rem;
     line-height: 1.15em;
 }
 
-.subscribe-overlay-description {
+.contact-me-overlay-description {
     margin: 0 auto 50px;
     max-width: 650px;
     font-family: Georgia, serif;
@@ -1784,7 +1793,7 @@ Usage (In Ghost editor):
     opacity: 0.8;
 }
 
-.subscribe-overlay form {
+.contact-me-overlay form {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1792,11 +1801,11 @@ Usage (In Ghost editor):
     max-width: 500px;
 }
 
-.subscribe-overlay .form-group {
+.contact-me-overlay .form-group {
     flex-grow: 1;
 }
 
-.subscribe-overlay .subscribe-email {
+.contact-me-overlay .contact-me-email {
     display: block;
     padding: 14px 20px;
     width: 100%;
@@ -1813,12 +1822,12 @@ Usage (In Ghost editor):
     -webkit-appearance: none;
 }
 
-.subscribe-email:focus {
+.contact-me-email:focus {
     outline: 0;
     border-color: color(var(--lightgrey) l(-2%));
 }
 
-.subscribe-overlay button {
+.contact-me-overlay button {
     display: inline-block;
     margin: 0 0 0 15px;
     padding: 0 25px;
@@ -1842,12 +1851,12 @@ Usage (In Ghost editor):
     -webkit-font-smoothing: subpixel-antialiased;
 }
 
-.subscribe-overlay button:active,
-.subscribe-overlay button:focus {
+.contact-me-overlay button:active,
+.contact-overlay button:focus {
     background: color(var(--blue) lightness(-9%) saturation(-10%));
 }
 
-.subscribe-overlay-close {
+.contact-me-overlay {
     position: absolute;
     top: 0;
     right: 0;
@@ -1856,7 +1865,7 @@ Usage (In Ghost editor):
     display: block;
 }
 
-.subscribe-overlay-close:before {
+.contact-me-overlay-close:before {
     content: "";
     position: absolute;
     top: 40px;
@@ -1869,7 +1878,7 @@ Usage (In Ghost editor):
     transform: rotate(45deg);
 }
 
-.subscribe-overlay-close:after {
+.contact-me-overlay-close:after {
     content: "";
     position: absolute;
     top: 40px;
@@ -1882,7 +1891,7 @@ Usage (In Ghost editor):
     transform: rotate(-45deg);
 }
 
-.subscribe-overlay-close:hover {
+.contact-me-overlay-close:hover {
     cursor: default;
 }
 

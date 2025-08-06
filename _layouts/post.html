@@ -52,12 +52,12 @@ into the {body} of the default.hbs template -->
                 </div>
             </section>
 
-            <!-- Email subscribe form at the bottom of the page -->
-            {% if site.subscribers %}
-                <section class="subscribe-form">
-                    <h3 class="subscribe-form-title">Subscribe to {{ site.title }}</h3>
-                    <p>Get the latest posts delivered right to your inbox</p>
-                    {% include subscribe-form.html placeholder="youremail@example.com" %}
+            <!-- Email form at the bottom of the page -->
+            {% if site.contact %}
+                <section class="contact-me-form">
+                    <h3 class="contact-me-form-title"> Contact Me</h3>
+                    <p> Have questions? Want more information? Want to schedule an interview? Reach out and let's talk.</p>
+                    {% include contact-me-form.html placeholder="youremail@example.com" %}
                 </section>
             {% endif %}
 
