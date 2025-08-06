@@ -11,7 +11,7 @@ This is a full-featured port of Ghost's default theme [Casper](https://github.co
 
 [Ghost's Casper](https://demo.ghost.io) // [Jasper2](https://jekyllt.github.io/jasper2)
 
-![home page](https://raw.githubusercontent.com/jekyllt/jasper2/master/assets/screenshot-desktop.jpg)
+![home page](https://raw.githubusercontent.com/jekyllt/jasper2/master{{ site.baseurl }}{{ site.baseurl }}/assets/screenshot-desktop.jpg)
 
 
 ## Features
@@ -84,7 +84,7 @@ $ npm install
 $ gulp
 ```
 
-Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
+Now you can edit `{{ site.baseurl }}{{ site.baseurl }}/assets/css/` files, which will be compiled to `{{ site.baseurl }}{{ site.baseurl }}/assets/built/` automatically.
 
 ## Issues and Contributing
 
