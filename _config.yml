@@ -6,7 +6,7 @@ language: 'en-uk'
 words_per_minute: 200
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: /
+baseurl: /Portfolio-site
 
 # Website info
 title: My Portfolio
@@ -36,7 +36,7 @@ disqus_shortname: jekyllt # replace with your disqus username
 google_analytics: UA-69281367-1 # replace with your GA tracking identifier
 
 # Permalinks
-permalink: /:title
+permalink: /Portfolio-site/:title
 # permalink: /author/:author
 # permalink: /tag/:tag
 
@@ -70,13 +70,12 @@ feed:
 # or "master" otherwise
 safe: False
 lsi: False
-username: jekyllt
-repo: jasper2
-branch: master
-relative_source: ../jasper2/
-destination: ../jasper2-pages/
-production_url:  https://jekyllt.github.io/jasper2/
-source_url:  https://github.com/jekyllt/jasper2/
+username: thomasmclean993   
+repo: Portfolio-site
+branch: main
+destination: _site
+production_url: https://thomasmclean993.github.io/Portfolio-site/
+source_url: https://github.com/thomasmclean993/Portfolio-site/
 
 exclude:
   - assets/css
