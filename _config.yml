@@ -20,10 +20,13 @@ CNAME: #add cname for website to be created
 # Social info
 navigation: True # show the navbar links
 subscribers: True # you need to connect an external service for this to work,
+contact: True
+# subscribers = Allows floating navbar to display contact-me button
 # if 'True' the submit button is disabled for now, but you can change that
 # by editing `_includes/subscribe-form.html`
-twitter: tryghost # replace by your username
-facebook: ghost # replace by your username
+linkedin: /in/tmclean93 # replace by your username
+github: Thomasmclean993 # replace by your username
+email: Thomas.McLean993+contact@gmail.com 
 
 # Disqus
 disqus: False

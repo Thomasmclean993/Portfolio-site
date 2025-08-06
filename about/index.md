@@ -8,10 +8,9 @@ class: page-template
 subclass: 'post page'
 ---
 
-Ghost is professional publishing platform designed for modern journalism. This is a demo site of a basic Ghost install to give you a general sense of what a new Ghost site looks like when set up for the first time.
+Hi, My name is Thomas McLean and this is my portfolio site. I'm a self-taught Software Engineer with 4+ experience. I also like Rock Climbing, DND, Writing, making cocktails, Pickleball and all things Tech. 
 
-> If you'd like to set up a site like this for yourself, head over to [Ghost.org](https://ghost.org/) and start a free 14 day trial to give Ghost a try!
+This site is meant for you to get to know me as a software engineer and as a person. If you have questions, feedback or simply interested in scheduling a conversation, feel free to contact me at Thomas.McLean993+contact@gmail.com. 
 
-If you're a developer: Ghost is a completely open source (MIT) Node.js application built on a JSON API with an Ember.js admin client. It works with MySQL and SQLite, and is publicly available [on Github](https://github.com/TryGhost/ghost).
-
-If you need help with using Ghost, you'll find a ton of useful articles on [our knowledgebase](https://help.ghost.org/), as well as extensive [developer documentation](https://docs.ghost.org/).
+My Github: [Github Repo](https://github.com/Thomasmclean993)
+My Linkedin: [Linkedin](https://www.linkedin.com/in/tmclean93/)
