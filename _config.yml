@@ -11,10 +11,10 @@ baseurl: /Portfolio-site
 # Website info
 title: My Portfolio
 description: My Professional Portfolio and Resume
-cover: /Portfolio-site/assets/images/downtown.png
-logo: /Portfolio-site/assets/images/owl.png
-logo_dark: /Portfolio-site/assets/images/favicon.png
-favicon: /Portfolio-site/images/favicon.png
+cover: assets/images/downtown.png
+logo: assets/images/owl.png
+logo_dark: assets/images/favicon.png
+favicon: assets/images/favicon.png
 CNAME: #add cname for website to be created
 
 # Social info
