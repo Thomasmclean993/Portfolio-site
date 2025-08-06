@@ -11,7 +11,7 @@ baseurl: /
 # Website info
 title: My Portfolio
 description: My Professional Portfolio and Resume
-cover: "{{ site.baseurl }}/assets/images/downtown.png"
+cover: /assets/images/downtown.png
 logo: "{{ site.baseurl }}/assets/images/owl.png"
 logo_dark: "{{ site.baseurl }}/assets/images/favicon.png"
 favicon: "{{ site.baseurl }}/assets/images/favicon.png"
