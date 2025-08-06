@@ -6,15 +6,15 @@ language: 'en-uk'
 words_per_minute: 200
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: /
+baseurl: /Portfolio-site
 
 # Website info
 title: My Portfolio
 description: My Professional Portfolio and Resume
 cover: /assets/images/downtown.png
-logo: "{{ site.baseurl }}/assets/images/owl.png"
-logo_dark: "{{ site.baseurl }}/assets/images/favicon.png"
-favicon: "{{ site.baseurl }}/assets/images/favicon.png"
+logo: assets/images/owl.png
+logo_dark: assets/images/favicon.png
+favicon: assets/images/favicon.png
 CNAME: #add cname for website to be created
 
 # Social info
