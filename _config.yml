@@ -6,8 +6,7 @@ language: 'en-uk'
 words_per_minute: 200
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: ""
-url: https://thomasmclean993.github.io/Portfolio-site/
+baseurl: "/Portfolio-site"
 
 # Website info
 title: My Portfolio
