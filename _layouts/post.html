@@ -22,7 +22,7 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full {% if page.tags.size > 0 %}{% for tag in page.tags %} tag-{{ tag | slugify: "latin" }}{% endfor %}{% endif %} {{ page.subclass }} {% unless page.cover %}no-image{% endunless %}">
+        <article class="post-full{% if page.tags.size > 0 %}{% for tag in page.tags %} tag-{{ tag | slugify: "latin" }}{% endfor %}{% endif %} {{ page.subclass }}{% unless page.cover %} no-image{% endunless %}">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
@@ -30,11 +30,7 @@ into the {body} of the default.hbs template -->
                     {% if page.tags.size > 0 %}
                         <span class="date-divider">/</span>
                         {% for tag in page.tags %}
-                            {% if forloop.index == page.tags.size %}
-                                <a href='{{ "/tag/" | append: tag | append: "/" | slugify: "latin" | relative_url }}'>{{ tag | upcase }}</a>
-                             {% else %}
-                                <a href='{{ site.baseurl }}tag/{{ tag | slugify: "latin" }}/'>{{ tag | upcase }}</a>,
-                            {% endif %}
+                            <a href="{{ '/tag/' | append: tag | append: '/' | slugify: 'latin' | relative_url }}">{{ tag | upcase }}</a>{% unless forloop.last %}, {% endunless %}
                         {% endfor %}
                     {% endif %}
                 </section>
@@ -42,8 +38,8 @@ into the {body} of the default.hbs template -->
             </header>
 
             {% if page.cover %}
-            <figure class="post-full-image" style="background-image: url({{ site.baseurl }}{{ page.cover }})">
-            </figure>
+                <figure class="post-full-image" style="background-image: url('{{ page.cover | relative_url }}')">
+                </figure>
             {% endif %}
 
             <section class="post-full-content">
@@ -71,16 +67,18 @@ into the {body} of the default.hbs template -->
                                 <img class="author-profile-image" src="{{ author[1].picture | relative_url }}" alt="{{ page.author }}" />
                             {% endif %}
                             <section class="author-card-content">
-                                <h4 class="author-card-name"><a href="{{ site.baseurl }}author/{{ page.author }}">{{ author[1].name }}</a></h4>
+                                <h4 class="author-card-name">
+                                    <a href="{{ '/author/' | append: page.author | relative_url }}">{{ author[1].name }}</a>
+                                </h4>
                                 {% if author[1].bio %}
                                     <p>{{ author[1].bio }}</p>
                                 {% else %}
-                                    <p>Read <a href="{{ site.baseurl }}author/{{ page.author }}">more posts</a> by this author.</p>
+                                    <p>Read <a href="{{ '/author/' | append: page.author | relative_url }}">more posts</a> by this author.</p>
                                 {% endif %}
                             </section>
                         </section>
                         <div class="post-full-footer-right">
-                            <a class="author-card-button" href="{{ site.baseurl }}author/{{ page.author }}">Read More</a>
+                            <a class="author-card-button" href="{{ '/author/' | append: page.author | relative_url }}">Read More</a>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -132,16 +130,16 @@ into the {body} of the default.hbs template -->
                     <article class="read-next-card"
                         {% if site.cover %}
                             style="background-image: url('{{ site.cover | relative_url }}')"
-                        {% else %}
-                            {% if page.cover %}
-                                 style="background-image: url('{{ page.cover | relative_url }}')"
-                            {% endif %}
+                        {% elsif page.cover %}
+                            style="background-image: url('{{ page.cover | relative_url }}')"
                         {% endif %}
                     >
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; {{ site.title }} &mdash;</small>
                             {% if primary %}
-                                <h3 class="read-next-card-header-title"><a href="{{ site.baseurl }}tag/{{ primary | slugify: "latin" }}/">{{ primary | capitalize }}</a></h3>
+                                <h3 class="read-next-card-header-title">
+                                    <a href="{{ '/tag/' | append: primary | append: '/' | slugify: 'latin' | relative_url }}">{{ primary | capitalize }}</a>
+                                </h3>
                             {% endif %}
                         </header>
                         <div class="read-next-divider">{% include infinity.html %}</div>
@@ -153,7 +151,7 @@ into the {body} of the default.hbs template -->
                                     {% if post.title != page.title %}
                                         {% assign count = count | plus: 1 %}
                                         {% if count <= 3 %}
-                                            <li><a href="{{ site.baseurl }}{{ post.url | remove_first: '/' }}">{{ post.title }}</a></li>
+                                            <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
                                         {% endif %}
                                     {% endif %}
                                   {% endif %}
@@ -161,7 +159,7 @@ into the {body} of the default.hbs template -->
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="{{ site.baseurl }}tag/{{ primary | slugify: "latin" }}/">
+                            <a href="{{ '/tag/' | append: primary | append: '/' | slugify: 'latin' | relative_url }}">
                                 {% if related_posts > 1 %}
                                     See all {{ related_posts | minus: 1 }} posts  →
                                 {% elsif related_posts == 1 %}
