@@ -1,16 +1,20 @@
-ls:
-  name: ls
-  description: Showcase of my projects. 
-  cover: assets/images/speeches.jpg # Need projects jpg
-journalctl:
-  name: journalctl
-  description: Detailed Daily Logs and Journal entires focused on work and side projects.
-  cover: False # need log jpg
-config:
-  name: config
-  description: Post about my Setup. Configuration, Customization and Tools.
-  cover: assets/images/fables.jpg # Need tools jpg
-who-am-i:
-  name: WhoamI/
-  description: command that prints username of current user. This tag is for content like my background, personal story, personal blog, etc.
+whoami:
+  name: WhoamI
+  description: Content like my background, personal story, personal blog, etc.
   cover: False
+tech-stack:
+  name: Tech Stack
+  description: Posts about my technical skills, tools, and technologies I use.
+  cover: False # Add a cover image if you have one
+work-experience:
+  name: Work Experience
+  description: My professional experience, roles, and projects at work.
+  cover: False # Add a cover image if you have one
+setup:
+  name: Setup
+  description: Posts about my configuration, customization, and tools.
+  cover: False # Add a cover image if you have one
+rants:
+  name: Rants
+  description: Informal posts, opinions, and thoughts on tech and work.
+  cover: False # Add a cover image if you have one
