@@ -1,4 +1,5 @@
 <!-- dynamically fixing the title for tag/author pages -->
+
 {% if page.url %}
   {% if page.url contains "tag/" %}
       {% assign title = page.url | remove: 'tag' | remove: '/' | url_decode | replace: '-', ' ' | capitalizeall %}

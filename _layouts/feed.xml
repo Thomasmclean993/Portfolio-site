@@ -32,7 +32,7 @@ layout: null
 
   {% if site.author %}
     <author>
-        <name>{{ site.author.name | default: site.author | xml_escape }}</name>
+      <name>{{ site.author.name | default: site.author | xml_escape }}</name>
       {% if site.author.email %}
         <email>{{ site.author.email | xml_escape }}</email>
       {% endif %}
@@ -40,23 +40,6 @@ layout: null
         <uri>{{ site.author.uri | xml_escape }}</uri>
       {% endif %}
     </author>
-  {% endif %}
-
-  {% if site.data.authors %}
-    {% for author in site.data.authors %}
-      {% if author[1].username == post.author %}
-				<author>{{ author[1].name | strip_html }}</author>
-        <author>
-            <name>{{ author[1].name | default: author[1].name | xml_escape }}</name>
-          {% if author[1].email %}
-            <email>{{ author[1].email | xml_escape }}</email>
-          {% endif %}
-          {% if author[1].uri %}
-            <uri>{{ author[1].uri | xml_escape }}</uri>
-          {% endif %}
-        </author>
-			{% endif %}
-    {% endfor %}
   {% endif %}
 
   {% assign posts = page.posts %}
@@ -80,7 +63,7 @@ layout: null
       {% assign post_author_name = post_author.name | default: post_author %}
 
       <author>
-          <name>{{ post_author_name | default: "" | xml_escape }}</name>
+        <name>{{ post_author_name | default: "" | xml_escape }}</name>
         {% if post_author_email %}
           <email>{{ post_author_email | xml_escape }}</email>
         {% endif %}

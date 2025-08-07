@@ -2,9 +2,11 @@
     <div class="site-nav-left">
         {% if page.current != 'home' %}
             {% if site.logo %}
-                <a class="site-nav-logo" href="{{ site.url }}{{ site.baseurl }}"><img src="{{ site.baseurl}}{{ site.logo }}" alt="{{ site.title }}" /></a>
+                <a class="site-nav-logo" href="{{ '/' | relative_url }}">
+                    <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" />
+                </a>
             {% else %}
-                <a class="site-nav-logo" href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a>
+                <a class="site-nav-logo" href="{{ '/' | relative_url }}">{{ site.title }}</a>
             {% endif %}
         {% endif %}
         {% if page.navigation %}
@@ -16,7 +18,7 @@
             {% if site.github %}
                 <a class="social-link social-link-fb" href="https://github.com/{{ site.github }}" target="_blank" rel="noopener">{% include github.html %}</a>
             {% endif %}
-            {% if site.github %}
+            {% if site.linkedin %}
                 <a class="social-link social-link-tw" href="https://linkedin.com/{{ site.linkedin }}" target="_blank" rel="noopener">{% include linkedin.html %}</a>
             {% endif %}
         </div>

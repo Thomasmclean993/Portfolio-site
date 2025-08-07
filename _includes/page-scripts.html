@@ -1,6 +1,8 @@
 <script>
 $(function() {
     var $postContent = $(".post-full-content");
-    $postContent.fitVids();
+    if ($postContent.length) {
+        $postContent.fitVids();
+    }
 });
 </script>

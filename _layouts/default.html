@@ -12,25 +12,14 @@
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/built/screen.css" />
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/built/screen.edited.css" />
-    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}assets/built/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="{{ 'assets/built/screen.css' | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ 'assets/built/screen.edited.css' | relative_url }}" />
+    <link rel="stylesheet" type="text/css" href="{{ 'assets/built/syntax.css' | relative_url }}" />
     <!-- highlight.js -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <style>.hljs { background: none; }</style>
 
-    <!--[if IE]>
-        <style>
-            p, ol, ul{
-                width: 100%;
-            }
-            blockquote{
-                width: 100%;
-            }
-        </style>
-    <![endif]-->
-    
-    <!-- This tag outputs SEO meta+structured data and other important settings -->
+       <!-- This tag outputs SEO meta+structured data and other important settings -->
     {% include head.html %}
 
 </head>
@@ -59,12 +48,12 @@
   <!-- The footer at the very bottom of the screen -->
 <footer class="site-footer outer">
     <div class="site-footer-content inner">
-        <section class="copyright"><a href="{{ site.url }}{{ site.baseurl }}">{{ site.title }}</a> &copy; {{ site.time | date: '%Y' }}</section>
+        <section class="copyright"><a href="{{ '/' | relative_url }}">{{ site.title }}</a> &copy; {{ site.time | date: '%Y' }}</section>
         <section class="poweredby">Proudly published with <a href="https://jekyllrb.com/">Jekyll</a> &
             <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a> using
             <a href="https://github.com/jekyllt/jasper2" target="_blank" rel="noopener">Jasper2</a></section>
         <nav class="site-footer-nav">
-            <a href="{{ site.baseurl }}">Latest Posts</a>
+            <a href="{{ '/' | relative_url }}">Latest Posts</a>
             {% if site.github %}
                 <a href="https://github.com/{{ site.github }}" target="_blank" rel="noopener">GitHub</a>
             {% endif %}
@@ -84,7 +73,7 @@
             <a class="contact-me=overlay-close" href="#"></a>
             <div class="contact-me-overlay-content">
                 {% if site.logo %}
-                    <img class="contact-me-overlay-logo" src="{{ site.baseurl }}{{ site.logo }}" alt="{{ site.title }}" />
+                   <img class="contact-me-overlay-logo" src="{{ site.logo | relative_url }}" alt="{{ site.title }}" />
                 {% endif %}
                 <h1 class="contact-me-overlay-title">Want to schedule a conversation or have questions?</h1>
                 <p class="contact-me-overlay-description">Let's talk! My contact information is below.</p>
@@ -107,7 +96,7 @@
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
         crossorigin="anonymous">
     </script>
-    <script type="text/javascript" src="{{ site.baseurl }}assets/js/jquery.fitvids.js"></script>
+    <script type="text/javascri<script type="text/javascript" src="{{ 'assets/js/jquery.fitvids.js' | relative_url }}"></script>
     <script type="text/javascript" src="https://demo.ghost.io/assets/js/jquery.fitvids.js?v=724281a32e"></script>
 
 
@@ -123,7 +112,7 @@
     <script>
         var maxPages = parseInt('{{ paginator.total_pages }}');
     </script>
-    <script src="{{ site.baseurl }}assets/js/infinitescroll.js"></script>
+    <script src="{{ 'assets/js/infinitescroll.js' | relative_url }}"></script>
     {% endif %}
 
 
@@ -142,3 +131,4 @@
 
 </body>
 </html>
+
