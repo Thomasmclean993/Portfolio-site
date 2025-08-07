@@ -1,8 +1,13 @@
-<!-- dynamically loading backgrounds for tags,  descriptions and page titles -->
-{% assign decoded_url = page.url | url_decode %}
-{% for tag in site.data.tags %}
-    {% if decoded_url contains tag[1].name %}
-        {% assign cover = tag[1].cover %}
-        {% assign tag_description = tag[1].description %}
+<nav class="pagination" role="pagination">
+    {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1 %}
+            <a class="newer-posts" href="{{ '/author/' | append: page.author | relative_url }}" title="Previous Page">&laquo; Newer Posts</a>
+        {% else %}
+            <a class="newer-posts" href="{{ '/author/' | append: page.author | append: '/page' | append: paginator.previous_page | append: '/' | relative_url }}" title="Previous Page">&laquo; Newer Posts</a>
+        {% endif %}
     {% endif %}
-{% endfor %}
+    <span class="page-number"> Page {{ paginator.page }} of {{ paginator.total_pages }} </span>
+    {% if paginator.next_page %}
+        <a class="older-posts" href="{{ '/author/' | append: page.author | append: '/page' | append: paginator.next_page | append: '/' | relative_url }}" title="Next Page">Older Posts &raquo;</a>
+    {% endif %}
+</nav>
