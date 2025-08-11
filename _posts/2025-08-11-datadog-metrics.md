@@ -223,7 +223,7 @@ Now, I just need to call the increment/2 function in my business logic and—boo
 
 Example of the finished product in Datadog:
 
-![Datadog Metrics]({{ site.relative_url }}/assets/images/datadog-metrics.png)
+![Datadog Metrics]({{ site.relative_url }}../assets/images/datadog-metrics.png)
 
 ## What Would I Change? (And an Idea)
 I’m not a fan of calling Metric.increment directly within business logic. I know, we’re starting to wade into Elixir/Functional’s “no side effects” territory! Allow me a quick soapbox moment: side effects are only a problem when they’re hidden and untraceable. By keeping them minimal and well-documented, it’s manageable.
