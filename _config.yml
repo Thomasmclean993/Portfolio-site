@@ -16,7 +16,7 @@ cover: assets/images/downtown.png
 logo: assets/images/owl.png
 logo_dark: assets/images/favicon.png
 favicon: assets/images/favicon.png
-CNAME: #add cname for website to be created
+CNAME: thomasmcleanjr.cv #add cname for website to be created
 
 # Social info
 navigation: True # show the navbar links
