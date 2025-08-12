@@ -150,3 +150,61 @@ td.code {
 .highlight table td:last-child {
     background: none;
 }
+
+#resume.contact-me-overlay {
+  display: grid;
+  place-items: center;
+}
+
+/* Resume content box */
+#resume.contact-me-overlay-content.resume-container {
+  position: relative;
+  z-index: 2;          
+  max-width: none !important;/* above the backdrop/close layer */
+  width: min(96vw, 1300px) !important;    /* wide but responsive */
+  height: min(94vh, 1100px) !important;   /* tall but responsive */
+  padding: 20px 24px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 16px 48px rgba(0,0,0,.35);
+
+  display: grid !important;
+  grid-template-rows: auto 1fr auto;  /* title, iframe, fallback */
+  gap: 12px;
+}
+
+#resume .contact-me-overlay-title {
+  margin: 0;
+  text-align: center;          /* change to left if you prefer */
+  color: #111;
+  font-weight: 700;
+  font-size: clamp(22px, 2.2vw + 14px, 32px) !important;
+  line-height: 1.2;
+}
+
+#resume iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  border-radius: 16px;
+  background: #f6f7f8;         /* subtle bg while PDF loads */
+}
+
+#resume .contact-me-overlay-logo { display: none !important; }
+
+/* Keep the outside area clickable to close, behind content */
+#resume .contact-me-overlay-close {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Mobile: use full screen */
+@media (max-width: 640px) {
+  #resume .contact-me-overlay-content.resume-container {
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0;
+  }
+}

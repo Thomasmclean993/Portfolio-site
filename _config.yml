@@ -75,8 +75,8 @@ username: thomasmclean993
 repo: Portfolio-site
 branch: main
 destination: _site
-production_url: https://thomasmclean993.github.io/Portfolio-site/
-source_url: https://github.com/thomasmclean993/Portfolio-site/
+production_url: thomasmcleanjr.cv
+source_url: thomasmcleanjr.cv
 
 exclude:
   - assets/css

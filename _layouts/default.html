@@ -66,7 +66,7 @@
 </footer>
 
     </div>
-
+   
     <!-- The big email subscribe modal content -->
     {% if site.subscribers %}
         <div id="contact-me" class="contact-me-overlay">
@@ -128,6 +128,25 @@
 
     <!-- Ghost outputs important scripts and data with this tag - it should always be the very last thing before the closing body tag -->
     <!-- ghost_foot -->
+    <div id="resume" class="contact-me-overlay">
+        <a class="contact-me-overlay-close" href="#"></a>
+        <div class="contact-me-overlay-content resume-container">
+                {% if site.logo %}
+                    <img class="contact-me-overlay-logo" src="{{ site.logo | relative_url }}" alt="{{ site.title }}" />
+                {% endif %}
+            <h1 class="contact-me-overlay-title">My Resume</h1>
+            <br />
+            <br />
+            <iframe
+              src="{{ site.resume_url | default: '/assets/images/resume.pdf' | relative_url }}#zoom=page-width"
+              title="Resume"
+              loading="lazy"></iframe>
+
+                <p class="resume-fallback">
+                If the resume doesn’t load, <a href="{{ site.resume_url | default: '/assets/images/resume.pdf' | relative_url }}" target="_blank" rel="noopener">open it in a new tab</a>.
+                </p>
+        </div>
+    </div>
 
 </body>
 </html>
