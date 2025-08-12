@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/images/writing.jpg
+cover:  assets/images/endless-code.jpg
 navigation: True
 title: How I Added Custom Datadog Metrics using an Unsupported Language. 
 date: 2025-08-11 09:00:00
