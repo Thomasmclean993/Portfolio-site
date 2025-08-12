@@ -7,7 +7,7 @@ words_per_minute: 200
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
 url: "https://thomasmcleanjr.cv"
-baseurl: /Portfolio-site
+baseurl: "" # left blank right
 
 # Website info
 title: My Portfolio
