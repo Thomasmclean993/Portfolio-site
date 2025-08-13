@@ -1,7 +1,7 @@
 ---
 layout: post
 current: post
-cover:  assets/images/margs.avif
+cover:  assets/images/journey.jpg
 navigation: True
 title: Persistence Over Perfection, My Journey to Software Engineering
 date: 2025-08-11 8:00:00
@@ -11,7 +11,7 @@ subclass: 'post'
 author: thomas
 ---
 
-If there’s one thing I’ve learned about myself, it’s that I rarely do things the “normal” way. While everyone else was busy racking up points in the Accelerated Reading program with the usual suspects—Magic Tree House, Diary of a Wimpy Kid, Harry Potter—I was more interested in hacking my way through Deus Ex Machina: Human Evolution or setting my alarm for 4 a.m. to catch Cowboy Bebop reruns. . I’ve always had a knack for finding my own path, especially when the standard route just didn’t make sense to me.
+If there’s one thing I’ve learned about myself, it’s that I rarely do things the “normal” way. While everyone else was busy racking up points in the Accelerated Reading program with the usual suspects—Magic Tree House, Diary of a Wimpy Kid, Harry Potter—I was more interested in hacking my way through Deus Ex Machina: Human Evolution or setting my alarm for 4 a.m. to catch Cowboy Bebop reruns. I’ve always had a knack for finding my own path, especially when the standard route just didn’t make sense to me.
 
 Let’s rewind a bit. In elementary school, my reading scores were so low that my teachers wanted to hold me back a year. The school had this AR program where you had to rack up points by reading certain books. Magic Tree House? Diary of a Wimpy Kid? Harry Potter? Sorry, not for me. I wanted something with a little more edge. My teacher, probably at her wit’s end, finally just let me loose in the library. “Pick anything,” she said. I came back with a Tom Clancy novel—four reading levels above where I was “supposed” to be. Political intrigue, shadow governments, the threat of World War III. Now that was a story. By the time they scrapped the AR program, I had one of the highest point totals in the school.
 
