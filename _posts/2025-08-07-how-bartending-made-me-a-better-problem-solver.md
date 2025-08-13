@@ -5,7 +5,7 @@ cover:  assets/images/margs.avif
 navigation: True
 title: How Bartending Made Me a Better Problem Solver
 date: 2025-08-07 8:00:00
-tags: [whoamI, work-experience]
+tags: [whoami, work-experience]
 class: post-template
 subclass: 'post'
 author: thomas
