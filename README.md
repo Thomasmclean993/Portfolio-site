@@ -1,7 +1,7 @@
 ## Jasper2
 
 [![Build and Deploy Jekyll Site](https://github.com/Thomasmclean993/Portfolio-site/actions/workflows/deploy.yml/badge.svg)](https://github.com/Thomasmclean993/Portfolio-site/actions/workflows/deploy.yml)
-[![Ruby](https://img.shields.io/badge/ruby-2.6.3-blue.svg?style=flat)](http://travis-ci.org/jekyllt/jasper2)
+[![Ruby](https://img.shields.io/badge/ruby-3.4.1-blue.svg?style=flat)](http://travis-ci.org/jekyllt/jasper2)
 [![Jekyll](https://img.shields.io/badge/jekyll-3.9.0-blue.svg?style=flat)](http://travis-ci.org/jekyllt/jasper2)
 
 This is a full-featured port of Ghost's default theme [Casper](https://github.com/tryghost/casper)
