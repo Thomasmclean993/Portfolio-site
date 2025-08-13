@@ -1,0 +1,66 @@
+name: Build and Deploy Jekyll Site
+
+# Deploy every time you push to main
+on:
+  push:
+    branches:
+      - main   # change if your default branch is 'master'
+
+# Allow the GitHub Actions bot to push
+permissions:
+  contents: write
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Check out source repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2. Cache Ruby gems to speed up later builds
+      - name: Cache Ruby gems
+        uses: actions/cache@v3
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      # 3. Set up Ruby for Jekyll
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4.2' # Match your local Ruby version
+          bundler-cache: false
+
+      # 4. Install dependencies
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      # 5. Build the Jekyll site (runs your custom plugin too)
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --trace
+
+      # 6. Run a broken link check (optional but useful)
+      #    Comment out if not needed, but it will catch bad URLs before deploy
+      - name: Check for broken links
+        uses: peter-evans/link-checker@v1
+        with:
+          args: -d ./_site -r
+
+      # 7. Add .nojekyll so GitHub Pages doesn't try to treat this as a Jekyll build again
+      - name: Add .nojekyll file
+        run: touch _site/.nojekyll
+
+      # 8. Deploy to gh-pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
