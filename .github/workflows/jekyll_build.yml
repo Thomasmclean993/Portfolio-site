@@ -16,7 +16,7 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.1'  # Match your local Ruby version if different
+          ruby-version: '3.4.2'  # Match your local Ruby version if different
 
       - name: Install dependencies
         run: |
