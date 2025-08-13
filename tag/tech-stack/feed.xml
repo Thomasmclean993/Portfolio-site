@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
   <link href="https://thomasmcleanjr.cv/tag/tech-stack/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" />
-  <updated>2025-08-13T19:00:34+00:00</updated>
+  <updated>2025-08-13T19:04:46+00:00</updated>
   <id>https://thomasmcleanjr.cv/tag/tech-stack/feed.xml</id>
 
   
@@ -283,18 +283,18 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
 &lt;html lang=&quot;en&quot;&gt;
 &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Icon Hover Example&lt;/title&gt;
+    &lt;title&gt;List of Technologies that I have experience in.&lt;/title&gt;
     &lt;style&gt;
         .icon {
-            width: 32px;
-            height: 32px;
+            width: 48px;
+            height: 48px;
             vertical-align: middle;
             margin-right: 8px;
             transition: transform 0.3s ease-in-out;
             display: inline-block;
         }
         .icon:hover {
-            transform: scale(1.5);
+            transform: scale(2.0);
         }
         ul {
             margin: 0;
@@ -325,7 +325,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
       &lt;tbody&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;assets/images/elixir.svg&quot; alt=&quot;Elixir&quot;&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/elixir.svg&quot; alt=&quot;Elixir&quot;&gt;
             Elixir
           &lt;/td&gt;
           &lt;td&gt;
@@ -339,7 +339,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;assets/images/ruby.svg&quot; alt=&quot;Ruby&quot;&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/ruby.svg&quot; alt=&quot;Ruby&quot;&gt;
             Ruby
           &lt;/td&gt;
           &lt;td&gt;
@@ -353,7 +353,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;assets/images/javascript.svg&quot; alt=&quot;Javascript&quot;&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/javascript.svg&quot; alt=&quot;Javascript&quot;&gt;
             Javascript
           &lt;/td&gt;
           &lt;td&gt;
@@ -369,7 +369,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;assets/images/python.svg&quot; alt=&quot;Python&quot;&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/python.svg&quot; alt=&quot;Python&quot;&gt;
             Python
           &lt;/td&gt;
           &lt;td&gt;
@@ -385,7 +385,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;assets/images/docker.svg&quot; alt=&quot;Docker&quot;&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/docker.svg&quot; alt=&quot;Docker&quot;&gt;
             Docker
           &lt;/td&gt;
           &lt;td&gt;
@@ -398,7 +398,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;assets/images/terraform.svg&quot; alt=&quot;Terraform&quot;&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/terraform.svg&quot; alt=&quot;Terraform&quot;&gt;
             Terraform
           &lt;/td&gt;
           &lt;td&gt;
@@ -411,7 +411,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;assets/images/datadog.svg&quot; alt=&quot;Datadog&quot;&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/datadog.svg&quot; alt=&quot;Datadog&quot;&gt;
             Datadog
           &lt;/td&gt;
           &lt;td&gt;
@@ -425,7 +425,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;assets/images/grafana.svg&quot; alt=&quot;Grafana&quot;&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/grafana.svg&quot; alt=&quot;Grafana&quot;&gt;
             Grafana
           &lt;/td&gt;
           &lt;td&gt;
@@ -439,7 +439,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;assets/images/sentry.svg&quot; alt=&quot;Sentry&quot;&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/sentry.svg&quot; alt=&quot;Sentry&quot;&gt;
             Sentry
           &lt;/td&gt;
           &lt;td&gt;
@@ -452,7 +452,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;assets/images/jira.svg&quot; alt=&quot;Jira&quot;&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/jira.svg&quot; alt=&quot;Jira&quot;&gt;
             Jira
           &lt;/td&gt;
           &lt;td&gt;
@@ -490,7 +490,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
       
 
       
-        <summary type="html">Icon Hover Example</summary>
+        <summary type="html">List of Technologies that I have experience in.</summary>
       
 
       

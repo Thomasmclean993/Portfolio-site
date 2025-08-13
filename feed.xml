@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://thomasmcleanjr.cv/feed.xml" rel="self" type="application/atom+xml" /><link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" /><updated>2025-08-13T19:00:34+00:00</updated><id>https://thomasmcleanjr.cv/feed.xml</id><title type="html">My Portfolio</title><subtitle>My Professional Portfolio and Resume</subtitle><entry><title type="html">How I Added Custom Datadog Metrics using an Unsupported Language.</title><link href="https://thomasmcleanjr.cv/datadog-metrics" rel="alternate" type="text/html" title="How I Added Custom Datadog Metrics using an Unsupported Language." /><published>2025-08-11T09:00:00+00:00</published><updated>2025-08-11T09:00:00+00:00</updated><id>https://thomasmcleanjr.cv/datadog-metrics</id><content type="html" xml:base="https://thomasmcleanjr.cv/datadog-metrics"><![CDATA[<p>First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://thomasmcleanjr.cv/feed.xml" rel="self" type="application/atom+xml" /><link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" /><updated>2025-08-13T19:04:46+00:00</updated><id>https://thomasmcleanjr.cv/feed.xml</id><title type="html">My Portfolio</title><subtitle>My Professional Portfolio and Resume</subtitle><entry><title type="html">How I Added Custom Datadog Metrics using an Unsupported Language.</title><link href="https://thomasmcleanjr.cv/datadog-metrics" rel="alternate" type="text/html" title="How I Added Custom Datadog Metrics using an Unsupported Language." /><published>2025-08-11T09:00:00+00:00</published><updated>2025-08-11T09:00:00+00:00</updated><id>https://thomasmcleanjr.cv/datadog-metrics</id><content type="html" xml:base="https://thomasmcleanjr.cv/datadog-metrics"><![CDATA[<p>First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.</p>
 
 <p>We tried it before and ran into issues. This was before I owned the project, so I don’t know all the specifics.
 Our DevOps team advised against it due to constraints within our organization’s Datadog setup.
@@ -210,7 +210,7 @@ With the tags combined and metric names sanitized, we’re ready to send metrics
 <h2 id="what-would-i-change-and-an-idea">What Would I Change? (And an Idea)</h2>
 <p>I’m not a fan of calling Metric.increment directly within business logic. I know, we’re starting to wade into Elixir/Functional’s “no side effects” territory! Allow me a quick soapbox moment: side effects are only a problem when they’re hidden and untraceable. By keeping them minimal and well-documented, it’s manageable.</p>
 
-<p>That said, I had an idea: a decorator-like implementation that watches for certain logic and then triggers the Metric.increment call. There’s a lot to figure out, but maybe a library or something similar could combine aspect-oriented programming, OpenTelemetry, and some kind of event watcher. I think it could be really useful.</p>]]></content><author><name>Thomas M</name></author><category term="work-experience" /><category term="tech-stack" /><summary type="html"><![CDATA[First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.]]></summary></entry><entry><title type="html">Persistence Over Perfection, My Journey to Software Engineering</title><link href="https://thomasmcleanjr.cv/my-journey" rel="alternate" type="text/html" title="Persistence Over Perfection, My Journey to Software Engineering" /><published>2025-08-11T08:00:00+00:00</published><updated>2025-08-11T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/my-journey</id><content type="html" xml:base="https://thomasmcleanjr.cv/my-journey"><![CDATA[<p>If there’s one thing I’ve learned about myself, it’s that I rarely do things the “normal” way. While everyone else was busy racking up points in the Accelerated Reading program with the usual suspects—Magic Tree House, Diary of a Wimpy Kid, Harry Potter—I was more interested in hacking my way through Deus Ex Machina: Human Evolution or setting my alarm for 4 a.m. to catch Cowboy Bebop reruns. . I’ve always had a knack for finding my own path, especially when the standard route just didn’t make sense to me.</p>
+<p>That said, I had an idea: a decorator-like implementation that watches for certain logic and then triggers the Metric.increment call. There’s a lot to figure out, but maybe a library or something similar could combine aspect-oriented programming, OpenTelemetry, and some kind of event watcher. I think it could be really useful.</p>]]></content><author><name>Thomas M</name></author><category term="work-experience" /><category term="tech-stack" /><summary type="html"><![CDATA[First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.]]></summary></entry><entry><title type="html">Persistence Over Perfection, My Journey to Software Engineering</title><link href="https://thomasmcleanjr.cv/my-journey" rel="alternate" type="text/html" title="Persistence Over Perfection, My Journey to Software Engineering" /><published>2025-08-11T08:00:00+00:00</published><updated>2025-08-11T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/my-journey</id><content type="html" xml:base="https://thomasmcleanjr.cv/my-journey"><![CDATA[<p>If there’s one thing I’ve learned about myself, it’s that I rarely do things the “normal” way. While everyone else was busy racking up points in the Accelerated Reading program with the usual suspects—Magic Tree House, Diary of a Wimpy Kid, Harry Potter—I was more interested in hacking my way through Deus Ex Machina: Human Evolution or setting my alarm for 4 a.m. to catch Cowboy Bebop reruns. I’ve always had a knack for finding my own path, especially when the standard route just didn’t make sense to me.</p>
 
 <p>Let’s rewind a bit. In elementary school, my reading scores were so low that my teachers wanted to hold me back a year. The school had this AR program where you had to rack up points by reading certain books. Magic Tree House? Diary of a Wimpy Kid? Harry Potter? Sorry, not for me. I wanted something with a little more edge. My teacher, probably at her wit’s end, finally just let me loose in the library. “Pick anything,” she said. I came back with a Tom Clancy novel—four reading levels above where I was “supposed” to be. Political intrigue, shadow governments, the threat of World War III. Now that was a story. By the time they scrapped the AR program, I had one of the highest point totals in the school.</p>
 
@@ -314,7 +314,7 @@ I’m looking for a job I can be passionate about, where I can help others. I’
 
 <p>If you’re on an unconventional path, keep going. Persistence and adaptability are your best tools. And if you ever feel lost, confused, or unsure of an answer—whether you’re behind a keyboard or just trying to figure out your next move—remember:</p>
 
-<p>The process is just as important as the solution.</p>]]></content><author><name>Thomas M</name></author><category term="whoamI" /><category term="work-experience" /><summary type="html"><![CDATA[If there’s one thing I’ve learned about myself, it’s that I rarely do things the “normal” way. While everyone else was busy racking up points in the Accelerated Reading program with the usual suspects—Magic Tree House, Diary of a Wimpy Kid, Harry Potter—I was more interested in hacking my way through Deus Ex Machina: Human Evolution or setting my alarm for 4 a.m. to catch Cowboy Bebop reruns. . I’ve always had a knack for finding my own path, especially when the standard route just didn’t make sense to me.]]></summary></entry><entry><title type="html">How Bartending Made Me a Better Problem Solver</title><link href="https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver" rel="alternate" type="text/html" title="How Bartending Made Me a Better Problem Solver" /><published>2025-08-07T08:00:00+00:00</published><updated>2025-08-07T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver</id><content type="html" xml:base="https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver"><![CDATA[<p>I don’t remember exactly when I caught the coding bug. Maybe it started when I played Skyrim with a mod that was no longer being updated, and decided to fix it myself. Or maybe it was when I picked up <em>Automate the Boring Stuff with Python</em> and learned Python just for fun. I even learned some HTML and CSS back in high school, making a scrolling banner on a static page.</p>
+<p>The process is just as important as the solution.</p>]]></content><author><name>Thomas M</name></author><category term="whoamI" /><category term="work-experience" /><summary type="html"><![CDATA[If there’s one thing I’ve learned about myself, it’s that I rarely do things the “normal” way. While everyone else was busy racking up points in the Accelerated Reading program with the usual suspects—Magic Tree House, Diary of a Wimpy Kid, Harry Potter—I was more interested in hacking my way through Deus Ex Machina: Human Evolution or setting my alarm for 4 a.m. to catch Cowboy Bebop reruns. I’ve always had a knack for finding my own path, especially when the standard route just didn’t make sense to me.]]></summary></entry><entry><title type="html">How Bartending Made Me a Better Problem Solver</title><link href="https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver" rel="alternate" type="text/html" title="How Bartending Made Me a Better Problem Solver" /><published>2025-08-07T08:00:00+00:00</published><updated>2025-08-07T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver</id><content type="html" xml:base="https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver"><![CDATA[<p>I don’t remember exactly when I caught the coding bug. Maybe it started when I played Skyrim with a mod that was no longer being updated, and decided to fix it myself. Or maybe it was when I picked up <em>Automate the Boring Stuff with Python</em> and learned Python just for fun. I even learned some HTML and CSS back in high school, making a scrolling banner on a static page.</p>
 
 <p>But what I do know is that I’ve always loved problem-solving and creating something for others to enjoy. The funny thing is, I didn’t really become good at it until I became a bartender.</p>
 
@@ -569,18 +569,18 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Icon Hover Example</title>
+    <title>List of Technologies that I have experience in.</title>
     <style>
         .icon {
-            width: 32px;
-            height: 32px;
+            width: 48px;
+            height: 48px;
             vertical-align: middle;
             margin-right: 8px;
             transition: transform 0.3s ease-in-out;
             display: inline-block;
         }
         .icon:hover {
-            transform: scale(1.5);
+            transform: scale(2.0);
         }
         ul {
             margin: 0;
@@ -611,7 +611,7 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
       <tbody>
         <tr>
           <td>
-            <img class="icon" src="assets/images/elixir.svg" alt="Elixir">
+            <img class="icon" src="/assets/images/elixir.svg" alt="Elixir">
             Elixir
           </td>
           <td>
@@ -625,7 +625,7 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
         </tr>
         <tr>
           <td>
-            <img class="icon" src="assets/images/ruby.svg" alt="Ruby">
+            <img class="icon" src="/assets/images/ruby.svg" alt="Ruby">
             Ruby
           </td>
           <td>
@@ -639,7 +639,7 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
         </tr>
         <tr>
           <td>
-            <img class="icon" src="assets/images/javascript.svg" alt="Javascript">
+            <img class="icon" src="/assets/images/javascript.svg" alt="Javascript">
             Javascript
           </td>
           <td>
@@ -655,7 +655,7 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
         </tr>
         <tr>
           <td>
-            <img class="icon" src="assets/images/python.svg" alt="Python">
+            <img class="icon" src="/assets/images/python.svg" alt="Python">
             Python
           </td>
           <td>
@@ -671,7 +671,7 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
         </tr>
         <tr>
           <td>
-            <img class="icon" src="assets/images/docker.svg" alt="Docker">
+            <img class="icon" src="/assets/images/docker.svg" alt="Docker">
             Docker
           </td>
           <td>
@@ -684,7 +684,7 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
         </tr>
         <tr>
           <td>
-            <img class="icon" src="assets/images/terraform.svg" alt="Terraform">
+            <img class="icon" src="/assets/images/terraform.svg" alt="Terraform">
             Terraform
           </td>
           <td>
@@ -697,7 +697,7 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
         </tr>
         <tr>
           <td>
-            <img class="icon" src="assets/images/datadog.svg" alt="Datadog">
+            <img class="icon" src="/assets/images/datadog.svg" alt="Datadog">
             Datadog
           </td>
           <td>
@@ -711,7 +711,7 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
         </tr>
         <tr>
           <td>
-            <img class="icon" src="assets/images/grafana.svg" alt="Grafana">
+            <img class="icon" src="/assets/images/grafana.svg" alt="Grafana">
             Grafana
           </td>
           <td>
@@ -725,7 +725,7 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
         </tr>
         <tr>
           <td>
-            <img class="icon" src="assets/images/sentry.svg" alt="Sentry">
+            <img class="icon" src="/assets/images/sentry.svg" alt="Sentry">
             Sentry
           </td>
           <td>
@@ -738,7 +738,7 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
         </tr>
         <tr>
           <td>
-            <img class="icon" src="assets/images/jira.svg" alt="Jira">
+            <img class="icon" src="/assets/images/jira.svg" alt="Jira">
             Jira
           </td>
           <td>
@@ -753,85 +753,4 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
       </tbody>
     </table>
 </body>
-</html>]]></content><author><name>Thomas M</name></author><category term="tech-stack" /><category term="WhoamI" /><summary type="html"><![CDATA[Icon Hover Example]]></summary></entry><entry><title type="html">Using the Ghost editor</title><link href="https://thomasmcleanjr.cv/the-editor" rel="alternate" type="text/html" title="Using the Ghost editor" /><published>2017-07-27T09:00:00+00:00</published><updated>2017-07-27T09:00:00+00:00</updated><id>https://thomasmcleanjr.cv/the-editor</id><content type="html" xml:base="https://thomasmcleanjr.cv/the-editor"><![CDATA[<p>Ghost uses a language called <strong>Markdown</strong> to format text.</p>
-<p>When you go to edit a post and see special characters and colours intertwined between the words, those are Markdown shortcuts which tell Ghost what to do with the words in your document. The biggest benefit of Markdown is that you can quickly apply formatting as you type, without needing to pause.</p>
-<p>At the bottom of the editor, you'll find a toolbar with basic formatting options to help you get started as easily as possible. You'll also notice that there's a <strong>?</strong> icon, which contains more advanced shortcuts.</p>
-<p>For now, though, let's run you through some of the basics. You'll want to make sure you're editing this post in order to see all the Markdown we've used.</p>
-<h2 id="formattingtext">Formatting text</h2>
-<p>The most common shortcuts are of course, <strong>bold</strong> text, <em>italic</em> text, and <a href="https://example.com">hyperlinks</a>. These generally make up the bulk of any document. You can type the characters out, but you can also use keyboard shortcuts.</p>
-<ul>
-<li><code>CMD/Ctrl + B</code> for Bold</li>
-<li><code>CMD/Ctrl + I</code> for Italic</li>
-<li><code>CMD/Ctrl + K</code> for a Link</li>
-<li><code>CMD/Ctrl + H</code> for a Heading (Press multiple times for h2/h3/h4/etc)</li>
-</ul>
-<p>With just a couple of extra characters here and there, you're well on your way to creating a beautifully formatted story.</p>
-<h2 id="insertingimages">Inserting images</h2>
-<p>Images in Markdown look just the same as links, except they're prefixed with an exclamation mark, like this:</p>
-<p><code>![Image description](/path/to/image.jpg)</code></p>
-<p><img src="assets/images/welcome.jpg" alt="Computer"></p>
-<p>Most Markdown editors don't make you type this out, though. In Ghost you can click on the image icon in the toolbar at the bottom of the editor, or you can just click and drag an image from your desktop directly into the editor. Both will upload the image for you and generate the appropriate Markdown.</p>
-<p><em><strong>Important Note:</strong> Ghost does not currently have automatic image resizing, so it's always a good idea to make sure your images aren't gigantic files <strong>before</strong> uploading them to Ghost.</em></p>
-<h2 id="makinglists">Making lists</h2>
-<p>Lists in HTML are a formatting nightmare, but in Markdown they become an absolute breeze with just a couple of characters and a bit of smart automation. For numbered lists, just write out the numbers. For bullet lists, just use <code>*</code> or <code>-</code> or <code>+</code>. Like this:</p>
-<ol>
-<li>Crack the eggs over a bowl</li>
-<li>Whisk them together</li>
-<li>Make an omellete</li>
-</ol>
-<p>or</p>
-<ul>
-<li>Remember to buy milk</li>
-<li>Feed the cat</li>
-<li>Come up with idea for next story</li>
-</ul>
-<h2 id="addingquotes">Adding quotes</h2>
-<p>When you want to pull out a particularly good except in the middle of a piece, you can use <code>&gt;</code> at the beginning of a paragraph to turn it into a Blockquote. You might've seen this formatting before in email clients.</p>
-<blockquote>
-<p>A well placed quote guides a reader through a story, helping them to understand the most important points being made</p>
-</blockquote>
-<p>All themes handles blockquotes slightly differently. Sometimes they'll look better kept shorter, while other times you can quote fairly hefty amounts of text and get away with it. Generally, the safest option is to use blockquotes sparingly.</p>
-<h2 id="dividingthingsup">Dividing things up</h2>
-<p>If you're writing a piece in parts and you just feel like you need to divide a couple of sections distinctly from each other, a horizontal rule might be just what you need. Dropping <code>---</code> on a new line will create a sleak divider, anywhere you want it.</p>
-<hr>
-<p>This should get you going with the vast majority of what you need to do in the editor, but if you're still curious about more advanced tips then check out the <a href="/advanced-markdown/">Advanced Markdown Guide</a> - or if you'd rather learn about how Ghost taxononomies work, we've got a overview of <a href="/using-tags/">how to use Ghost tags</a>.</p>]]></content><author><name>Thomas M</name></author><category term="Getting started" /><summary type="html"><![CDATA[Ghost uses a language called Markdown to format text. When you go to edit a post and see special characters and colours intertwined between the words, those are Markdown shortcuts which tell Ghost what to do with the words in your document. The biggest benefit of Markdown is that you can quickly apply formatting as you type, without needing to pause. At the bottom of the editor, you'll find a toolbar with basic formatting options to help you get started as easily as possible. You'll also notice that there's a ? icon, which contains more advanced shortcuts. For now, though, let's run you through some of the basics. You'll want to make sure you're editing this post in order to see all the Markdown we've used. Formatting text The most common shortcuts are of course, bold text, italic text, and hyperlinks. These generally make up the bulk of any document. You can type the characters out, but you can also use keyboard shortcuts. CMD/Ctrl + B for Bold CMD/Ctrl + I for Italic CMD/Ctrl + K for a Link CMD/Ctrl + H for a Heading (Press multiple times for h2/h3/h4/etc) With just a couple of extra characters here and there, you're well on your way to creating a beautifully formatted story. Inserting images Images in Markdown look just the same as links, except they're prefixed with an exclamation mark, like this: ![Image description](/path/to/image.jpg) Most Markdown editors don't make you type this out, though. In Ghost you can click on the image icon in the toolbar at the bottom of the editor, or you can just click and drag an image from your desktop directly into the editor. Both will upload the image for you and generate the appropriate Markdown. Important Note: Ghost does not currently have automatic image resizing, so it's always a good idea to make sure your images aren't gigantic files before uploading them to Ghost. Making lists Lists in HTML are a formatting nightmare, but in Markdown they become an absolute breeze with just a couple of characters and a bit of smart automation. For numbered lists, just write out the numbers. For bullet lists, just use * or - or +. Like this: Crack the eggs over a bowl Whisk them together Make an omellete or Remember to buy milk Feed the cat Come up with idea for next story Adding quotes When you want to pull out a particularly good except in the middle of a piece, you can use &gt; at the beginning of a paragraph to turn it into a Blockquote. You might've seen this formatting before in email clients. A well placed quote guides a reader through a story, helping them to understand the most important points being made All themes handles blockquotes slightly differently. Sometimes they'll look better kept shorter, while other times you can quote fairly hefty amounts of text and get away with it. Generally, the safest option is to use blockquotes sparingly. Dividing things up If you're writing a piece in parts and you just feel like you need to divide a couple of sections distinctly from each other, a horizontal rule might be just what you need. Dropping --- on a new line will create a sleak divider, anywhere you want it. This should get you going with the vast majority of what you need to do in the editor, but if you're still curious about more advanced tips then check out the Advanced Markdown Guide - or if you'd rather learn about how Ghost taxononomies work, we've got a overview of how to use Ghost tags.]]></summary></entry><entry><title type="html">Organising your content with tags</title><link href="https://thomasmcleanjr.cv/using-tags" rel="alternate" type="text/html" title="Organising your content with tags" /><published>2017-07-27T08:00:00+00:00</published><updated>2017-07-27T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/using-tags</id><content type="html" xml:base="https://thomasmcleanjr.cv/using-tags"><![CDATA[<p>Ghost has a single, powerful organisational taxonomy, called tags.</p>
-<p>It doesn't matter whether you want to call them categories, tags, boxes, or anything else. You can think of Ghost tags a lot like Gmail labels. By tagging posts with one or more keyword, you can organise articles into buckets of related content.</p>
-<h2 id="basictagging">Basic tagging</h2>
-<p>When you write a post, you can assign tags to help differentiate between categories of content. For example, you might tag some posts with <code>News</code> and other posts with <code>Cycling</code>, which would create two distinct categories of content listed on <code>/tag/news/</code> and <code>/tag/cycling/</code>, respectively.</p>
-<p>If you tag a post with both <code>News</code> <em>and</em> <code>Cycling</code> - then it appears in both sections.</p>
-<p>Tag archives are like dedicated home-pages for each category of content that you have. They have their own pages, their own RSS feeds, and can support their own cover images and meta data.</p>
-<h2 id="theprimarytag">The primary tag</h2>
-<p>Inside the Ghost editor, you can drag and drop tags into a specific order. The first tag in the list is always given the most importance, and some themes will only display the primary tag (the first tag in the list) by default. So you can add the most important tag which you want to show up in your theme, but also add a bunch of related tags which are less important.</p>
-<p><mark><strong>News</strong>, Cycling, Bart Stevens, Extreme Sports</mark></p>
-<p>In this example, <strong>News</strong> is the primary tag which will be displayed by the theme, but the post will also still receive all the other tags, and show up in their respective archives.</p>
-<h2 id="privatetags">Private tags</h2>
-<p>Sometimes you may want to assign a post a specific tag, but you don't necessarily want that tag appearing in the theme or creating an archive page. In Ghost, hashtags are private and can be used for special styling.</p>
-<p>For example, if you sometimes publish posts with video content - you might want your theme to adapt and get rid of the sidebar for these posts, to give more space for an embedded video to fill the screen. In this case, you could use private tags to tell your theme what to do.</p>
-<p><mark><strong>News</strong>, Cycling, #video</mark></p>
-<p>Here, the theme would assign the post publicly displayed tags of <code>News</code>, and <code>Cycling</code> - but it would also keep a private record of the post being tagged with <code>#video</code>.</p>
-<p>In your theme, you could then look for private tags conditionally and give them special formatting:</p>
-
-<pre><code class="nohighlight">{{#post}}
-    {{#has tag=&quot;#video&quot;}}
-        ...markup for a nice big video post layout...
-    {{else}}
-        ...regular markup for a post...
-    {{/has}}
-{{/post}}
-</code></pre>
-<p>You can find documentation for theme development techniques like this and many more over on Ghost's extensive <a href="https://themes.ghost.org/">theme documentation</a>.</p>]]></content><author><name>Thomas M</name></author><category term="Getting started" /><summary type="html"><![CDATA[Ghost has a single, powerful organisational taxonomy, called tags. It doesn't matter whether you want to call them categories, tags, boxes, or anything else. You can think of Ghost tags a lot like Gmail labels. By tagging posts with one or more keyword, you can organise articles into buckets of related content. Basic tagging When you write a post, you can assign tags to help differentiate between categories of content. For example, you might tag some posts with News and other posts with Cycling, which would create two distinct categories of content listed on /tag/news/ and /tag/cycling/, respectively. If you tag a post with both News and Cycling - then it appears in both sections. Tag archives are like dedicated home-pages for each category of content that you have. They have their own pages, their own RSS feeds, and can support their own cover images and meta data. The primary tag Inside the Ghost editor, you can drag and drop tags into a specific order. The first tag in the list is always given the most importance, and some themes will only display the primary tag (the first tag in the list) by default. So you can add the most important tag which you want to show up in your theme, but also add a bunch of related tags which are less important. News, Cycling, Bart Stevens, Extreme Sports In this example, News is the primary tag which will be displayed by the theme, but the post will also still receive all the other tags, and show up in their respective archives. Private tags Sometimes you may want to assign a post a specific tag, but you don't necessarily want that tag appearing in the theme or creating an archive page. In Ghost, hashtags are private and can be used for special styling. For example, if you sometimes publish posts with video content - you might want your theme to adapt and get rid of the sidebar for these posts, to give more space for an embedded video to fill the screen. In this case, you could use private tags to tell your theme what to do. News, Cycling, #video Here, the theme would assign the post publicly displayed tags of News, and Cycling - but it would also keep a private record of the post being tagged with #video. In your theme, you could then look for private tags conditionally and give them special formatting: {{#post}} {{#has tag=&quot;#video&quot;}} ...markup for a nice big video post layout... {{else}} ...regular markup for a post... {{/has}} {{/post}} You can find documentation for theme development techniques like this and many more over on Ghost's extensive theme documentation.]]></summary></entry><entry><title type="html">Managing Ghost users</title><link href="https://thomasmcleanjr.cv/managing-users" rel="alternate" type="text/html" title="Managing Ghost users" /><published>2017-07-27T07:00:00+00:00</published><updated>2017-07-27T07:00:00+00:00</updated><id>https://thomasmcleanjr.cv/managing-users</id><content type="html" xml:base="https://thomasmcleanjr.cv/managing-users"><![CDATA[<p>Ghost has a number of different user roles for your team</p>
-<h3 id="authors">Authors</h3>
-<p>The base user level in Ghost is an author. Authors can write posts, edit their own posts, and publish their own posts. Authors are <strong>trusted</strong> users. If you don't trust users to be allowed to publish their own posts, you shouldn't invite them to Ghost admin.</p>
-<h3 id="editors">Editors</h3>
-<p>Editors are the 2nd user level in Ghost. Editors can do everything that an Author can do, but they can also edit and publish the posts of others - as well as their own. Editors can also invite new authors to the site.</p>
-<h3 id="administrators">Administrators</h3>
-<p>The top user level in Ghost is Administrator. Again, administrators can do everything that Authors and Editors can do, but they can also edit all site settings and data, not just content. Additionally, administrators have full access to invite, manage or remove any other user of the site.</p>
-<h3 id="theowner">The Owner</h3>
-<p>There is only ever one owner of a Ghost site. The owner is a special user which has all the same permissions as an Administrator, but with two exceptions: The Owner can never be deleted. And in some circumstances the owner will have access to additional special settings if applicable — for example, billing details, if using Ghost(Pro).</p>
-<hr>
-<p>It's a good idea to ask all of your users to fill out their user profiles, including bio and social links. These will populate rich structured data for posts and generally create more opportunities for themes to fully populate their design.</p>]]></content><author><name>Thomas M</name></author><category term="Getting started" /><summary type="html"><![CDATA[Ghost has a number of different user roles for your team Authors The base user level in Ghost is an author. Authors can write posts, edit their own posts, and publish their own posts. Authors are trusted users. If you don't trust users to be allowed to publish their own posts, you shouldn't invite them to Ghost admin. Editors Editors are the 2nd user level in Ghost. Editors can do everything that an Author can do, but they can also edit and publish the posts of others - as well as their own. Editors can also invite new authors to the site. Administrators The top user level in Ghost is Administrator. Again, administrators can do everything that Authors and Editors can do, but they can also edit all site settings and data, not just content. Additionally, administrators have full access to invite, manage or remove any other user of the site. The Owner There is only ever one owner of a Ghost site. The owner is a special user which has all the same permissions as an Administrator, but with two exceptions: The Owner can never be deleted. And in some circumstances the owner will have access to additional special settings if applicable — for example, billing details, if using Ghost(Pro). It's a good idea to ask all of your users to fill out their user profiles, including bio and social links. These will populate rich structured data for posts and generally create more opportunities for themes to fully populate their design.]]></summary></entry><entry><title type="html">Making your site private</title><link href="https://thomasmcleanjr.cv/private-sites" rel="alternate" type="text/html" title="Making your site private" /><published>2017-07-27T06:00:00+00:00</published><updated>2017-07-27T06:00:00+00:00</updated><id>https://thomasmcleanjr.cv/private-sites</id><content type="html" xml:base="https://thomasmcleanjr.cv/private-sites"><![CDATA[<p>Sometimes you might want to put your site behind closed doors</p>
-<p>If you've got a publication that you don't want the world to see yet because it's not ready to launch, you can hide your Ghost site behind a simple shared pass-phrase.</p>
-<p>You can toggle this preference on at the bottom of Ghost's General Settings</p>
-<p><img src="https://casper.ghost.org/v1.0.0/images/private.png" alt="private"></p>
-<p>Ghost will give you a short, randomly generated pass-phrase which you can share with anyone who needs access to the site while you're working on it. While this setting is enabled, all search engine optimisation features will be switched off to help keep the site off the radar.</p>
-<p>Do remember though, this is <em>not</em> secure authentication. You shouldn't rely on this feature for protecting important private data. It's just a simple, shared pass-phrase for very basic privacy.</p>]]></content><author><name>Thomas M</name></author><category term="Getting started" /><summary type="html"><![CDATA[Sometimes you might want to put your site behind closed doors If you've got a publication that you don't want the world to see yet because it's not ready to launch, you can hide your Ghost site behind a simple shared pass-phrase. You can toggle this preference on at the bottom of Ghost's General Settings Ghost will give you a short, randomly generated pass-phrase which you can share with anyone who needs access to the site while you're working on it. While this setting is enabled, all search engine optimisation features will be switched off to help keep the site off the radar. Do remember though, this is not secure authentication. You shouldn't rely on this feature for protecting important private data. It's just a simple, shared pass-phrase for very basic privacy.]]></summary></entry></feed>
+</html>]]></content><author><name>Thomas M</name></author><category term="tech-stack" /><category term="WhoamI" /><summary type="html"><![CDATA[List of Technologies that I have experience in.]]></summary></entry></feed>
