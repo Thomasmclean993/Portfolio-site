@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <link href="https://thomasmcleanjr.cv/tag/tech-stack/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" />
+  <updated>2025-08-13T19:00:34+00:00</updated>
+  <id>https://thomasmcleanjr.cv/tag/tech-stack/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">My Portfolio | </title>
+  
+
+  
+    <subtitle>My Professional Portfolio and Resume</subtitle>
+  
+
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">How I Added Custom Datadog Metrics using an Unsupported Language.</title>
+      <link href="https://thomasmcleanjr.cv/datadog-metrics" rel="alternate" type="text/html" title="How I Added Custom Datadog Metrics using an Unsupported Language." />
+      <published>2025-08-11T09:00:00+00:00</published>
+      <updated>2025-08-11T09:00:00+00:00</updated>
+      <id>https://thomasmcleanjr.cv/datadog-metrics</id>
+      <content type="html" xml:base="https://thomasmcleanjr.cv/datadog-metrics">&lt;p&gt;First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.&lt;/p&gt;
+
+&lt;p&gt;We tried it before and ran into issues. This was before I owned the project, so I don’t know all the specifics.
+Our DevOps team advised against it due to constraints within our organization’s Datadog setup.
+So, we needed an alternative—and I built one.&lt;/p&gt;
+
+&lt;h2 id=&quot;context&quot;&gt;Context&lt;/h2&gt;
+&lt;p&gt;My team was told that our existing monitoring tools would no longer be supported due to expiring contracts and a company-wide push to use Datadog instead of Grafana/Sentry. Honestly, I didn’t mind; I like Datadog a lot. I’ve used it in contract work and personal projects. But our team capacity was limited. We’d just lost both of our SMEs for monitoring/observability, we had a high-priority project that was already behind, and the clock was ticking on our expiring tools.&lt;/p&gt;
+
+&lt;p&gt;My manager asked, “Can you do this?”&lt;/p&gt;
+
+&lt;p&gt;Fresh off a large cross-team project I’d led, I was ready for something that would help my team and require a bit of creativity. This project had it all:&lt;/p&gt;
+
+&lt;p&gt;A looming deadline.
+A clear high-level problem, but no technical requirements.
+The need for metrics to appear in Datadog, but no official support for Elixir, and OpenTelemetry wasn’t an option.
+I was in. Let’s do this.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-dogstatsd&quot;&gt;What is DogStatsD?&lt;/h2&gt;
+&lt;p&gt;After some research, I discovered that Datadog provides a way to receive custom application metrics: DogStatsD.&lt;/p&gt;
+
+&lt;details&gt; &lt;summary&gt;DogStatsD Overview&lt;/summary&gt;
+DogStatsD is Datadog’s custom implementation of the StatsD protocol, designed to collect and aggregate application metrics. It works by having your application send metrics over UDP to a local Datadog Agent, which then forwards them to Datadog’s backend for visualization and alerting.&lt;br /&gt; 
+&lt;br /&gt;
+The beauty of DogStatsD is its simplicity and performance: UDP is fast and non-blocking, so your application can fire off metrics without waiting for a response. Plus, DogStatsD supports advanced features like tags, service checks, and events, making it a powerful tool for custom monitoring—even if your language isn’t officially supported.
+&lt;hr /&gt;
+
+&lt;/details&gt;
+&lt;p&gt;So, communicating with Datadog was possible—I just needed to give our application the ability to do so. My solution started to take shape:&lt;/p&gt;
+
+&lt;p&gt;Connect to the Datadog agent.
+Create an adaptor to translate metrics into the format Datadog expects.
+Add metric calls to our business logic.
+Connecting to Datadog Using Statix
+I decided to use the Statix library, which allows you to write directly to a Datadog StatsD server. The default host and port can be found in the library documentation.&lt;/p&gt;
+
+&lt;p&gt;First, start up the connection in application.ex:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# application.ex&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Metrics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DatadogAdaptor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;And configure Statix in config.ex:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# config.ex&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:statix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;prefix:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sample&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;host:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YOUR_DATADOG_HOST&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;port:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YOUR_DATADOG_PORT&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To use the library, simply call use in your adaptor module:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# DatadogAdaptor.ex&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Metrics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DatadogAdaptor&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Statix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;runtime_config:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-implementation&quot;&gt;The Implementation&lt;/h2&gt;
+&lt;p&gt;This is the fun part—where I actually get to code, not just follow instructions.&lt;/p&gt;
+
+&lt;p&gt;I decided to use the Adapter Design Pattern. This was our team’s first adapter, but it set a precedent for future projects. (I may write a post just about adapters later.) In short, it’s a middleman layer that allows the application to interact with an otherwise incompatible interface. It also creates a single point for logic, making future changes modular and manageable.&lt;/p&gt;
+
+&lt;p&gt;Datadog Tags and Phoenix Plugs
+If you’re not familiar with Datadog’s dashboard, I love how simple the filters and pages are. Datadog uses tags to filter dashboards, monitoring, APM, etc.—a very streamlined approach. For our application, we had agreed-upon required tags for each metric (I called these “global tags”), plus process-specific tags unique to each request.&lt;/p&gt;
+
+&lt;p&gt;Luckily, Phoenix (Elixir’s most famous framework) has something called a [Plug]. Plugs are a middleware-like layer that lets you add logic to your application’s request pipeline.&lt;/p&gt;
+
+&lt;details&gt; &lt;summary&gt;Plug and Pipeline&lt;/summary&gt; Plugs are a great place to add logic that’s necessary for the service of the application but isn’t business logic—like monitoring. We keep plugs organized using the pipeline macro. &lt;hr /&gt; &lt;/details&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# MyApp_web.Router.ex&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:monitoring&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;plug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Plug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SetMetricTags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;#...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/prior_auth&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/investigation&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;InsuranceInvestigationController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Since my logic isn’t business logic and needs to affect every request for this endpoint, I created a plug that I can add to the pipeline:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Plug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SetMetricTags&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Plug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Conn&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;router&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;private&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phoenix_router&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;request_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request_path&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;method&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;method&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;%{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;plug:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;plug_opts:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;controller_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+      &lt;span class=&quot;no&quot;&gt;Phoenix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Router&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;controller:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;is_test_message:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assigns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:is_test_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;route:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request_path&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;no&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;This adds the list of metric_tags to the process dictionary, making them globally available throughout the application. We’ll add request-specific tags when we create the metric itself.&lt;/p&gt;
+
+&lt;h3 id=&quot;metric-adapter-and-request-specific-tags&quot;&gt;Metric Adapter and Request-Specific Tags&lt;/h3&gt;
+&lt;p&gt;Finally, the adapter. The objectives here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create the metric name.&lt;/li&gt;
+  &lt;li&gt;Retrieve the global tags from the SetMetricTags plug.&lt;/li&gt;
+  &lt;li&gt;Add process-specific tags and combine them with the global tags.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since this was a first for me, my main focus was readability and clarity. Most of the devs on my team hadn’t done something like this before, so it was on me to make it clear for everyone—senior, mid, and junior alike.&lt;/p&gt;
+
+&lt;p&gt;First, let’s pull the global metrics. Datadog requires them to be a list/array of strings.&lt;/p&gt;
+
+&lt;details&gt; &lt;summary&gt;Breakdown of the Elixir Code Below&lt;/summary&gt; If you’re not familiar, this may look confusing. 
+  Elixir allows two things:&lt;br /&gt; 
+  |-&amp;gt; &lt;b&gt;Function Header Pattern Matching:&lt;/b&gt; You can destructure a function’s parameters directly in the header, as long as they match the expected type. &lt;br /&gt; 
+  |-&amp;gt; &lt;b&gt;Overloading:&lt;/b&gt; You can define multiple functions with the same name but different parameters, creating different implementations. 
+&lt;hr /&gt;
+&lt;/details&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# MyApp.Metrics.MetricsAdaptor&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collect_module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collect_module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([]),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collect_module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Tags passed into Metrics.increment directly from the module should be a list. Attempted tags: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module_tags&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This logic combines the request-specific tags and the global tags into a single list. Next, I sanitize the metric names for uniformity:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# MyApp.Metrics.MetricsAdaptor&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;@spec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sanitize_metric_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;term&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sanitize_metric_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_binary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;_&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sanitize_metric_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Returns a binary metric name&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sanitize_metric_name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;result&quot;&gt;Result:&lt;/h4&gt;
+
+&lt;p&gt;Metric Name Sanitization: Convert external request → Convert_external_request
+Tag List: [is_test_message: true, controller: “/benefit_investigation”] → [“is_test_message:true”, “controller:/benefit_investigation”]
+With the tags combined and metric names sanitized, we’re ready to send metrics to the Datadog agent.&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# Datadog.Tags.ex&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
+    Failed to retrieve the :metric_tags from Process Dictionary.
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Catch-all&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wrap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# MyApp.Metrics.MetricsAdaptor&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Statix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;runtime_config:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Increment/2 increases/adds a metric to Datadog by 1&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;@spec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tags&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\\&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;datadog_tags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Tags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collect_module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Statix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;tags:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datadog_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+&lt;p&gt;Now, I just need to call the increment/2 function in my business logic and—boom!—the metric appears in Datadog. I can’t show our business logic, but when I’m done with my side project (which uses a similar implementation), I’ll add screenshots below.&lt;/p&gt;
+
+&lt;p&gt;Example of the finished product in Datadog:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/images/datadog-metrics.png&quot; alt=&quot;Datadog Metrics&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;what-would-i-change-and-an-idea&quot;&gt;What Would I Change? (And an Idea)&lt;/h2&gt;
+&lt;p&gt;I’m not a fan of calling Metric.increment directly within business logic. I know, we’re starting to wade into Elixir/Functional’s “no side effects” territory! Allow me a quick soapbox moment: side effects are only a problem when they’re hidden and untraceable. By keeping them minimal and well-documented, it’s manageable.&lt;/p&gt;
+
+&lt;p&gt;That said, I had an idea: a decorator-like implementation that watches for certain logic and then triggers the Metric.increment call. There’s a lot to figure out, but maybe a library or something similar could combine aspect-oriented programming, OpenTelemetry, and some kind of event watcher. I think it could be really useful.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+        <name>Thomas M</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="work-experience" />
+      
+        <category term="tech-stack" />
+      
+
+      
+        <summary type="html">First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Experienced Technologies</title>
+      <link href="https://thomasmcleanjr.cv/my-technologies" rel="alternate" type="text/html" title="Experienced Technologies" />
+      <published>2025-08-04T08:00:00+00:00</published>
+      <updated>2025-08-04T08:00:00+00:00</updated>
+      <id>https://thomasmcleanjr.cv/my-technologies</id>
+      <content type="html" xml:base="https://thomasmcleanjr.cv/my-technologies">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Icon Hover Example&lt;/title&gt;
+    &lt;style&gt;
+        .icon {
+            width: 32px;
+            height: 32px;
+            vertical-align: middle;
+            margin-right: 8px;
+            transition: transform 0.3s ease-in-out;
+            display: inline-block;
+        }
+        .icon:hover {
+            transform: scale(1.5);
+        }
+        ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        ul li {
+            margin-bottom: 2px;
+        }
+        td {
+            vertical-align: top;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;p&gt;
+    &lt;strong&gt;Experienced Technologies&lt;/strong&gt;&lt;br&gt;
+    This page highlights the programming languages, tools, and platforms I have experience with, along with the key libraries and frameworks I use for each. Click any library or framework to view its official documentation. As I rant about certain Technologies, They should appear here as well.
+  &lt;/p&gt;
+    &lt;table border=&quot;1&quot; style=&quot;width:100%; border-collapse:collapse;&quot;&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Experienced Language/Tool&lt;/th&gt;
+          &lt;th&gt;Experienced libaraies / Frameworks&lt;/th&gt;
+          &lt;th&gt;Related Post&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;assets/images/elixir.svg&quot; alt=&quot;Elixir&quot;&gt;
+            Elixir
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://hexdocs.pm/phoenix/&quot; target=&quot;_blank&quot;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://hexdocs.pm/ecto/&quot; target=&quot;_blank&quot;&gt;Ecto&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://nerves-project.org/docs/&quot; target=&quot;_blank&quot;&gt;Nerves&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;assets/images/ruby.svg&quot; alt=&quot;Ruby&quot;&gt;
+            Ruby
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://guides.rubyonrails.org/&quot; target=&quot;_blank&quot;&gt;Rails&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;http://sinatrarb.com/documentation.html&quot; target=&quot;_blank&quot;&gt;Sinatra&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://rspec.info/documentation/&quot; target=&quot;_blank&quot;&gt;RSpec&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;assets/images/javascript.svg&quot; alt=&quot;Javascript&quot;&gt;
+            Javascript
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://react.dev/learn&quot; target=&quot;_blank&quot;&gt;React&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://vuejs.org/guide/introduction.html&quot; target=&quot;_blank&quot;&gt;Vue&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://angular.io/docs&quot; target=&quot;_blank&quot;&gt;Angular&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://nodejs.org/en/docs&quot; target=&quot;_blank&quot;&gt;Node.js&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://expressjs.com/en/starter/installing.html&quot; target=&quot;_blank&quot;&gt;Express&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;assets/images/python.svg&quot; alt=&quot;Python&quot;&gt;
+            Python
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/stable/&quot; target=&quot;_blank&quot;&gt;Django&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://flask.palletsprojects.com/en/latest/&quot; target=&quot;_blank&quot;&gt;Flask&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://pandas.pydata.org/docs/&quot; target=&quot;_blank&quot;&gt;Pandas&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://numpy.org/doc/&quot; target=&quot;_blank&quot;&gt;NumPy&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://fastapi.tiangolo.com/&quot; target=&quot;_blank&quot;&gt;FastAPI&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;assets/images/docker.svg&quot; alt=&quot;Docker&quot;&gt;
+            Docker
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/&quot; target=&quot;_blank&quot;&gt;Docker Compose&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/engine/swarm/&quot; target=&quot;_blank&quot;&gt;Docker Swarm&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;assets/images/terraform.svg&quot; alt=&quot;Terraform&quot;&gt;
+            Terraform
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://registry.terraform.io/providers/hashicorp/aws/latest/docs&quot; target=&quot;_blank&quot;&gt;Terraform AWS Provider&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://developer.hashicorp.com/terraform/language/modules&quot; target=&quot;_blank&quot;&gt;Terraform Modules&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;assets/images/datadog.svg&quot; alt=&quot;Datadog&quot;&gt;
+            Datadog
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.datadoghq.com/tracing/&quot; target=&quot;_blank&quot;&gt;APM&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.datadoghq.com/logs/&quot; target=&quot;_blank&quot;&gt;Log Management&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.datadoghq.com/integrations/&quot; target=&quot;_blank&quot;&gt;Integrations&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;assets/images/grafana.svg&quot; alt=&quot;Grafana&quot;&gt;
+            Grafana
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/loki/latest/&quot; target=&quot;_blank&quot;&gt;Grafana Loki&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/tempo/latest/&quot; target=&quot;_blank&quot;&gt;Grafana Tempo&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/grafana/latest/plugins/&quot; target=&quot;_blank&quot;&gt;Plugins&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;assets/images/sentry.svg&quot; alt=&quot;Sentry&quot;&gt;
+            Sentry
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.sentry.io/platforms/&quot; target=&quot;_blank&quot;&gt;Sentry SDKs&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.sentry.io/product/integrations/&quot; target=&quot;_blank&quot;&gt;Integrations&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;assets/images/jira.svg&quot; alt=&quot;Jira&quot;&gt;
+            Jira
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://support.atlassian.com/jira-software-cloud/docs/&quot; target=&quot;_blank&quot;&gt;Jira Software&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://support.atlassian.com/jira-service-management-cloud/docs/&quot; target=&quot;_blank&quot;&gt;Jira Service Management&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://support.atlassian.com/jira-cloud-administration/docs/manage-apps-and-plugins/&quot; target=&quot;_blank&quot;&gt;Plugins&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+        <name>Thomas M</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="tech-stack" />
+      
+        <category term="WhoamI" />
+      
+
+      
+        <summary type="html">Icon Hover Example</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

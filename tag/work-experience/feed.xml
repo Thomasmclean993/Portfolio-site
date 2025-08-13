@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <link href="https://thomasmcleanjr.cv/tag/work-experience/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" />
+  <updated>2025-08-13T19:00:34+00:00</updated>
+  <id>https://thomasmcleanjr.cv/tag/work-experience/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">My Portfolio | </title>
+  
+
+  
+    <subtitle>My Professional Portfolio and Resume</subtitle>
+  
+
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">How I Added Custom Datadog Metrics using an Unsupported Language.</title>
+      <link href="https://thomasmcleanjr.cv/datadog-metrics" rel="alternate" type="text/html" title="How I Added Custom Datadog Metrics using an Unsupported Language." />
+      <published>2025-08-11T09:00:00+00:00</published>
+      <updated>2025-08-11T09:00:00+00:00</updated>
+      <id>https://thomasmcleanjr.cv/datadog-metrics</id>
+      <content type="html" xml:base="https://thomasmcleanjr.cv/datadog-metrics">&lt;p&gt;First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.&lt;/p&gt;
+
+&lt;p&gt;We tried it before and ran into issues. This was before I owned the project, so I don’t know all the specifics.
+Our DevOps team advised against it due to constraints within our organization’s Datadog setup.
+So, we needed an alternative—and I built one.&lt;/p&gt;
+
+&lt;h2 id=&quot;context&quot;&gt;Context&lt;/h2&gt;
+&lt;p&gt;My team was told that our existing monitoring tools would no longer be supported due to expiring contracts and a company-wide push to use Datadog instead of Grafana/Sentry. Honestly, I didn’t mind; I like Datadog a lot. I’ve used it in contract work and personal projects. But our team capacity was limited. We’d just lost both of our SMEs for monitoring/observability, we had a high-priority project that was already behind, and the clock was ticking on our expiring tools.&lt;/p&gt;
+
+&lt;p&gt;My manager asked, “Can you do this?”&lt;/p&gt;
+
+&lt;p&gt;Fresh off a large cross-team project I’d led, I was ready for something that would help my team and require a bit of creativity. This project had it all:&lt;/p&gt;
+
+&lt;p&gt;A looming deadline.
+A clear high-level problem, but no technical requirements.
+The need for metrics to appear in Datadog, but no official support for Elixir, and OpenTelemetry wasn’t an option.
+I was in. Let’s do this.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-dogstatsd&quot;&gt;What is DogStatsD?&lt;/h2&gt;
+&lt;p&gt;After some research, I discovered that Datadog provides a way to receive custom application metrics: DogStatsD.&lt;/p&gt;
+
+&lt;details&gt; &lt;summary&gt;DogStatsD Overview&lt;/summary&gt;
+DogStatsD is Datadog’s custom implementation of the StatsD protocol, designed to collect and aggregate application metrics. It works by having your application send metrics over UDP to a local Datadog Agent, which then forwards them to Datadog’s backend for visualization and alerting.&lt;br /&gt; 
+&lt;br /&gt;
+The beauty of DogStatsD is its simplicity and performance: UDP is fast and non-blocking, so your application can fire off metrics without waiting for a response. Plus, DogStatsD supports advanced features like tags, service checks, and events, making it a powerful tool for custom monitoring—even if your language isn’t officially supported.
+&lt;hr /&gt;
+
+&lt;/details&gt;
+&lt;p&gt;So, communicating with Datadog was possible—I just needed to give our application the ability to do so. My solution started to take shape:&lt;/p&gt;
+
+&lt;p&gt;Connect to the Datadog agent.
+Create an adaptor to translate metrics into the format Datadog expects.
+Add metric calls to our business logic.
+Connecting to Datadog Using Statix
+I decided to use the Statix library, which allows you to write directly to a Datadog StatsD server. The default host and port can be found in the library documentation.&lt;/p&gt;
+
+&lt;p&gt;First, start up the connection in application.ex:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# application.ex&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApplication&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Metrics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DatadogAdaptor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;And configure Statix in config.ex:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# config.ex&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;config&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:statix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;prefix:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sample&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;host:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;YOUR_DATADOG_HOST&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;port:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YOUR_DATADOG_PORT&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To use the library, simply call use in your adaptor module:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# DatadogAdaptor.ex&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Metrics&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DatadogAdaptor&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Statix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;runtime_config:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-implementation&quot;&gt;The Implementation&lt;/h2&gt;
+&lt;p&gt;This is the fun part—where I actually get to code, not just follow instructions.&lt;/p&gt;
+
+&lt;p&gt;I decided to use the Adapter Design Pattern. This was our team’s first adapter, but it set a precedent for future projects. (I may write a post just about adapters later.) In short, it’s a middleman layer that allows the application to interact with an otherwise incompatible interface. It also creates a single point for logic, making future changes modular and manageable.&lt;/p&gt;
+
+&lt;p&gt;Datadog Tags and Phoenix Plugs
+If you’re not familiar with Datadog’s dashboard, I love how simple the filters and pages are. Datadog uses tags to filter dashboards, monitoring, APM, etc.—a very streamlined approach. For our application, we had agreed-upon required tags for each metric (I called these “global tags”), plus process-specific tags unique to each request.&lt;/p&gt;
+
+&lt;p&gt;Luckily, Phoenix (Elixir’s most famous framework) has something called a [Plug]. Plugs are a middleware-like layer that lets you add logic to your application’s request pipeline.&lt;/p&gt;
+
+&lt;details&gt; &lt;summary&gt;Plug and Pipeline&lt;/summary&gt; Plugs are a great place to add logic that’s necessary for the service of the application but isn’t business logic—like monitoring. We keep plugs organized using the pipeline macro. &lt;hr /&gt; &lt;/details&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# MyApp_web.Router.ex&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:monitoring&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;plug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Plug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SetMetricTags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;#...&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;scope&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/prior_auth&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/investigation&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;InsuranceInvestigationController&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Since my logic isn’t business logic and needs to affect every request for this endpoint, I created a plug that I can add to the pipeline:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;k&quot;&gt;defmodule&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;MyApp&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Plug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;SetMetricTags&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Plug&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Conn&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;router&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;private&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;phoenix_router&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;request_path&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request_path&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;method&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;method&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;%{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;plug:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;plug_opts:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;controller_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+      &lt;span class=&quot;no&quot;&gt;Phoenix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Router&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;route_info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request_path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;controller:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to_string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;controller&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;is_test_message:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;assigns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:is_test_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&quot;route:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request_path&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+    &lt;span class=&quot;no&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;conn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;This adds the list of metric_tags to the process dictionary, making them globally available throughout the application. We’ll add request-specific tags when we create the metric itself.&lt;/p&gt;
+
+&lt;h3 id=&quot;metric-adapter-and-request-specific-tags&quot;&gt;Metric Adapter and Request-Specific Tags&lt;/h3&gt;
+&lt;p&gt;Finally, the adapter. The objectives here:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create the metric name.&lt;/li&gt;
+  &lt;li&gt;Retrieve the global tags from the SetMetricTags plug.&lt;/li&gt;
+  &lt;li&gt;Add process-specific tags and combine them with the global tags.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since this was a first for me, my main focus was readability and clarity. Most of the devs on my team hadn’t done something like this before, so it was on me to make it clear for everyone—senior, mid, and junior alike.&lt;/p&gt;
+
+&lt;p&gt;First, let’s pull the global metrics. Datadog requires them to be a list/array of strings.&lt;/p&gt;
+
+&lt;details&gt; &lt;summary&gt;Breakdown of the Elixir Code Below&lt;/summary&gt; If you’re not familiar, this may look confusing. 
+  Elixir allows two things:&lt;br /&gt; 
+  |-&amp;gt; &lt;b&gt;Function Header Pattern Matching:&lt;/b&gt; You can destructure a function’s parameters directly in the header, as long as they match the expected type. &lt;br /&gt; 
+  |-&amp;gt; &lt;b&gt;Overloading:&lt;/b&gt; You can define multiple functions with the same name but different parameters, creating different implementations. 
+&lt;hr /&gt;
+&lt;/details&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# MyApp.Metrics.MetricsAdaptor&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collect_module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;fn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collect_module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([]),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;defp&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collect_module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Tags passed into Metrics.increment directly from the module should be a list. Attempted tags: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;module_tags&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This logic combines the request-specific tags and the global tags into a single list. Next, I sanitize the metric names for uniformity:&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# MyApp.Metrics.MetricsAdaptor&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;@spec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sanitize_metric_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;term&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sanitize_metric_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_binary&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot; &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;_&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sanitize_metric_name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Returns a binary metric name&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;|&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sanitize_metric_name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+&lt;h4 id=&quot;result&quot;&gt;Result:&lt;/h4&gt;
+
+&lt;p&gt;Metric Name Sanitization: Convert external request → Convert_external_request
+Tag List: [is_test_message: true, controller: “/benefit_investigation”] → [“is_test_message:true”, “controller:/benefit_investigation”]
+With the tags combined and metric names sanitized, we’re ready to send metrics to the Datadog agent.&lt;/p&gt;
+
+&lt;div class=&quot;language-elixir highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+&lt;span class=&quot;c1&quot;&gt;# Datadog.Tags.ex&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Process&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;sd&quot;&gt;&quot;&quot;&quot;
+    Failed to retrieve the :metric_tags from Process Dictionary.
+    &quot;&quot;&quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# Catch-all&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;is_list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;wrap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# MyApp.Metrics.MetricsAdaptor&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Statix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;runtime_config:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;@doc&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Increment/2 increases/adds a metric to Datadog by 1&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;@spec&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;::&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:ok&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tags&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;\\&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[])&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;datadog_tags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Tags&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fetch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;collect_module_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;no&quot;&gt;Statix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;metric&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;tags:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;datadog_tags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;hr /&gt;
+&lt;p&gt;Now, I just need to call the increment/2 function in my business logic and—boom!—the metric appears in Datadog. I can’t show our business logic, but when I’m done with my side project (which uses a similar implementation), I’ll add screenshots below.&lt;/p&gt;
+
+&lt;p&gt;Example of the finished product in Datadog:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../assets/images/datadog-metrics.png&quot; alt=&quot;Datadog Metrics&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;what-would-i-change-and-an-idea&quot;&gt;What Would I Change? (And an Idea)&lt;/h2&gt;
+&lt;p&gt;I’m not a fan of calling Metric.increment directly within business logic. I know, we’re starting to wade into Elixir/Functional’s “no side effects” territory! Allow me a quick soapbox moment: side effects are only a problem when they’re hidden and untraceable. By keeping them minimal and well-documented, it’s manageable.&lt;/p&gt;
+
+&lt;p&gt;That said, I had an idea: a decorator-like implementation that watches for certain logic and then triggers the Metric.increment call. There’s a lot to figure out, but maybe a library or something similar could combine aspect-oriented programming, OpenTelemetry, and some kind of event watcher. I think it could be really useful.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+        <name>Thomas M</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="work-experience" />
+      
+        <category term="tech-stack" />
+      
+
+      
+        <summary type="html">First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Persistence Over Perfection, My Journey to Software Engineering</title>
+      <link href="https://thomasmcleanjr.cv/my-journey" rel="alternate" type="text/html" title="Persistence Over Perfection, My Journey to Software Engineering" />
+      <published>2025-08-11T08:00:00+00:00</published>
+      <updated>2025-08-11T08:00:00+00:00</updated>
+      <id>https://thomasmcleanjr.cv/my-journey</id>
+      <content type="html" xml:base="https://thomasmcleanjr.cv/my-journey">&lt;p&gt;If there’s one thing I’ve learned about myself, it’s that I rarely do things the “normal” way. While everyone else was busy racking up points in the Accelerated Reading program with the usual suspects—Magic Tree House, Diary of a Wimpy Kid, Harry Potter—I was more interested in hacking my way through Deus Ex Machina: Human Evolution or setting my alarm for 4 a.m. to catch Cowboy Bebop reruns. . I’ve always had a knack for finding my own path, especially when the standard route just didn’t make sense to me.&lt;/p&gt;
+
+&lt;p&gt;Let’s rewind a bit. In elementary school, my reading scores were so low that my teachers wanted to hold me back a year. The school had this AR program where you had to rack up points by reading certain books. Magic Tree House? Diary of a Wimpy Kid? Harry Potter? Sorry, not for me. I wanted something with a little more edge. My teacher, probably at her wit’s end, finally just let me loose in the library. “Pick anything,” she said. I came back with a Tom Clancy novel—four reading levels above where I was “supposed” to be. Political intrigue, shadow governments, the threat of World War III. Now that was a story. By the time they scrapped the AR program, I had one of the highest point totals in the school.&lt;/p&gt;
+
+&lt;p&gt;Fast forward to high school, and I was the kid who set his alarm for 4 a.m. just to watch anime that wasn’t even meant for my age group. I’d do my homework while the rest of the house slept, then make sure everyone else was up for school and work. I guess you could say I’ve always been a little… unconventional.&lt;/p&gt;
+
+&lt;p&gt;When I started college in 2012, I was working 40 hours a week and going to school full-time. At first, I tried to do it all—show up to every class, ace every test, be the model student. Spoiler: I was burning out fast. So I did what I do best—I changed my approach. I mapped out the labs, test days, and project deadlines, and focused my energy there. Suddenly, my grades improved and I actually had time to sleep. Who knew?&lt;/p&gt;
+
+&lt;p&gt;So when it came time to break into tech, I knew the “traditional” path wasn’t for me. I wasn’t about to take on more debt for a CS degree, and bootcamps felt like a stress marathon. I figured, if I could teach myself how to survive college and work, I could teach myself to code. I just needed a plan, some mentors, and a place where I could learn from my mistakes.&lt;/p&gt;
+
+&lt;p&gt;Here’s how I mapped it out (with a little help from Disney’s funniest meme-worthy character):
+&lt;img src=&quot;https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzdwaTl6Ymt5NXV5OG9jaThreW96cDhvOTF5bXI1cjJ2dGtpYnV5aiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KEYEpIngcmXlHetDqz/giphy.gif&quot; alt=&quot;It&apos;s all coming together&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Get a job—any job—in a tech company.&lt;/li&gt;
+  &lt;li&gt;Find a mentor who actually knows what they’re doing.&lt;/li&gt;
+  &lt;li&gt;Learn to code, then learn to program, then learn to build real applications.&lt;/li&gt;
+  &lt;li&gt;Build a resume with actual projects, not just certificates.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;rolling-the-dice-getting-my-foot-in-the-door&quot;&gt;Rolling the Dice: Getting My Foot in the Door&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDIzaG1zZmlyc3U0Z3E2dWRzY3B3Zm5rcDRwZWRxbDhkNGJucTEzMSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/8iMATxhUkFkeEwnjfq/giphy.gif&quot; alt=&quot;Nat 20&quot; /&gt;
+My first “tech” job? Office worker at a healthcare/pharma tech company in my hometown. The company helped doctors and patients with prescription authorizations, and let’s just say, a lot of those authorizations failed because of missing data. (I’ll skip the interview story, but let’s just say I rolled a Nat 20 on my persuasion check.)&lt;/p&gt;
+
+&lt;p&gt;The real challenge was moving from the call center to anything even remotely related to software. Meanwhile, I was teaching myself Java (my first language), then Python, and figuring out Django. I was basically building my own curriculum, one Google search at a time.&lt;/p&gt;
+
+&lt;p&gt;Then, I got picked for a test group at work. We were supposed to try a new workflow for prior authorizations—call the pharmacy first, not the insurance company. By the end of the quarter, I was leading the project, reporting to leadership, learning SQL, and even suggesting ways to improve our workflow. Not bad for a guy who started out answering phones.&lt;/p&gt;
+
+&lt;h3 id=&quot;mentorship-the-game-changer&quot;&gt;Mentorship: The Game Changer&lt;/h3&gt;
+&lt;p&gt;Enter Dan, my mentor. If it wasn’t for him, I probably would’ve stalled out after the test group project. The company had this stretch program for aspiring software engineers. Most people went back to their day jobs, but a few of us got a shot at an apprenticeship. Dan’s advice?
+Stop doing tutorials. Stop just reading textbooks.&lt;/p&gt;
+
+&lt;p&gt;Write code, write code badly.
+Figure out why it’s bad.
+Write it again, but better.
+So I did. I built a web scraper, a D&amp;amp;D manager, and a bunch of other projects in Python. When it came time to apply for the program, I knew the competition would be tough. Three interviews, three teams, three different sets of expectations. The program was new, so every interview was a little different, but they all wanted to see if you could actually build something.&lt;/p&gt;
+
+&lt;h3 id=&quot;facing-my-weaknesses-the-front-end-challenge&quot;&gt;Facing My Weaknesses: The Front-End Challenge&lt;/h3&gt;
+&lt;p&gt;The first interview? Full-stack team, but with a front-end focus—specifically Vue.js. At that point, my front-end experience was basically “I know what a button looks like.” I’d spent most of my time on backend projects, so JavaScript frameworks and dynamic UIs were a whole new world.&lt;/p&gt;
+
+&lt;p&gt;They gave me some sample code to review and asked me questions about it. I could walk through the code and explain what it was doing, but when they asked about my own experience or real-world front-end projects, I didn’t have much to say. I realized pretty quickly that while I could reason through code, I didn’t have the hands-on experience that comes from actually building and debugging front-end apps.&lt;/p&gt;
+
+&lt;p&gt;It was humbling, for sure. My backend skills weren’t enough to carry me through a full-stack interview—especially when the team wanted someone comfortable with Vue.js and modern JavaScript. I didn’t get negative feedback, but it was clear my lack of front-end experience was a gap.&lt;/p&gt;
+
+&lt;p&gt;But here’s the thing: I didn’t let it get me down. After the interview, I added JavaScript and Vue.js to my “to-learn” list. I started exploring tutorials, building small projects, and messing around with component-based development. Even though I eventually decided to focus more on backend, that experience taught me the importance of being adaptable and willing to step outside my comfort zone.&lt;/p&gt;
+
+&lt;p&gt;Looking back, I’m actually grateful for that interview. It showed me a weakness, but it also gave me a clear direction for growth. In tech, there’s always something new to learn—and that’s half the fun.&lt;/p&gt;
+
+&lt;h3 id=&quot;finding-my-groove-with-ruby&quot;&gt;Finding My Groove with Ruby&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3dGh4Nm01YWJvNnpvMjJkc295b2VxdjdsMTkzanEwM2V4eGUzNmkwZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/2jOcXFwhIEypPeQvOY/giphy.gif&quot; alt=&quot;Thinking&quot; /&gt;
+The second interview was for a full-stack team using Ruby on Rails. Since I had Python experience, Ruby wasn’t a big stretch. I explained my D&amp;amp;D project and how I built it. I thought I was out of the running, but then another manager, Matt, reached out for an interview.&lt;/p&gt;
+
+&lt;p&gt;Matt focused on my motivations and how I planned to teach myself.
+“This program is simply a mentorship. You will be teaching yourself most of the time.”&lt;/p&gt;
+
+&lt;p&gt;I started with his team, working two days a week with two mentors. I began with Codecademy’s Ruby courses, then moved on to small challenges. I needed to complete a final project to be evaluated.&lt;/p&gt;
+
+&lt;p&gt;At first, I struggled. During pair sessions, I didn’t understand the “magic” of Ruby, which made debugging harder. My mentor was direct:
+“We are expecting you to perform better than this.”
+Some of the feedback:&lt;/p&gt;
+
+&lt;p&gt;Better test cases: Test the logic, think of real-world situations, invalid inputs, and unexpected code.
+Better debugging: Use debugging tools, not just print statements. Find the root cause, not just the symptoms.
+That weekend, I took a hard look at myself. I didn’t want to go back to the call center. If I was behind, I needed a plan to catch up.&lt;/p&gt;
+
+&lt;p&gt;That Tuesday, I called a meeting with my manager and mentors:
+“I’d like to change our approach. I got some feedback, and I think this is how I can not only fix my issues but actually become a better developer if we…”&lt;/p&gt;
+
+&lt;h4 id=&quot;my-new-approach&quot;&gt;My new approach:&lt;/h4&gt;
+
+&lt;p&gt;A small project every week
+Write test cases for every challenge/kata
+Drive during pair sessions, with mentors only helping when I’m stuck
+I improved, but the news of my shift to backend made me think that I was still behind.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-mastermind-challenge-my-capstone-project&quot;&gt;The Mastermind Challenge: My Capstone Project&lt;/h3&gt;
+&lt;p&gt;For the final project, we chose the Mastermind game from The Odin Project. Requirements included:&lt;/p&gt;
+
+&lt;p&gt;Bot option
+Player vs. player mode
+Login screen
+Display previous guesses
+During the presentation, a bug appeared: the login screen would reappear when the user chose player vs. player, causing a loop. I didn’t realize at the time, but in the chat, I was told to just display the bot walkthrough.&lt;/p&gt;
+
+&lt;p&gt;I assumed everyone was troubleshooting during their presentations, so I went for it. I started by replicating another controller/integration test I’d created for player vs. player. The login information was supposed to set the session’s ID, but I realized there was some carryover from a previous test. I removed it and suddenly, the test failed. I checked the controller file—it was misconfigured. The session wasn’t being set before calling the player vs. player option, which routed back to the login page. A quick Stack Overflow search helped me set the session correctly. The login loop disappeared, and the app worked.&lt;/p&gt;
+
+&lt;p&gt;After the presentation, I was sent back to the call center for the rest of the week, and the program ended. I reached out to Matt for feedback and advice on my resume. For me, this experience cemented my decision: this is what I want to do, at this company or another.&lt;/p&gt;
+
+&lt;p&gt;Matt told me, “I probably shouldn’t tell you this yet, but that presentation was the interview. We’re hiring you as a junior on our team.”&lt;/p&gt;
+
+&lt;p&gt;Twelve devs in the program, three spots. In the end, I earned one of those spots and officially became a software engineer that year—four years ago.
+&lt;img src=&quot;https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMWszaDEzbzNzdWZlY2p6djVlbHByYTdpZ2J3bGY4NnBwbnJ3MWFyaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/xLR6VXtm3kBZytYw73/giphy.gif&quot; alt=&quot;I Don&apos;t know how but&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;growth-grit-and-what-comes-next&quot;&gt;Growth, Grit, and What Comes Next&lt;/h3&gt;
+&lt;p&gt;The hardest part of my journey? Learning to communicate problems and solutions using developer vocabulary. The moment I realized I was in trouble—not meeting my mentor’s expectations—was also the moment I’m most proud of. I used introspection and persistence to improve.&lt;/p&gt;
+
+&lt;p&gt;My advice:
+Learn to code, learn to write programs, then build side projects. Stick to one language until you’re comfortable.&lt;/p&gt;
+
+&lt;p&gt;My current goals:
+I’m looking for a job I can be passionate about, where I can help others. I’m also working on a TTRPG site that allows players and GMs to play any tabletop game online.&lt;/p&gt;
+
+&lt;p&gt;If you’re on an unconventional path, keep going. Persistence and adaptability are your best tools. And if you ever feel lost, confused, or unsure of an answer—whether you’re behind a keyboard or just trying to figure out your next move—remember:&lt;/p&gt;
+
+&lt;p&gt;The process is just as important as the solution.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+        <name>Thomas M</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="whoamI" />
+      
+        <category term="work-experience" />
+      
+
+      
+        <summary type="html">If there’s one thing I’ve learned about myself, it’s that I rarely do things the “normal” way. While everyone else was busy racking up points in the Accelerated Reading program with the usual suspects—Magic Tree House, Diary of a Wimpy Kid, Harry Potter—I was more interested in hacking my way through Deus Ex Machina: Human Evolution or setting my alarm for 4 a.m. to catch Cowboy Bebop reruns. . I’ve always had a knack for finding my own path, especially when the standard route just didn’t make sense to me.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">My Setup</title>
+      <link href="https://thomasmcleanjr.cv/my-setup" rel="alternate" type="text/html" title="My Setup" />
+      <published>2025-08-07T08:00:00+00:00</published>
+      <updated>2025-08-07T08:00:00+00:00</updated>
+      <id>https://thomasmcleanjr.cv/my-setup</id>
+      <content type="html" xml:base="https://thomasmcleanjr.cv/my-setup">&lt;h1 id=&quot;my-setup-and-how-i-use-it&quot;&gt;My Setup and How I Use It&lt;/h1&gt;
+
+&lt;p&gt;I’m not going to walk you through my entire setup, but I do want to highlight the stars of the show. This isn’t a step-by-step guide—think of it as a list of recommendations. As a self-taught dev, I picked up most of these tools while troubleshooting completely unrelated problems. Maybe they’ll help you too.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;-chapter-1-note-taking--offloading-my-brain&quot;&gt;📝 Chapter 1: Note-taking &amp;amp; Offloading My Brain&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; I can’t recommend Obsidian enough. I don’t use it to replace my brain, just to offload some of the mental clutter.&lt;/p&gt;
+
+&lt;p&gt;If you’ve ever dabbled in organization, project management, or even been a Game Master (iykyk), you might have heard of &lt;a href=&quot;https://obsidian.md/&quot;&gt;Obsidian&lt;/a&gt;. At its core, it’s a note-taking app—but what makes it special is its approach. Obsidian is a JavaScript-based app that stores your notes as Markdown files on your computer.&lt;/p&gt;
+
+&lt;h3 id=&quot;sub-title&quot;&gt; Plugins I use&lt;/h3&gt;
+
+&lt;details&gt;
+&lt;summary&gt;I Use These in Every Vault: (Click to expand)&lt;/summary&gt;
+    &lt;br /&gt;
+
+&lt;summary&gt;Dataview:&lt;/summary&gt; |-&amp;gt;
+    Think of Dataview as a way to turn your notes into a mini-database. It lets you write queries (using a simple language) to pull information from your notes and display it in tables, lists, or even as tasks. For example, you can create a table of all notes tagged with `#project` or list all tasks due this week. It’s perfect for tracking projects, tasks, or any kind of structured data. &lt;br /&gt;
+
+&lt;summary&gt;Tasks:&lt;/summary&gt; |-&amp;gt; 
+    The Tasks plugin supercharges your to-do lists in Obsidian. It lets you create, manage, and query tasks across all your notes. You can filter tasks by status, due date, or tags, and even see them in a summary view. If you like keeping your tasks close to your notes (instead of a separate app), this is a must-have. &lt;br /&gt;
+
+&lt;summary&gt;Kanban:&lt;/summary&gt;  |-&amp;gt; 
+    Kanban brings Trello-style boards right into Obsidian. You can organize your projects visually, moving cards between columns like “To Do,” “In Progress,” and “Done.” It’s great for managing workflows, tracking progress, or just getting a bird’s-eye view of what you’re working on—all without leaving your notes. &lt;br /&gt;
+
+&lt;/details&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;️-chapter-2-alias-everything&quot;&gt;🛤️ Chapter 2: Alias Everything&lt;/h2&gt;
+
+&lt;p&gt;If you work in the terminal and find yourself typing the same commands over and over, you need to start using aliases.&lt;/p&gt;
+
+&lt;p&gt;An &lt;strong&gt;alias&lt;/strong&gt; is a shortcut for a longer or more complex command. It saves time and keystrokes. Even for simple commands, I use aliases to make my workflow smoother.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Besides &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git&lt;/code&gt;, the most commonly aliased command is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt;.&lt;/strong&gt; Here are my favorites:&lt;/p&gt;
+
+&lt;p&gt;Bash&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;alias ll=&apos;ls -lh&apos;   # Long format, human-readable sizes
+alias la=&apos;ls -la&apos;   # List all files, including hidden ones
+alias l=&apos;ls -CF&apos;    # List files in columns
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;-chapter-3-modern-command-line-toolkit&quot;&gt;🔨 Chapter 3: Modern Command Line Toolkit&lt;/h2&gt;
+
+&lt;p&gt;When I was a junior dev, I focused on mastering programming and did things the hard way for a while. Eventually, I discovered newer CLI tools that made my life so much easier. You can stick with the classics, but modern alternatives often improve on the old tools like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grep&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;ezaa-betterls&quot;&gt;&lt;strong&gt;Eza:&lt;/strong&gt; A Better &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Why I like it:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Pretty colors and syntax highlighting&lt;/li&gt;
+      &lt;li&gt;Stack and grid layouts (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eza --grid&lt;/code&gt;)&lt;/li&gt;
+      &lt;li&gt;File icons (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eza -l --grid --icons&lt;/code&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Docs:&lt;/strong&gt; &lt;a href=&quot;https://eza.rocks/&quot;&gt;eza.rocks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;fzffuzzy-finder-for-everything&quot;&gt;&lt;strong&gt;FZF:&lt;/strong&gt; Fuzzy Finder for Everything&lt;/h3&gt;
+
+&lt;p&gt;Ever forget the name of a file or config? &lt;a href=&quot;https://github.com/junegunn/fzf&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fzf&lt;/code&gt;&lt;/a&gt; is a fuzzy finder that searches files, folders, and even command history. I stopped using Spotlight after I found this (until I discovered Raycast, but that’s another story).&lt;/p&gt;
+
+&lt;h3 id=&quot;zoxidesmartercd&quot;&gt;&lt;strong&gt;Zoxide:&lt;/strong&gt; Smarter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ajeetdsouza/zoxide&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zoxide&lt;/code&gt;&lt;/a&gt; remembers your most-used directories and lets you jump to them instantly. No more typing out long paths—just type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;z &amp;lt;folder&amp;gt;&lt;/code&gt; and you’re there.&lt;/p&gt;
+
+&lt;h3 id=&quot;tldrsimple-cli-help&quot;&gt;&lt;strong&gt;tldr:&lt;/strong&gt; Simple CLI Help&lt;/h3&gt;
+
+&lt;p&gt;Ever see a command you don’t recognize? &lt;a href=&quot;https://tldr.sh/&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tldr&lt;/code&gt;&lt;/a&gt; gives you simple, community-driven explanations and examples for CLI tools. It’s like having a helpful dev friend on call.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;-aerospace-simple-window-tiling-manager&quot;&gt;🚀 Aerospace: Simple Window Tiling Manager&lt;/h2&gt;
+
+&lt;p&gt;If you’re reading this, you’re probably a power user (or on your way). Once you try a window tiling manager, you might become a fanatic like me. A tiling manager organizes your open windows into non-overlapping tiles, maximizing screen space and improving workflow.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why use one?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Assign windows to workspaces and switch with hotkeys&lt;/li&gt;
+  &lt;li&gt;Arrange windows in your preferred layout&lt;/li&gt;
+  &lt;li&gt;Create a keyboard-driven dev experience&lt;/li&gt;
+  &lt;li&gt;Make the most of large screens&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Heads up:&lt;/strong&gt; If you prefer minimal open windows, this might not be for you. But for my ADHD brain, it’s a lifesaver—I can keep everything open and visible, so nothing gets forgotten.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Peace out!&lt;/strong&gt; 🫶🏻&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+        <name>Thomas M</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="work-experience" />
+      
+        <category term="setup" />
+      
+
+      
+        <summary type="html">My Setup and How I Use It</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">How Bartending Made Me a Better Problem Solver</title>
+      <link href="https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver" rel="alternate" type="text/html" title="How Bartending Made Me a Better Problem Solver" />
+      <published>2025-08-07T08:00:00+00:00</published>
+      <updated>2025-08-07T08:00:00+00:00</updated>
+      <id>https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver</id>
+      <content type="html" xml:base="https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver">&lt;p&gt;I don’t remember exactly when I caught the coding bug. Maybe it started when I played Skyrim with a mod that was no longer being updated, and decided to fix it myself. Or maybe it was when I picked up &lt;em&gt;Automate the Boring Stuff with Python&lt;/em&gt; and learned Python just for fun. I even learned some HTML and CSS back in high school, making a scrolling banner on a static page.&lt;/p&gt;
+
+&lt;p&gt;But what I do know is that I’ve always loved problem-solving and creating something for others to enjoy. The funny thing is, I didn’t really become good at it until I became a bartender.&lt;/p&gt;
+
+&lt;p&gt;I’m forever grateful for my time as a server and bartender. The lessons I learned from meeting and talking to new people every day were invaluable. The biggest challenge? When someone would ask, “Can you make me a salty yet sweet drink, but not a margarita?” Suddenly, I had to come up with a solution on the spot for a complete stranger. That’s a tough problem—even on the slowest days.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;At first, my approach was to learn everything about every spirit at the bar. Bourbon vs. scotch. Why some cocktails are shaken and others stirred. When to use Beefeater vs. Tanqueray. Sometimes this worked, but other times it was a complete failure—even when I thought I understood the guest’s taste. What was I missing?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Give me six hours to chop down a tree and I will spend the first four sharpening the axe.”&lt;br /&gt;
+— Abraham Lincoln&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;I realized my process was the problem. I didn’t have ten years of experience, and I was trying to be perfect on the first try. Sure, I could follow a recipe and replicate a classic drink, but that rarely impressed anyone. So, I started doing what I now do in coding: I start with the process. What steps do I need to get to a solution?&lt;/p&gt;
+
+&lt;p&gt;Let’s go back to that “not a margarita” request. Here were the requirements:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Refreshing (it was a hot day, and it was brunch!)&lt;/li&gt;
+  &lt;li&gt;Tequila, but not too forward (the taste shouldn’t be overpowering)&lt;/li&gt;
+  &lt;li&gt;Still salty&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So, basically a margarita—but not a margarita. I had my objectives. Next, I started building. Tequila would play a main role, but I needed to keep it balanced. Lime is an easy way to add refreshment, and if you get the balance right, it can carry the drink.&lt;/p&gt;
+
+&lt;p&gt;Here’s where the process comes in. I’d make enough of the drink to taste it, grab a straw, and test. This wasn’t a fancy New York bar, but once I started tasting and testing my experiments, I could narrow down the solution. The guest watching me loved watching my process.&lt;/p&gt;
+
+&lt;p&gt;Of course, I needed a sweetener, but simple syrup would be too much. We had honey syrup, which is lighter and pairs well with tequila and lime. Another taste—getting closer, but still missing the salty component. I also wanted this drink to be a real departure from a standard margarita.&lt;/p&gt;
+
+&lt;p&gt;It was a hot Saturday brunch downtown, and I spotted a bottle of champagne. Sometimes, creative solutions are necessary. After shaking the spirits, I poured the cocktail into a glass, floated some champagne on top, added a pinch of salt, and finished with a lime flag. One final end-to-end taste, and I handed it to the guest for review.&lt;/p&gt;
+
+&lt;p&gt;She loved it. In fact, I made that drink for her every time she came in. I kept the recipe for myself, but I did share it with her before I left that job.&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;If you ever feel lost, confused, or unsure of an answer—whether you’re behind the bar or behind a keyboard—I recommend looking at your process and seeing where things start to break down:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Do you really understand the problem?&lt;/li&gt;
+  &lt;li&gt;Can you break it down into smaller parts?&lt;/li&gt;
+  &lt;li&gt;Are you creating and testing solutions along the way?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Knowing the problem gets you close, but understanding and refining your process can make your solution bulletproof.&lt;/p&gt;
+
+&lt;p&gt;Have a good one.&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+        <name>Thomas M</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="whoamI" />
+      
+        <category term="work-experience" />
+      
+
+      
+        <summary type="html">I don’t remember exactly when I caught the coding bug. Maybe it started when I played Skyrim with a mod that was no longer being updated, and decided to fix it myself. Or maybe it was when I picked up Automate the Boring Stuff with Python and learned Python just for fun. I even learned some HTML and CSS back in high school, making a scrolling banner on a static page.</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

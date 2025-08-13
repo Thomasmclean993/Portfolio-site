@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <link href="https://thomasmcleanjr.cv/tag/setup/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" />
+  <updated>2025-08-13T19:00:34+00:00</updated>
+  <id>https://thomasmcleanjr.cv/tag/setup/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">My Portfolio | </title>
+  
+
+  
+    <subtitle>My Professional Portfolio and Resume</subtitle>
+  
+
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">My Setup</title>
+      <link href="https://thomasmcleanjr.cv/my-setup" rel="alternate" type="text/html" title="My Setup" />
+      <published>2025-08-07T08:00:00+00:00</published>
+      <updated>2025-08-07T08:00:00+00:00</updated>
+      <id>https://thomasmcleanjr.cv/my-setup</id>
+      <content type="html" xml:base="https://thomasmcleanjr.cv/my-setup">&lt;h1 id=&quot;my-setup-and-how-i-use-it&quot;&gt;My Setup and How I Use It&lt;/h1&gt;
+
+&lt;p&gt;I’m not going to walk you through my entire setup, but I do want to highlight the stars of the show. This isn’t a step-by-step guide—think of it as a list of recommendations. As a self-taught dev, I picked up most of these tools while troubleshooting completely unrelated problems. Maybe they’ll help you too.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;-chapter-1-note-taking--offloading-my-brain&quot;&gt;📝 Chapter 1: Note-taking &amp;amp; Offloading My Brain&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;TL;DR:&lt;/strong&gt; I can’t recommend Obsidian enough. I don’t use it to replace my brain, just to offload some of the mental clutter.&lt;/p&gt;
+
+&lt;p&gt;If you’ve ever dabbled in organization, project management, or even been a Game Master (iykyk), you might have heard of &lt;a href=&quot;https://obsidian.md/&quot;&gt;Obsidian&lt;/a&gt;. At its core, it’s a note-taking app—but what makes it special is its approach. Obsidian is a JavaScript-based app that stores your notes as Markdown files on your computer.&lt;/p&gt;
+
+&lt;h3 id=&quot;sub-title&quot;&gt; Plugins I use&lt;/h3&gt;
+
+&lt;details&gt;
+&lt;summary&gt;I Use These in Every Vault: (Click to expand)&lt;/summary&gt;
+    &lt;br /&gt;
+
+&lt;summary&gt;Dataview:&lt;/summary&gt; |-&amp;gt;
+    Think of Dataview as a way to turn your notes into a mini-database. It lets you write queries (using a simple language) to pull information from your notes and display it in tables, lists, or even as tasks. For example, you can create a table of all notes tagged with `#project` or list all tasks due this week. It’s perfect for tracking projects, tasks, or any kind of structured data. &lt;br /&gt;
+
+&lt;summary&gt;Tasks:&lt;/summary&gt; |-&amp;gt; 
+    The Tasks plugin supercharges your to-do lists in Obsidian. It lets you create, manage, and query tasks across all your notes. You can filter tasks by status, due date, or tags, and even see them in a summary view. If you like keeping your tasks close to your notes (instead of a separate app), this is a must-have. &lt;br /&gt;
+
+&lt;summary&gt;Kanban:&lt;/summary&gt;  |-&amp;gt; 
+    Kanban brings Trello-style boards right into Obsidian. You can organize your projects visually, moving cards between columns like “To Do,” “In Progress,” and “Done.” It’s great for managing workflows, tracking progress, or just getting a bird’s-eye view of what you’re working on—all without leaving your notes. &lt;br /&gt;
+
+&lt;/details&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;️-chapter-2-alias-everything&quot;&gt;🛤️ Chapter 2: Alias Everything&lt;/h2&gt;
+
+&lt;p&gt;If you work in the terminal and find yourself typing the same commands over and over, you need to start using aliases.&lt;/p&gt;
+
+&lt;p&gt;An &lt;strong&gt;alias&lt;/strong&gt; is a shortcut for a longer or more complex command. It saves time and keystrokes. Even for simple commands, I use aliases to make my workflow smoother.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Besides &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git&lt;/code&gt;, the most commonly aliased command is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt;.&lt;/strong&gt; Here are my favorites:&lt;/p&gt;
+
+&lt;p&gt;Bash&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;alias ll=&apos;ls -lh&apos;   # Long format, human-readable sizes
+alias la=&apos;ls -la&apos;   # List all files, including hidden ones
+alias l=&apos;ls -CF&apos;    # List files in columns
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;-chapter-3-modern-command-line-toolkit&quot;&gt;🔨 Chapter 3: Modern Command Line Toolkit&lt;/h2&gt;
+
+&lt;p&gt;When I was a junior dev, I focused on mastering programming and did things the hard way for a while. Eventually, I discovered newer CLI tools that made my life so much easier. You can stick with the classics, but modern alternatives often improve on the old tools like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grep&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;find&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;ezaa-betterls&quot;&gt;&lt;strong&gt;Eza:&lt;/strong&gt; A Better &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Why I like it:&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Pretty colors and syntax highlighting&lt;/li&gt;
+      &lt;li&gt;Stack and grid layouts (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eza --grid&lt;/code&gt;)&lt;/li&gt;
+      &lt;li&gt;File icons (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;eza -l --grid --icons&lt;/code&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Docs:&lt;/strong&gt; &lt;a href=&quot;https://eza.rocks/&quot;&gt;eza.rocks&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;fzffuzzy-finder-for-everything&quot;&gt;&lt;strong&gt;FZF:&lt;/strong&gt; Fuzzy Finder for Everything&lt;/h3&gt;
+
+&lt;p&gt;Ever forget the name of a file or config? &lt;a href=&quot;https://github.com/junegunn/fzf&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fzf&lt;/code&gt;&lt;/a&gt; is a fuzzy finder that searches files, folders, and even command history. I stopped using Spotlight after I found this (until I discovered Raycast, but that’s another story).&lt;/p&gt;
+
+&lt;h3 id=&quot;zoxidesmartercd&quot;&gt;&lt;strong&gt;Zoxide:&lt;/strong&gt; Smarter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cd&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/ajeetdsouza/zoxide&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;zoxide&lt;/code&gt;&lt;/a&gt; remembers your most-used directories and lets you jump to them instantly. No more typing out long paths—just type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;z &amp;lt;folder&amp;gt;&lt;/code&gt; and you’re there.&lt;/p&gt;
+
+&lt;h3 id=&quot;tldrsimple-cli-help&quot;&gt;&lt;strong&gt;tldr:&lt;/strong&gt; Simple CLI Help&lt;/h3&gt;
+
+&lt;p&gt;Ever see a command you don’t recognize? &lt;a href=&quot;https://tldr.sh/&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tldr&lt;/code&gt;&lt;/a&gt; gives you simple, community-driven explanations and examples for CLI tools. It’s like having a helpful dev friend on call.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;-aerospace-simple-window-tiling-manager&quot;&gt;🚀 Aerospace: Simple Window Tiling Manager&lt;/h2&gt;
+
+&lt;p&gt;If you’re reading this, you’re probably a power user (or on your way). Once you try a window tiling manager, you might become a fanatic like me. A tiling manager organizes your open windows into non-overlapping tiles, maximizing screen space and improving workflow.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Why use one?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Assign windows to workspaces and switch with hotkeys&lt;/li&gt;
+  &lt;li&gt;Arrange windows in your preferred layout&lt;/li&gt;
+  &lt;li&gt;Create a keyboard-driven dev experience&lt;/li&gt;
+  &lt;li&gt;Make the most of large screens&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Heads up:&lt;/strong&gt; If you prefer minimal open windows, this might not be for you. But for my ADHD brain, it’s a lifesaver—I can keep everything open and visible, so nothing gets forgotten.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Peace out!&lt;/strong&gt; 🫶🏻&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+        <name>Thomas M</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="work-experience" />
+      
+        <category term="setup" />
+      
+
+      
+        <summary type="html">My Setup and How I Use It</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
