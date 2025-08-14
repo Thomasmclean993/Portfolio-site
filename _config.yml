@@ -51,6 +51,19 @@ plugins: [jekyll-paginate, jekyll-feed]
 feed:
   path: feed.xml
 
+collections:
+  projects:
+    output: true           # So Jekyll builds HTML files for each project
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: post         # Or use a "project.html" layout if you want a different style
+      author: tom
+
 # Additional settings available on the front-matter
 # Site logo in the index.html (as in demo.ghost.io)
 # Author's page cover in _layouts/author.html
