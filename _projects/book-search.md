@@ -1,7 +1,7 @@
 ---
 title: "Book Search"
 tags: [Web, Elixir, Liveview]
-cover: /assets/images/projects/books.jpg
+cover: /assets/images/books.jpg
 excerpt: "An app that searchs your favorite books and recommend books that would interest you."
 author: thomas
 external_url: "https://github.com/Thomasmclean993/book_search"
