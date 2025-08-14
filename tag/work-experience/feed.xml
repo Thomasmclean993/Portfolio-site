@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
   <link href="https://thomasmcleanjr.cv/tag/work-experience/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" />
-  <updated>2025-08-13T21:43:07+00:00</updated>
+  <updated>2025-08-14T12:17:08+00:00</updated>
   <id>https://thomasmcleanjr.cv/tag/work-experience/feed.xml</id>
 
   
@@ -414,8 +414,8 @@ I’m looking for a job I can be passionate about, where I can help others. I’
     </entry>
   
     <entry>
-      <title type="html">My Setup</title>
-      <link href="https://thomasmcleanjr.cv/my-setup" rel="alternate" type="text/html" title="My Setup" />
+      <title type="html">My Dev Setup</title>
+      <link href="https://thomasmcleanjr.cv/my-setup" rel="alternate" type="text/html" title="My Dev Setup" />
       <published>2025-08-07T08:00:00+00:00</published>
       <updated>2025-08-07T08:00:00+00:00</updated>
       <id>https://thomasmcleanjr.cv/my-setup</id>
@@ -534,7 +534,7 @@ alias l=&apos;ls -CF&apos;    # List files in columns
       
         <category term="work-experience" />
       
-        <category term="setup" />
+        <category term="tech-stack" />
       
 
       
@@ -621,6 +621,230 @@ alias l=&apos;ls -CF&apos;    # List files in columns
 
       
         <summary type="html">I don’t remember exactly when I caught the coding bug. Maybe it started when I played Skyrim with a mod that was no longer being updated, and decided to fix it myself. Or maybe it was when I picked up Automate the Boring Stuff with Python and learned Python just for fun. I even learned some HTML and CSS back in high school, making a scrolling banner on a static page.</summary>
+      
+
+      
+      
+    </entry>
+  
+    <entry>
+      <title type="html">Experienced Technologies</title>
+      <link href="https://thomasmcleanjr.cv/my-technologies" rel="alternate" type="text/html" title="Experienced Technologies" />
+      <published>2025-08-04T08:00:00+00:00</published>
+      <updated>2025-08-04T08:00:00+00:00</updated>
+      <id>https://thomasmcleanjr.cv/my-technologies</id>
+      <content type="html" xml:base="https://thomasmcleanjr.cv/my-technologies">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;List of Technologies that I have experience in.&lt;/title&gt;
+    &lt;style&gt;
+        .icon {
+            width: 48px;
+            height: 48px;
+            vertical-align: middle;
+            margin-right: 8px;
+            transition: transform 0.3s ease-in-out;
+            display: inline-block;
+        }
+        .icon:hover {
+            transform: scale(2.0);
+        }
+        ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+        ul li {
+            margin-bottom: 2px;
+        }
+        td {
+            vertical-align: top;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;p&gt;
+    &lt;strong&gt;Experienced Technologies&lt;/strong&gt;&lt;br&gt;
+    This page highlights the programming languages, tools, and platforms I have experience with, along with the key libraries and frameworks I use for each. Click any library or framework to view its official documentation. As I rant about certain Technologies, They should appear here as well.
+  &lt;/p&gt;
+    &lt;table border=&quot;1&quot; style=&quot;width:100%; border-collapse:collapse;&quot;&gt;
+      &lt;thead&gt;
+        &lt;tr&gt;
+          &lt;th&gt;Experienced Language/Tool&lt;/th&gt;
+          &lt;th&gt;Experienced libaraies / Frameworks&lt;/th&gt;
+          &lt;th&gt;Related Post&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/elixir.svg&quot; alt=&quot;Elixir&quot;&gt;
+            Elixir
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://hexdocs.pm/phoenix/&quot; target=&quot;_blank&quot;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://hexdocs.pm/ecto/&quot; target=&quot;_blank&quot;&gt;Ecto&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://nerves-project.org/docs/&quot; target=&quot;_blank&quot;&gt;Nerves&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/ruby.svg&quot; alt=&quot;Ruby&quot;&gt;
+            Ruby
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://guides.rubyonrails.org/&quot; target=&quot;_blank&quot;&gt;Rails&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;http://sinatrarb.com/documentation.html&quot; target=&quot;_blank&quot;&gt;Sinatra&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://rspec.info/documentation/&quot; target=&quot;_blank&quot;&gt;RSpec&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/javascript.svg&quot; alt=&quot;Javascript&quot;&gt;
+            Javascript
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://react.dev/learn&quot; target=&quot;_blank&quot;&gt;React&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://vuejs.org/guide/introduction.html&quot; target=&quot;_blank&quot;&gt;Vue&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://angular.io/docs&quot; target=&quot;_blank&quot;&gt;Angular&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://nodejs.org/en/docs&quot; target=&quot;_blank&quot;&gt;Node.js&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://expressjs.com/en/starter/installing.html&quot; target=&quot;_blank&quot;&gt;Express&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/python.svg&quot; alt=&quot;Python&quot;&gt;
+            Python
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/stable/&quot; target=&quot;_blank&quot;&gt;Django&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://flask.palletsprojects.com/en/latest/&quot; target=&quot;_blank&quot;&gt;Flask&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://pandas.pydata.org/docs/&quot; target=&quot;_blank&quot;&gt;Pandas&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://numpy.org/doc/&quot; target=&quot;_blank&quot;&gt;NumPy&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://fastapi.tiangolo.com/&quot; target=&quot;_blank&quot;&gt;FastAPI&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/docker.svg&quot; alt=&quot;Docker&quot;&gt;
+            Docker
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/compose/&quot; target=&quot;_blank&quot;&gt;Docker Compose&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.docker.com/engine/swarm/&quot; target=&quot;_blank&quot;&gt;Docker Swarm&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/terraform.svg&quot; alt=&quot;Terraform&quot;&gt;
+            Terraform
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://registry.terraform.io/providers/hashicorp/aws/latest/docs&quot; target=&quot;_blank&quot;&gt;Terraform AWS Provider&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://developer.hashicorp.com/terraform/language/modules&quot; target=&quot;_blank&quot;&gt;Terraform Modules&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/datadog.svg&quot; alt=&quot;Datadog&quot;&gt;
+            Datadog
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.datadoghq.com/tracing/&quot; target=&quot;_blank&quot;&gt;APM&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.datadoghq.com/logs/&quot; target=&quot;_blank&quot;&gt;Log Management&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.datadoghq.com/integrations/&quot; target=&quot;_blank&quot;&gt;Integrations&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/grafana.svg&quot; alt=&quot;Grafana&quot;&gt;
+            Grafana
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/loki/latest/&quot; target=&quot;_blank&quot;&gt;Grafana Loki&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/tempo/latest/&quot; target=&quot;_blank&quot;&gt;Grafana Tempo&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://grafana.com/docs/grafana/latest/plugins/&quot; target=&quot;_blank&quot;&gt;Plugins&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/sentry.svg&quot; alt=&quot;Sentry&quot;&gt;
+            Sentry
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.sentry.io/platforms/&quot; target=&quot;_blank&quot;&gt;Sentry SDKs&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://docs.sentry.io/product/integrations/&quot; target=&quot;_blank&quot;&gt;Integrations&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+          &lt;td&gt;
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/jira.svg&quot; alt=&quot;Jira&quot;&gt;
+            Jira
+          &lt;/td&gt;
+          &lt;td&gt;
+            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;https://support.atlassian.com/jira-software-cloud/docs/&quot; target=&quot;_blank&quot;&gt;Jira Software&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://support.atlassian.com/jira-service-management-cloud/docs/&quot; target=&quot;_blank&quot;&gt;Jira Service Management&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://support.atlassian.com/jira-cloud-administration/docs/manage-apps-and-plugins/&quot; target=&quot;_blank&quot;&gt;Plugins&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/td&gt;
+          &lt;td&gt;&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+        <name>Thomas M</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="tech-stack" />
+      
+        <category term="work-experience" />
+      
+
+      
+        <summary type="html">List of Technologies that I have experience in.</summary>
       
 
       
