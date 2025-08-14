@@ -515,3 +515,18 @@ h6 {
 .insight-card dd {
   font-size: 1em;
 }
+
+.project-status-label {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.12); /* subtle, semi-transparent white for dark UI */
+  color: #e0e0e0; /* light grey text */
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px; /* makes it perfectly rounded like a bubble */
+  margin-left: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  white-space: nowrap; /* keeps text in one line */
+}
