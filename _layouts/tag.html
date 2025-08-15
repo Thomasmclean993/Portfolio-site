@@ -8,10 +8,13 @@ navigation: True
 logo: 'assets/images/owl.png'
 ---
 
-{% assign tag_data = site.data.tags[page.tag] %}
-{% if tag_data %}
-  {% assign tag_description = tag_data.description %}
-{% endif %}
+{% assign this_tag = page.tag | downcase %}
+{% for p in site.posts %}
+  {% assign post_tags = p.tags | join: "," | downcase | split: "," %}
+  {% if post_tags contains this_tag %}
+    {% include post-card.html post=p %}
+  {% endif %}
+{% endfor %}
 
 <header class="site-header outer no-cover">
   <div class="inner">
