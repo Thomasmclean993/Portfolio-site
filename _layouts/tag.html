@@ -43,7 +43,7 @@ logo: 'assets/images/owl.png'
         {% assign post_tags = p.tags | join: "," | downcase | split: "," %}
         {% if post_tags contains this_tag %}
           {% assign post = p %}
-          {% include post-card.html %}
+          {% include post-card.html post=p %}
         {% endif %}
       {% endfor %}
     </div>

@@ -1,4 +1,4 @@
-{% assign post = current_post | default: post %}
+{% assign post = include.post | default: post %}
 
 {% assign words_per_minute = site.words_per_minute | default: 200 %}
 
