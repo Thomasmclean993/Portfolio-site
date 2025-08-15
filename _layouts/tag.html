@@ -8,19 +8,12 @@ navigation: True
 logo: 'assets/images/owl.png'
 ---
 
-{% include dynamic_tag_info.html %}
-
 {% assign tag_data = site.data.tags[page.tag] %}
 {% if tag_data %}
   {% assign tag_description = tag_data.description %}
 {% endif %}
 
-<header class="site-header outer{% if cover or page.cover %} with-cover-image{% else %} no-cover{% endif %}"
-  {% if cover %}
-    style="background-image: url('{{ cover | relative_url }}')"
-  {% elsif page.cover %}
-    style="background-image: url('{{ page.cover | relative_url }}')"
-  {% endif %}>
+<header class="site-header outer no-cover">
   <div class="inner">
     {% include site-nav.html %}
     <div class="site-header-content">
@@ -45,19 +38,14 @@ logo: 'assets/images/owl.png'
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     <div class="post-feed">
-
-      {% assign tagged_posts = "" | split: "" %}
+      {% assign this_tag = page.tag | downcase %}
       {% for p in site.posts %}
-        {% if p.tags contains page.tag %}
-          {% assign tagged_posts = tagged_posts | push: p %}
+        {% assign post_tags = p.tags | join: "," | downcase | split: "," %}
+        {% if post_tags contains this_tag %}
+          {% assign post = p %}
+          {% include post-card.html %}
         {% endif %}
       {% endfor %}
-
-      {% for post in tagged_posts %}
-        {% assign current_post = post %}
-        {% include post-card.html %}
-      {% endfor %}
-
     </div>
   </div>
 </main>
