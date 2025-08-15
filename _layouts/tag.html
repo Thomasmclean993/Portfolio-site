@@ -42,8 +42,8 @@ logo: 'assets/images/owl.png'
   <div class="inner">
     <div class="post-feed">
 
-      <p><strong>DEBUG:</strong> Showing posts where tags contain: "{{ page.tag }}"</p>
-
+      {% include post-card.html post=p %}
+      
       {% for p in site.posts %}
         {% if p.tags contains page.tag %}
           <p>Matched Post: {{ p.title }} — Tags: {{ p.tags | join: ", " }}</p>
