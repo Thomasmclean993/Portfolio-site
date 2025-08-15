@@ -1,0 +1,4 @@
+{% assign tagged_posts = site.posts | where_exp:"p", "p.tags contains page.tag" %}
+{% for post in tagged_posts %}
+  {% include post-card.html post=post %}
+{% endfor %}

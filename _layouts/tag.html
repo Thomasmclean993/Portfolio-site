@@ -8,25 +8,13 @@ navigation: True
 logo: 'assets/images/owl.png'
 ---
 
-<!-- default -->
-<!-- The tag above means - insert everything in this file into the {body} of the default.hbs template -->
-
-<!-- The big featured header, it uses blog cover image as a BG if available -->
-<!-- #tag -->
-{% include dynamic_tag_info.html %}
-
 {% assign tag_data = site.data.tags[page.tag] %}
 {% if tag_data %}
   {% assign tag_description = tag_data.description %}
 {% endif %}
 
-<header class="site-header outer{% if cover or page.cover %} with-cover-image{% else %} no-cover{% endif %}"
-  {% if cover %}
-    style="background-image: url('{{ cover | relative_url }}')"
-  {% elsif page.cover %}
-    style="background-image: url('{{ page.cover | relative_url }}')"
-  {% endif %}>
-  
+<!-- Tag Header -->
+<header class="site-header outer no-cover">
   <div class="inner">
     {% include site-nav.html %}
     <div class="site-header-content">
@@ -40,21 +28,25 @@ logo: 'assets/images/owl.png'
       <h2 class="site-description">
         {% if tag_description %}
           {{ tag_description }}
-        {% elsif page.tag %}
-          A collection of {{ paginator.total_posts }} posts
+        {% else %}
+          A collection of posts tagged with "{{ page.tag }}"
         {% endif %}
       </h2>
     </div>
   </div>
 </header>
-<!-- tag -->
 
-<!-- The main content area -->
+<!-- Post List -->
 <main id="site-main" class="site-main outer" role="main">
-    <div class="inner">
-        <div class="post-feed">
-            <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
-            {%  include post-card.html %}
-        </div>
+  <div class="inner">
+    <div class="post-feed">
+      {% assign this_tag = page.tag | downcase %}
+      {% for p in site.posts %}
+        {% assign post_tags = p.tags | join: "," | downcase | split: "," %}
+        {% if post_tags contains this_tag %}
+          {% include post-card.html post=p %}
+        {% endif %}
+      {% endfor %}
     </div>
+  </div>
 </main>
