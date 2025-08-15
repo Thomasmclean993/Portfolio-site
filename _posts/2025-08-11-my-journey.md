@@ -5,7 +5,7 @@ cover:  assets/images/journey.jpg
 navigation: True
 title: Persistence Over Perfection, My Journey to Software Engineering
 date: 2025-08-11 8:00:00
-tags: whoami
+tags: [whoami, work-experience]
 class: post-template
 subclass: 'post'
 author: thomas
