@@ -54,7 +54,7 @@ end
 found_tags.uniq.sort.each do |tag_key|
   meta      = tag_metadata[tag_key] || {}
   title     = meta['name'] || tag_key.capitalize
-  permalink = "/tags/#{tag_key}/"
+  permalink = "/tag/#{tag_key}/"
 
   file_path = File.join(TAGS_DIR, "#{tag_key}.md")
 

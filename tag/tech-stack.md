@@ -3,5 +3,5 @@
 layout: tag
 tag: tech-stack
 title: "Tech Stack"
-permalink: /tags/tech-stack/
+permalink: /tag/tech-stack/
 ---
