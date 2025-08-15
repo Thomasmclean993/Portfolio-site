@@ -3,5 +3,5 @@
 layout: tag
 tag: work-experience
 title: "Work Experience"
-permalink: /tags/work-experience/
+permalink: /tag/work-experience/
 ---

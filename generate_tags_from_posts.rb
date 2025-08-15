@@ -11,7 +11,7 @@ require 'date'
 ROOT       = __dir__
 DATA_FILE  = File.join(ROOT, '_data', 'tags.yml')
 POSTS_DIR  = File.join(ROOT, '_posts')
-TAGS_DIR   = File.join(ROOT, 'tags')
+TAGS_DIR   = File.join(ROOT, 'tag')
 
 # Ensure /tags directory exists
 FileUtils.mkdir_p(TAGS_DIR)

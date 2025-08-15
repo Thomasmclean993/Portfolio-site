@@ -3,5 +3,5 @@
 layout: tag
 tag: Getting started
 title: "Getting started"
-permalink: /tags/Getting started/
+permalink: /tag/Getting started/
 ---
