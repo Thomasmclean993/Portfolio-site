@@ -2,5 +2,5 @@
 layout: tag
 tag: whoami
 title: "WhoamI"
-permalink: /tags/WhoamI/
+permalink: /tag/whoami/
 ---
