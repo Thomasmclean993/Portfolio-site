@@ -1,6 +1,6 @@
 ---
 layout: tag
 tag: whoami
-title: "WhoamI"
+title: "whoami"
 permalink: /tag/whoami/
 ---
