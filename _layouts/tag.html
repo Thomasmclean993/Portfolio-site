@@ -45,7 +45,19 @@ logo: 'assets/images/owl.png'
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     <div class="post-feed">
-      {% include tag-post-loop.html %}
+
+      {% assign tagged_posts = "" | split: "" %}
+      {% for p in site.posts %}
+        {% if p.tags contains page.tag %}
+          {% assign tagged_posts = tagged_posts | push: p %}
+        {% endif %}
+      {% endfor %}
+
+      {% for post in tagged_posts %}
+        {% assign current_post = post %}
+        {% include post-card.html %}
+      {% endfor %}
+
     </div>
   </div>
 </main>
