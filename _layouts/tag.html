@@ -8,14 +8,12 @@ navigation: True
 logo: 'assets/images/owl.png'
 ---
 
-{% assign this_tag = page.tag | downcase %}
-{% for p in site.posts %}
-  {% assign post_tags = p.tags | join: "," | downcase | split: "," %}
-  {% if post_tags contains this_tag %}
-    {% include post-card.html post=p %}
-  {% endif %}
-{% endfor %}
+{% assign tag_data = site.data.tags[page.tag] %}
+{% if tag_data %}
+  {% assign tag_description = tag_data.description %}
+{% endif %}
 
+<!-- Tag Header -->
 <header class="site-header outer no-cover">
   <div class="inner">
     {% include site-nav.html %}
@@ -38,18 +36,17 @@ logo: 'assets/images/owl.png'
   </div>
 </header>
 
+<!-- Post List -->
 <main id="site-main" class="site-main outer" role="main">
   <div class="inner">
     <div class="post-feed">
-
-      {% include post-card.html post=p %}
-      
+      {% assign this_tag = page.tag | downcase %}
       {% for p in site.posts %}
-        {% if p.tags contains page.tag %}
-          <p>Matched Post: {{ p.title }} — Tags: {{ p.tags | join: ", " }}</p>
+        {% assign post_tags = p.tags | join: "," | downcase | split: "," %}
+        {% if post_tags contains this_tag %}
+          {% include post-card.html post=p %}
         {% endif %}
       {% endfor %}
-
     </div>
   </div>
 </main>
