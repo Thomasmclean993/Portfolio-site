@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
+  <link href="https://thomasmcleanjr.cv/tag/rants/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" />
+  <updated>2025-08-28T02:15:47+00:00</updated>
+  <id>https://thomasmcleanjr.cv/tag/rants/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">My Portfolio | </title>
+  
+
+  
+    <subtitle>My Professional Portfolio and Resume</subtitle>
+  
+
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">Task Management and My Second Brain</title>
+      <link href="https://thomasmcleanjr.cv/task-management" rel="alternate" type="text/html" title="Task Management and My Second Brain" />
+      <published>2025-08-11T08:00:00+00:00</published>
+      <updated>2025-08-11T08:00:00+00:00</updated>
+      <id>https://thomasmcleanjr.cv/task-management</id>
+      <content type="html" xml:base="https://thomasmcleanjr.cv/task-management">&lt;p&gt;I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: &lt;strong&gt;“What’s something you didn’t expect would be a challenge as a developer?”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;After sitting with that question for a while, I realized I had a few answers:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Communicating with different types of people.&lt;/li&gt;
+  &lt;li&gt;Writing clear documentation.&lt;/li&gt;
+  &lt;li&gt;Figuring out how often I need to query a database (and how much indexes matter).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;But there’s one challenge I almost never see talked about: &lt;strong&gt;task management.&lt;/strong&gt; Sure, I hear about project management or time management — there are endless books and how‑tos on those. But what about the plain, everyday skill of juggling &lt;em&gt;tasks&lt;/em&gt; as a developer? That one doesn’t get nearly enough airtime.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-many-tasks-do-i-usually-own&quot;&gt;How Many Tasks Do I Usually Own?&lt;/h2&gt;
+
+&lt;p&gt;I work at a company that keeps teams pretty lean while still chasing quarterly objectives. Translation: it’s rare for anyone to own just one thing at a time. A typical week for me looks like:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;A KPI-related project with a hard deadline&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Another project aligned with a longer‑term objective&lt;/strong&gt; (something that eventually impacts a KPI)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;A technical improvement project&lt;/strong&gt; (monitoring, logging, performance tuning)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;A product manager’s “quick ask”&lt;/strong&gt; (usually an investigation into a potential feature or product idea)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And that’s just projects. Each one breaks down into many smaller tasks that all need tracking — and that’s before we even bring up being on‑call. So my daily task list is in constant flux. Priorities get reshuffled, people become unavailable, and something new is always getting dropped on my plate. It’s an overlooked aspect of “wearing many hats”: to juggle it all, I need a system. A way to track what matters now, what can wait, and what needs to be handed off.&lt;/p&gt;
+
+&lt;p&gt;Naturally, I went down the &lt;img src=&quot;https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMW1sajBzbnFtZ3YzODE0eGp5ZDd5b3BmNG96NXh6YzAxeGY3ZGg2YyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/T1GWTCSrTr2tnsvq4k/giphy.gif&quot; alt=&quot;rabbit hole&quot; /&gt; My favorite learning platform? &lt;strong&gt;YouTube University.&lt;/strong&gt; After a few late nights and way too many productivity videos, I decided to give &lt;a href=&quot;https://www.youtube.com/watch?v=m9S5I3pWz94&quot;&gt;this recommendation&lt;/a&gt; from Thomas Frank a try.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-second-brain-via-notion&quot;&gt;The Second Brain (via Notion)&lt;/h2&gt;
+
+&lt;p&gt;A &lt;strong&gt;Second Brain&lt;/strong&gt; is basically a knowledge management system — an external place to capture, organize, and connect information so your actual brain doesn’t have to juggle 300 unrelated things at once. I spun mine up in Notion.&lt;/p&gt;
+
+&lt;p&gt;Imagine a mix of:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;A projects-and-tasks database&lt;/li&gt;
+  &lt;li&gt;A notes section&lt;/li&gt;
+  &lt;li&gt;A documentation hub for everything I touched It looked a whole lot like &lt;a href=&quot;https://www.pinterest.com/pin/1085508316447488244/&quot;&gt;this setup&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;At one point, my Notion workspace grew so massive that I had to contact support to help recover it. That’s when I realized: I had unintentionally created a wiki that could rival a startup’s internal knowledge base. And honestly? It wasn’t a bad thing. Notion saved me countless times when switching hats between projects. But it was also &lt;em&gt;overkill&lt;/em&gt;. I didn’t need a personal encyclopedia for every little task. You’d think I learned my lesson there. I didn’t.&lt;/p&gt;
+
+&lt;h2 id=&quot;obsidian-notion-the-sequel&quot;&gt;Obsidian: Notion, the Sequel&lt;/h2&gt;
+
+&lt;p&gt;If Neovim is my Michael Jordan and Aerospace is my Scottie Pippen, then Obsidian is… let’s say Dennis Rodman.&lt;/p&gt;
+
+&lt;p&gt;Not a sports fan? Fine — if Neovim is Garrus Vakarian and Aerospace is Thane Krios, then Obsidian is Mordin Solus. Still nothing? Alright:&lt;/p&gt;
+
+&lt;p&gt;Neovim = Paladin, Aerospace = Monk, Obsidian = Cleric. Nothing, &lt;img src=&quot;https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YXYwazMyN2hmZTBjenMxb2UzOHE1MGIxdTJpdTA3N2RuZmhmYWU4aiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/gkFtBo3xl05UR9FA2Q/giphy.gif&quot; alt=&quot;Still?&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The point is: Obsidian completely changed how I was managing tasks. At first, I recreated my Notion workflow: task tables, sub-tasks, each task with its own linked note page. But that quickly led to a graveyard of dead links and pointless pages. Obsidian wasn’t the problem here — I was. I had rebuilt Notion inside of Obsidian. To make matters worse, I piled on plugins, automations, daily notes, reminders, and calendars until it all started to crumble under its own weight. My once-lightweight markdown app froze up like it was running on dial-up. Something had to change.&lt;/p&gt;
+
+&lt;h2 id=&quot;my-current-minimalist-setup&quot;&gt;My Current Minimalist Setup&lt;/h2&gt;
+&lt;p&gt;I finally stripped everything back down. Now my system is simple, lightweight, and portable across all my machines:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://taskwarrior.org/docs/start/&quot;&gt;Taskwarrior&lt;/a&gt;&lt;/strong&gt; for task management – a CLI tool that lets me keep tasks in their purest form, with a few optional fields for tracking what actually matters.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://obsidian.md&quot;&gt;Obsidian&lt;/a&gt;&lt;/strong&gt; for notes – yes, I kept it, but now it’s just for actual note-taking. No bloated project databases, no endless documentation dumps. I only write down what I &lt;em&gt;need&lt;/em&gt;. And that’s it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;closing-thoughts&quot;&gt;Closing Thoughts&lt;/h2&gt;
+&lt;p&gt;What started as me trying to wrangle my ever-shifting list of daily tasks somehow spiraled into building a full-blown digital encyclopedia… twice. But along the way, I learned something that was simple but liberating: &lt;strong&gt;figuring out how to manage my tasks without them managing me.&lt;/strong&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+        <name>Thomas M</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="setup" />
+      
+        <category term="rants" />
+      
+
+      
+        <summary type="html">I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: “What’s something you didn’t expect would be a challenge as a developer?”</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

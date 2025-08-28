@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
   <link href="https://thomasmcleanjr.cv/tag/whoami/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" />
-  <updated>2025-08-15T15:49:53+00:00</updated>
+  <updated>2025-08-28T02:15:47+00:00</updated>
   <id>https://thomasmcleanjr.cv/tag/whoami/feed.xml</id>
 
   
@@ -297,72 +297,72 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
 &lt;/header&gt;
 &lt;h6&gt;In my daily activities, I engage in the following tasks:&lt;/h6&gt;
 
-&lt;dl&gt;
+&lt;ul&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Technical Leader&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Source of Technical knowledge for projects and applications. I field questions for our teams products and projects. Provide context of why future projects are important. Design project plans and timelines of work for future products. Give level design plans for Products in the Proof of concept phase.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Technical Leader:&lt;/strong&gt;
+    Source of Technical knowledge for projects and applications. I field questions for our teams products and projects. Provide context of why future projects are important. Design project plans and timelines of work for future products. Give level design plans for Products in the Proof of concept phase.&lt;/li&gt;
   &lt;/div&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Implementation&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Translate design and concepts into functioning software systems. This includes coding, testing, integrating internal and external components to meet acceptance criteria of our products or set by our product managers.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Implementation:&lt;/strong&gt;
+    Translate design and concepts into functioning software systems. This includes coding, testing, integrating internal and external components to meet acceptance criteria of our products or set by our product managers.&lt;/li&gt;
   &lt;/div&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Mentorship and Review&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Assist in the growth of Junior and fellow mid level Engineers in development concepts and design patterns. Review pull request, complete risk assessments and provide retrospection for issues effecting external applications.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Mentorship and Review:&lt;/strong&gt;
+    Assist in the growth of Junior and fellow mid level Engineers in development concepts and design patterns. Review pull request, complete risk assessments and provide retrospection for issues effecting external applications.&lt;/li&gt;
   &lt;/div&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Cross Team/Cross Companies Communication and Assistance&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Facilitate communication between teams and companies to ensure alignment on technical requirements and project goals. Assist in resolving technical issues that span multiple teams or companies, ensuring smooth collaboration and timely delivery of projects.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Cross Team/Cross Companies Communication and Assistance:&lt;/strong&gt;
+    Facilitate communication between teams and companies to ensure alignment on technical requirements and project goals. Assist in resolving technical issues that span multiple teams or companies, ensuring smooth collaboration and timely delivery of projects.&lt;/li&gt;
   &lt;/div&gt;
-&lt;/dl&gt;
+&lt;/ul&gt;
 
 &lt;header&gt;
   &lt;h2 id=&quot;insights&quot;&gt;📁 Quarterly Insights&lt;/h2&gt;
 &lt;/header&gt;
 &lt;h6&gt;In my quarterly activities, I engage in the following tasks:&lt;/h6&gt;
 
-&lt;dl&gt;
+&lt;ul&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;API Development:&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Create and maintain internal APIs that facilitate data exchange between internal customers and external clients.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;API Development:&lt;/strong&gt;
+    Create and maintain internal APIs that facilitate data exchange between internal customers and external clients.&lt;/li&gt;
   &lt;/div&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Front-End Development:&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Build and enhance front-end applications for both internal and external users.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Front-End Development:&lt;/strong&gt;
+    Build and enhance front-end applications for both internal and external users.&lt;/li&gt;
   &lt;/div&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Technical Planning:&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Develop project-specific technical requirements and establish technical standards for integrations and other projects.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Technical Planning:&lt;/strong&gt;
+    Develop project-specific technical requirements and establish technical standards for integrations and other projects.&lt;/li&gt;
   &lt;/div&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Scalable Architecture Design:&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Designed a scalable microservices architecture that improved system performance and reduced downtime. Led a project to optimize database queries and indexing strategies.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Scalable Architecture Design:&lt;/strong&gt;
+    Designed a scalable microservices architecture that improved system performance and reduced downtime. Led a project to optimize database queries and indexing strategies.&lt;/li&gt;
   &lt;/div&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Product Ideation:&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Deconstruct new product ideas to effectively plan and organize technical work across multiple applications.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Product Ideation:&lt;/strong&gt;
+    Deconstruct new product ideas to effectively plan and organize technical work across multiple applications.&lt;/li&gt;
   &lt;/div&gt;
-&lt;/dl&gt;
+&lt;/ul&gt;
 
 &lt;header&gt;
   &lt;h2 id=&quot;insights&quot;&gt;📁 Achievements&lt;/h2&gt;
 &lt;/header&gt;
 &lt;h6&gt;My Recent Achievements&lt;/h6&gt;
 
-&lt;dl&gt;
+&lt;ul&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Gateway API Solution&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;My team was previously paying ~$300,000 annually for a Gateway API that enabled our application to connect to two vendors. After a cost-to-time analysis, I designed and implemented a solution that allowed our team to cancel the contract and eliminate this expense.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Gateway API Solution:&lt;/strong&gt;
+    My team was previously paying ~$300,000 annually for a Gateway API that enabled our application to connect to two vendors. After a cost-to-time analysis, I designed and implemented a solution that allowed our team to cancel the contract and eliminate this expense.&lt;/li&gt;
   &lt;/div&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Application Monitoring&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Leadership has directed that our team will no longer use Grafana and Sentry for monitoring applications in the future. To ensure application health, product performance, and efficient troubleshooting, I implemented logic to integrate our applications with Datadog, an observability platform.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Application Monitoring:&lt;/strong&gt;
+    Leadership has directed that our team will no longer use Grafana and Sentry for monitoring applications in the future. To ensure application health, product performance, and efficient troubleshooting, I implemented logic to integrate our applications with Datadog, an observability platform.&lt;/li&gt;
   &lt;/div&gt;
   &lt;div class=&quot;insight-card&quot;&gt;
-    &lt;dt&gt;&lt;strong&gt;Prior Authorization Status Check&lt;/strong&gt;&lt;/dt&gt;
-    &lt;dd&gt;Previously, our team spent thousands of man hours manually contacting insurance companies to update statuses on prior authorizations. I developed an API to automate the retrieval of PA statuses, significantly reducing costs. This solution supports a product that generates over ~$20 million in revenue annually and saves the company millions in expenditures.&lt;/dd&gt;
+    &lt;li&gt;&lt;strong&gt;Prior Authorization Status Check:&lt;/strong&gt;
+    Previously, our team spent thousands of man hours manually contacting insurance companies to update statuses on prior authorizations. I developed an API to automate the retrieval of PA statuses, significantly reducing costs. This solution supports a product that generates over ~$20 million in revenue annually and saves the company millions in expenditures.&lt;/li&gt;
   &lt;/div&gt;
-&lt;/dl&gt;</content>
+&lt;/ul&gt;</content>
 
       
       
