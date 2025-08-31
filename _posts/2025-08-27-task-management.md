@@ -39,7 +39,7 @@ A **Second Brain** is basically a knowledge management system — an external pl
 Imagine a mix of: 
 - A projects-and-tasks database 
 - A notes section 
-- A documentation hub for everything I touched -> ![this setup](assets/images/notion.png)
+- A documentation hub for everything I touched It looked a whole lot like [this setup](https://www.pinterest.com/pin/1085508316447488244/). 
 
 At one point, my Notion workspace grew so massive that I had to contact support to help recover it. That’s when I realized: I had unintentionally created a wiki that could rival a startup’s internal knowledge base. And honestly? It wasn’t a bad thing. Notion saved me countless times when switching hats between projects. But it was also *overkill*. I didn’t need a personal encyclopedia for every little task. You’d think I learned my lesson there. I didn’t. 
 
