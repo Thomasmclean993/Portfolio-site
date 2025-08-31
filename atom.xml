@@ -8,6 +8,20 @@
     
       
       <item>
+        <title>Task Management and My Second Brain</title>
+        
+          <description>&lt;p&gt;I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: &lt;strong&gt;“What’s something you didn’t expect would be a challenge as a developer?”&lt;/strong&gt;&lt;/p&gt;
+</description>
+        
+        <pubDate>Tue, 26 Aug 2025 08:00:00 +0000</pubDate>
+        <link>
+        https://thomasmcleanjr.cv/task-management</link>
+        <guid isPermaLink="true">https://thomasmcleanjr.cv/task-management</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>How I Added Custom Datadog Metrics using an Unsupported Language.</title>
         
           <description>&lt;p&gt;First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.&lt;/p&gt;
@@ -17,20 +31,6 @@
         <link>
         https://thomasmcleanjr.cv/datadog-metrics</link>
         <guid isPermaLink="true">https://thomasmcleanjr.cv/datadog-metrics</guid>
-      </item>
-      
-    
-      
-      <item>
-        <title>Task Management and My Second Brain</title>
-        
-          <description>&lt;p&gt;I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: &lt;strong&gt;“What’s something you didn’t expect would be a challenge as a developer?”&lt;/strong&gt;&lt;/p&gt;
-</description>
-        
-        <pubDate>Mon, 11 Aug 2025 08:00:00 +0000</pubDate>
-        <link>
-        https://thomasmcleanjr.cv/task-management</link>
-        <guid isPermaLink="true">https://thomasmcleanjr.cv/task-management</guid>
       </item>
       
     

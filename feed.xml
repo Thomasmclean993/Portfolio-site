@@ -1,4 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://thomasmcleanjr.cv/feed.xml" rel="self" type="application/atom+xml" /><link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" /><updated>2025-08-31T18:06:25+00:00</updated><id>https://thomasmcleanjr.cv/feed.xml</id><title type="html">My Portfolio</title><subtitle>My Professional Portfolio and Resume</subtitle><entry><title type="html">How I Added Custom Datadog Metrics using an Unsupported Language.</title><link href="https://thomasmcleanjr.cv/datadog-metrics" rel="alternate" type="text/html" title="How I Added Custom Datadog Metrics using an Unsupported Language." /><published>2025-08-11T09:00:00+00:00</published><updated>2025-08-11T09:00:00+00:00</updated><id>https://thomasmcleanjr.cv/datadog-metrics</id><content type="html" xml:base="https://thomasmcleanjr.cv/datadog-metrics"><![CDATA[<p>First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://thomasmcleanjr.cv/feed.xml" rel="self" type="application/atom+xml" /><link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" /><updated>2025-08-31T18:11:32+00:00</updated><id>https://thomasmcleanjr.cv/feed.xml</id><title type="html">My Portfolio</title><subtitle>My Professional Portfolio and Resume</subtitle><entry><title type="html">Task Management and My Second Brain</title><link href="https://thomasmcleanjr.cv/task-management" rel="alternate" type="text/html" title="Task Management and My Second Brain" /><published>2025-08-26T08:00:00+00:00</published><updated>2025-08-26T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/task-management</id><content type="html" xml:base="https://thomasmcleanjr.cv/task-management"><![CDATA[<p>I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: <strong>“What’s something you didn’t expect would be a challenge as a developer?”</strong></p>
+
+<p>After sitting with that question for a while, I realized I had a few answers:</p>
+<ul>
+  <li>Communicating with different types of people.</li>
+  <li>Writing clear documentation.</li>
+  <li>Figuring out how often I need to query a database (and how much indexes matter).</li>
+</ul>
+
+<p>But there’s one challenge I almost never see talked about: <strong>task management.</strong> Sure, I hear about project management or time management — there are endless books and how‑tos on those. But what about the plain, everyday skill of juggling <em>tasks</em> as a developer? That one doesn’t get nearly enough airtime.</p>
+
+<h2 id="how-many-tasks-do-i-usually-own">How Many Tasks Do I Usually Own?</h2>
+
+<p>I work at a company that keeps teams pretty lean while still chasing quarterly objectives. Translation: it’s rare for anyone to own just one thing at a time. A typical week for me looks like:</p>
+<ul>
+  <li><strong>A KPI-related project with a hard deadline</strong></li>
+  <li><strong>Another project aligned with a longer‑term objective</strong> (something that eventually impacts a KPI)</li>
+  <li><strong>A technical improvement project</strong> (monitoring, logging, performance tuning)</li>
+  <li><strong>A product manager’s “quick ask”</strong> (usually an investigation into a potential feature or product idea)</li>
+</ul>
+
+<p>And that’s just projects. Each one breaks down into many smaller tasks that all need tracking — and that’s before we even bring up being on‑call. So my daily task list is in constant flux. Priorities get reshuffled, people become unavailable, and something new is always getting dropped on my plate. It’s an overlooked aspect of “wearing many hats”: to juggle it all, I need a system. A way to track what matters now, what can wait, and what needs to be handed off.</p>
+
+<p>Naturally, I went down the <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMW1sajBzbnFtZ3YzODE0eGp5ZDd5b3BmNG96NXh6YzAxeGY3ZGg2YyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/T1GWTCSrTr2tnsvq4k/giphy.gif" alt="rabbit hole" /> My favorite learning platform? <strong>YouTube University.</strong> After a few late nights and way too many productivity videos, I decided to give <a href="https://www.youtube.com/watch?v=m9S5I3pWz94">this recommendation</a> from Thomas Frank a try.</p>
+
+<h2 id="the-second-brain-via-notion">The Second Brain (via Notion)</h2>
+
+<p>A <strong>Second Brain</strong> is basically a knowledge management system — an external place to capture, organize, and connect information so your actual brain doesn’t have to juggle 300 unrelated things at once. I spun mine up in Notion.</p>
+
+<p>Imagine a mix of:</p>
+<ul>
+  <li>A projects-and-tasks database</li>
+  <li>A notes section</li>
+  <li>A documentation hub for everything I touched It looked a whole lot like <img src="assets/images/notion.png" alt="this setup" />.</li>
+</ul>
+
+<p>At one point, my Notion workspace grew so massive that I had to contact support to help recover it. That’s when I realized: I had unintentionally created a wiki that could rival a startup’s internal knowledge base. And honestly? It wasn’t a bad thing. Notion saved me countless times when switching hats between projects. But it was also <em>overkill</em>. I didn’t need a personal encyclopedia for every little task. You’d think I learned my lesson there. I didn’t.</p>
+
+<h2 id="obsidian-notion-the-sequel">Obsidian: Notion, the Sequel</h2>
+
+<p>If Neovim is my Michael Jordan and Aerospace is my Scottie Pippen, then Obsidian is… let’s say Dennis Rodman.</p>
+
+<p>Not a sports fan? Fine — if Neovim is Garrus Vakarian and Aerospace is Thane Krios, then Obsidian is Mordin Solus. Still nothing? Alright:</p>
+
+<p>Neovim = Paladin, Aerospace = Monk, Obsidian = Cleric. Nothing, <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YXYwazMyN2hmZTBjenMxb2UzOHE1MGIxdTJpdTA3N2RuZmhmYWU4aiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/gkFtBo3xl05UR9FA2Q/giphy.gif" alt="Still?" /></p>
+
+<p>The point is: Obsidian completely changed how I was managing tasks. At first, I recreated my Notion workflow: task tables, sub-tasks, each task with its own linked note page. But that quickly led to a graveyard of dead links and pointless pages. Obsidian wasn’t the problem here — I was. I had rebuilt Notion inside of Obsidian. To make matters worse, I piled on plugins, automations, daily notes, reminders, and calendars until it all started to crumble under its own weight. My once-lightweight markdown app froze up like it was running on dial-up. Something had to change.</p>
+
+<h2 id="my-current-minimalist-setup">My Current Minimalist Setup</h2>
+<p>I finally stripped everything back down. Now my system is simple, lightweight, and portable across all my machines:</p>
+<ul>
+  <li><strong><a href="https://taskwarrior.org/docs/start/">Taskwarrior</a></strong> for task management – a CLI tool that lets me keep tasks in their purest form, with a few optional fields for tracking what actually matters.</li>
+  <li><strong><a href="https://obsidian.md">Obsidian</a></strong> for notes – yes, I kept it, but now it’s just for actual note-taking. No bloated project databases, no endless documentation dumps. I only write down what I <em>need</em>. And that’s it.</li>
+</ul>
+
+<h2 id="closing-thoughts">Closing Thoughts</h2>
+<p>What started as me trying to wrangle my ever-shifting list of daily tasks somehow spiraled into building a full-blown digital encyclopedia… twice. But along the way, I learned something that was simple but liberating: <strong>figuring out how to manage my tasks without them managing me.</strong></p>]]></content><author><name>Thomas M</name></author><category term="setup" /><category term="rants" /><summary type="html"><![CDATA[I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: “What’s something you didn’t expect would be a challenge as a developer?”]]></summary></entry><entry><title type="html">How I Added Custom Datadog Metrics using an Unsupported Language.</title><link href="https://thomasmcleanjr.cv/datadog-metrics" rel="alternate" type="text/html" title="How I Added Custom Datadog Metrics using an Unsupported Language." /><published>2025-08-11T09:00:00+00:00</published><updated>2025-08-11T09:00:00+00:00</updated><id>https://thomasmcleanjr.cv/datadog-metrics</id><content type="html" xml:base="https://thomasmcleanjr.cv/datadog-metrics"><![CDATA[<p>First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.</p>
 
 <p>We tried it before and ran into issues. This was before I owned the project, so I don’t know all the specifics.
 Our DevOps team advised against it due to constraints within our organization’s Datadog setup.
@@ -314,63 +370,7 @@ I’m looking for a job I can be passionate about, where I can help others. I’
 
 <p>If you’re on an unconventional path, keep going. Persistence and adaptability are your best tools. And if you ever feel lost, confused, or unsure of an answer—whether you’re behind a keyboard or just trying to figure out your next move—remember:</p>
 
-<p>The process is just as important as the solution.</p>]]></content><author><name>Thomas M</name></author><category term="whoami" /><category term="work-experience" /><summary type="html"><![CDATA[If there’s one thing I’ve learned about myself, it’s that I rarely do things the “normal” way. While everyone else was busy racking up points in the Accelerated Reading program with the usual suspects—Magic Tree House, Diary of a Wimpy Kid, Harry Potter—I was more interested in hacking my way through Deus Ex Machina: Human Evolution or setting my alarm for 4 a.m. to catch Cowboy Bebop reruns. I’ve always had a knack for finding my own path, especially when the standard route just didn’t make sense to me.]]></summary></entry><entry><title type="html">Task Management and My Second Brain</title><link href="https://thomasmcleanjr.cv/task-management" rel="alternate" type="text/html" title="Task Management and My Second Brain" /><published>2025-08-11T08:00:00+00:00</published><updated>2025-08-11T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/task-management</id><content type="html" xml:base="https://thomasmcleanjr.cv/task-management"><![CDATA[<p>I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: <strong>“What’s something you didn’t expect would be a challenge as a developer?”</strong></p>
-
-<p>After sitting with that question for a while, I realized I had a few answers:</p>
-<ul>
-  <li>Communicating with different types of people.</li>
-  <li>Writing clear documentation.</li>
-  <li>Figuring out how often I need to query a database (and how much indexes matter).</li>
-</ul>
-
-<p>But there’s one challenge I almost never see talked about: <strong>task management.</strong> Sure, I hear about project management or time management — there are endless books and how‑tos on those. But what about the plain, everyday skill of juggling <em>tasks</em> as a developer? That one doesn’t get nearly enough airtime.</p>
-
-<h2 id="how-many-tasks-do-i-usually-own">How Many Tasks Do I Usually Own?</h2>
-
-<p>I work at a company that keeps teams pretty lean while still chasing quarterly objectives. Translation: it’s rare for anyone to own just one thing at a time. A typical week for me looks like:</p>
-<ul>
-  <li><strong>A KPI-related project with a hard deadline</strong></li>
-  <li><strong>Another project aligned with a longer‑term objective</strong> (something that eventually impacts a KPI)</li>
-  <li><strong>A technical improvement project</strong> (monitoring, logging, performance tuning)</li>
-  <li><strong>A product manager’s “quick ask”</strong> (usually an investigation into a potential feature or product idea)</li>
-</ul>
-
-<p>And that’s just projects. Each one breaks down into many smaller tasks that all need tracking — and that’s before we even bring up being on‑call. So my daily task list is in constant flux. Priorities get reshuffled, people become unavailable, and something new is always getting dropped on my plate. It’s an overlooked aspect of “wearing many hats”: to juggle it all, I need a system. A way to track what matters now, what can wait, and what needs to be handed off.</p>
-
-<p>Naturally, I went down the <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMW1sajBzbnFtZ3YzODE0eGp5ZDd5b3BmNG96NXh6YzAxeGY3ZGg2YyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/T1GWTCSrTr2tnsvq4k/giphy.gif" alt="rabbit hole" /> My favorite learning platform? <strong>YouTube University.</strong> After a few late nights and way too many productivity videos, I decided to give <a href="https://www.youtube.com/watch?v=m9S5I3pWz94">this recommendation</a> from Thomas Frank a try.</p>
-
-<h2 id="the-second-brain-via-notion">The Second Brain (via Notion)</h2>
-
-<p>A <strong>Second Brain</strong> is basically a knowledge management system — an external place to capture, organize, and connect information so your actual brain doesn’t have to juggle 300 unrelated things at once. I spun mine up in Notion.</p>
-
-<p>Imagine a mix of:</p>
-<ul>
-  <li>A projects-and-tasks database</li>
-  <li>A notes section</li>
-  <li>A documentation hub for everything I touched It looked a whole lot like <a href="https://www.pinterest.com/pin/1085508316447488244/">this setup</a>.</li>
-</ul>
-
-<p>At one point, my Notion workspace grew so massive that I had to contact support to help recover it. That’s when I realized: I had unintentionally created a wiki that could rival a startup’s internal knowledge base. And honestly? It wasn’t a bad thing. Notion saved me countless times when switching hats between projects. But it was also <em>overkill</em>. I didn’t need a personal encyclopedia for every little task. You’d think I learned my lesson there. I didn’t.</p>
-
-<h2 id="obsidian-notion-the-sequel">Obsidian: Notion, the Sequel</h2>
-
-<p>If Neovim is my Michael Jordan and Aerospace is my Scottie Pippen, then Obsidian is… let’s say Dennis Rodman.</p>
-
-<p>Not a sports fan? Fine — if Neovim is Garrus Vakarian and Aerospace is Thane Krios, then Obsidian is Mordin Solus. Still nothing? Alright:</p>
-
-<p>Neovim = Paladin, Aerospace = Monk, Obsidian = Cleric. Nothing, <img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3YXYwazMyN2hmZTBjenMxb2UzOHE1MGIxdTJpdTA3N2RuZmhmYWU4aiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/gkFtBo3xl05UR9FA2Q/giphy.gif" alt="Still?" /></p>
-
-<p>The point is: Obsidian completely changed how I was managing tasks. At first, I recreated my Notion workflow: task tables, sub-tasks, each task with its own linked note page. But that quickly led to a graveyard of dead links and pointless pages. Obsidian wasn’t the problem here — I was. I had rebuilt Notion inside of Obsidian. To make matters worse, I piled on plugins, automations, daily notes, reminders, and calendars until it all started to crumble under its own weight. My once-lightweight markdown app froze up like it was running on dial-up. Something had to change.</p>
-
-<h2 id="my-current-minimalist-setup">My Current Minimalist Setup</h2>
-<p>I finally stripped everything back down. Now my system is simple, lightweight, and portable across all my machines:</p>
-<ul>
-  <li><strong><a href="https://taskwarrior.org/docs/start/">Taskwarrior</a></strong> for task management – a CLI tool that lets me keep tasks in their purest form, with a few optional fields for tracking what actually matters.</li>
-  <li><strong><a href="https://obsidian.md">Obsidian</a></strong> for notes – yes, I kept it, but now it’s just for actual note-taking. No bloated project databases, no endless documentation dumps. I only write down what I <em>need</em>. And that’s it.</li>
-</ul>
-
-<h2 id="closing-thoughts">Closing Thoughts</h2>
-<p>What started as me trying to wrangle my ever-shifting list of daily tasks somehow spiraled into building a full-blown digital encyclopedia… twice. But along the way, I learned something that was simple but liberating: <strong>figuring out how to manage my tasks without them managing me.</strong></p>]]></content><author><name>Thomas M</name></author><category term="setup" /><category term="rants" /><summary type="html"><![CDATA[I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: “What’s something you didn’t expect would be a challenge as a developer?”]]></summary></entry><entry><title type="html">How Bartending Made Me a Better Problem Solver</title><link href="https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver" rel="alternate" type="text/html" title="How Bartending Made Me a Better Problem Solver" /><published>2025-08-07T08:00:00+00:00</published><updated>2025-08-07T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver</id><content type="html" xml:base="https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver"><![CDATA[<p>I don’t remember exactly when I caught the coding bug. Maybe it started when I played Skyrim with a mod that was no longer being updated, and decided to fix it myself. Or maybe it was when I picked up <em>Automate the Boring Stuff with Python</em> and learned Python just for fun. I even learned some HTML and CSS back in high school, making a scrolling banner on a static page.</p>
+<p>The process is just as important as the solution.</p>]]></content><author><name>Thomas M</name></author><category term="whoami" /><category term="work-experience" /><summary type="html"><![CDATA[If there’s one thing I’ve learned about myself, it’s that I rarely do things the “normal” way. While everyone else was busy racking up points in the Accelerated Reading program with the usual suspects—Magic Tree House, Diary of a Wimpy Kid, Harry Potter—I was more interested in hacking my way through Deus Ex Machina: Human Evolution or setting my alarm for 4 a.m. to catch Cowboy Bebop reruns. I’ve always had a knack for finding my own path, especially when the standard route just didn’t make sense to me.]]></summary></entry><entry><title type="html">How Bartending Made Me a Better Problem Solver</title><link href="https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver" rel="alternate" type="text/html" title="How Bartending Made Me a Better Problem Solver" /><published>2025-08-07T08:00:00+00:00</published><updated>2025-08-07T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver</id><content type="html" xml:base="https://thomasmcleanjr.cv/how-bartending-made-me-a-better-problem-solver"><![CDATA[<p>I don’t remember exactly when I caught the coding bug. Maybe it started when I played Skyrim with a mod that was no longer being updated, and decided to fix it myself. Or maybe it was when I picked up <em>Automate the Boring Stuff with Python</em> and learned Python just for fun. I even learned some HTML and CSS back in high school, making a scrolling banner on a static page.</p>
 
 <p>But what I do know is that I’ve always loved problem-solving and creating something for others to enjoy. The funny thing is, I didn’t really become good at it until I became a bartender.</p>
 
