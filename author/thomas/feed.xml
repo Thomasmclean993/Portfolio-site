@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
   <link href="https://thomasmcleanjr.cv/author/thomas/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" />
-  <updated>2025-10-15T03:57:31+00:00</updated>
+  <updated>2025-10-15T12:38:26+00:00</updated>
   <id>https://thomasmcleanjr.cv/author/thomas/feed.xml</id>
 
   
@@ -24,75 +24,6 @@
   
   
 
-  
-    <entry>
-      <title type="html">Take Home should always have feedback</title>
-      <link href="https://thomasmcleanjr.cv/take-home-equal-feedback" rel="alternate" type="text/html" title="Take Home should always have feedback" />
-      <published>2025-10-14T08:00:00+00:00</published>
-      <updated>2025-10-14T08:00:00+00:00</updated>
-      <id>https://thomasmcleanjr.cv/take-home-equal-feedback</id>
-      <content type="html" xml:base="https://thomasmcleanjr.cv/take-home-equal-feedback">&lt;h3 id=&quot;i-like-takehome-assignments&quot;&gt;I like take‑home assignments.&lt;/h3&gt;
-
-&lt;p&gt;I’ve tried other interview formats, and honestly, I’m not a fan.
-I know take‑homes aren’t for everyone.
-If you’ve got kids to care for, a packed schedule, or simply don’t enjoy programming outside work hours, then take‑homes probably aren’t for you—and that’s fine.&lt;/p&gt;
-
-&lt;p&gt;Take‑homes work for me for a few reasons:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;They feel the closest to a normal workday.&lt;/li&gt;
-  &lt;li&gt;I rarely pair or mob.&lt;/li&gt;
-  &lt;li&gt;I like figuring things out on my own before seeking help.&lt;/li&gt;
-  &lt;li&gt;Take‑home assignments are usually based on real‑world problems.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So the following words are hard for me to say: I don’t want to do take‑homes anymore.&lt;/p&gt;
-
-&lt;p&gt;It’s not the time commitment or getting my local setup to cooperate with their app—it’s what happens afterwards.
-After I send the project in.
-After the rejection.
-When I get no feedback at all.&lt;/p&gt;
-
-&lt;p&gt;For developers job‑hunting in this market, it’s already tough.
-It feels like everyone is looking for work, but only senior, staff, and higher‑level engineers are getting hired.
-When you apply, you’re competing against a lot of talented people.
-Everyone’s trying to stand out—perfecting resumes, polishing side projects, contributing to open source—you name it, we’re doing it.&lt;/p&gt;
-
-&lt;p&gt;So after all that effort—landing the interview, completing the take‑home—when a dev gets rejected, the least a hiring manager or recruiter could do is send an email offering feedback on what to improve next time.&lt;/p&gt;
-
-&lt;p&gt;Many companies preach an “always be improving” mindset, but in software engineering that idea seems supercharged.
-With AI, tight metrics, and constant pressure to deliver value, growth is more important than ever.
-That’s why feedback matters—deeply.&lt;/p&gt;
-
-&lt;p&gt;If you don’t have time to give feedback, you don’t really have time to interview anyone.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Peace out!&lt;/strong&gt; 🫶🏻&lt;/p&gt;</content>
-
-      
-      
-      
-      
-      
-
-      <author>
-        <name>Thomas M</name>
-        
-        
-      </author>
-
-      
-
-      
-        <category term="rants" />
-      
-
-      
-        <summary type="html">I like take‑home assignments.</summary>
-      
-
-      
-      
-    </entry>
   
     <entry>
       <title type="html">Task Management and My Second Brain</title>
