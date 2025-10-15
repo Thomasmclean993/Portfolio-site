@@ -1,4 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://thomasmcleanjr.cv/feed.xml" rel="self" type="application/atom+xml" /><link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" /><updated>2025-08-31T18:11:46+00:00</updated><id>https://thomasmcleanjr.cv/feed.xml</id><title type="html">My Portfolio</title><subtitle>My Professional Portfolio and Resume</subtitle><entry><title type="html">Task Management and My Second Brain</title><link href="https://thomasmcleanjr.cv/task-management" rel="alternate" type="text/html" title="Task Management and My Second Brain" /><published>2025-08-26T08:00:00+00:00</published><updated>2025-08-26T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/task-management</id><content type="html" xml:base="https://thomasmcleanjr.cv/task-management"><![CDATA[<p>I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: <strong>“What’s something you didn’t expect would be a challenge as a developer?”</strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://thomasmcleanjr.cv/feed.xml" rel="self" type="application/atom+xml" /><link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" /><updated>2025-10-15T03:57:29+00:00</updated><id>https://thomasmcleanjr.cv/feed.xml</id><title type="html">My Portfolio</title><subtitle>My Professional Portfolio and Resume</subtitle><entry><title type="html">Take Home should always have feedback</title><link href="https://thomasmcleanjr.cv/take-home-equal-feedback" rel="alternate" type="text/html" title="Take Home should always have feedback" /><published>2025-10-14T08:00:00+00:00</published><updated>2025-10-14T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/take-home-equal-feedback</id><content type="html" xml:base="https://thomasmcleanjr.cv/take-home-equal-feedback"><![CDATA[<h3 id="i-like-takehome-assignments">I like take‑home assignments.</h3>
+
+<p>I’ve tried other interview formats, and honestly, I’m not a fan.
+I know take‑homes aren’t for everyone.
+If you’ve got kids to care for, a packed schedule, or simply don’t enjoy programming outside work hours, then take‑homes probably aren’t for you—and that’s fine.</p>
+
+<p>Take‑homes work for me for a few reasons:</p>
+
+<ul>
+  <li>They feel the closest to a normal workday.</li>
+  <li>I rarely pair or mob.</li>
+  <li>I like figuring things out on my own before seeking help.</li>
+  <li>Take‑home assignments are usually based on real‑world problems.</li>
+</ul>
+
+<p>So the following words are hard for me to say: I don’t want to do take‑homes anymore.</p>
+
+<p>It’s not the time commitment or getting my local setup to cooperate with their app—it’s what happens afterwards.
+After I send the project in.
+After the rejection.
+When I get no feedback at all.</p>
+
+<p>For developers job‑hunting in this market, it’s already tough.
+It feels like everyone is looking for work, but only senior, staff, and higher‑level engineers are getting hired.
+When you apply, you’re competing against a lot of talented people.
+Everyone’s trying to stand out—perfecting resumes, polishing side projects, contributing to open source—you name it, we’re doing it.</p>
+
+<p>So after all that effort—landing the interview, completing the take‑home—when a dev gets rejected, the least a hiring manager or recruiter could do is send an email offering feedback on what to improve next time.</p>
+
+<p>Many companies preach an “always be improving” mindset, but in software engineering that idea seems supercharged.
+With AI, tight metrics, and constant pressure to deliver value, growth is more important than ever.
+That’s why feedback matters—deeply.</p>
+
+<p>If you don’t have time to give feedback, you don’t really have time to interview anyone.</p>
+
+<p><strong>Peace out!</strong> 🫶🏻</p>]]></content><author><name>Thomas M</name></author><category term="rants" /><summary type="html"><![CDATA[I like take‑home assignments.]]></summary></entry><entry><title type="html">Task Management and My Second Brain</title><link href="https://thomasmcleanjr.cv/task-management" rel="alternate" type="text/html" title="Task Management and My Second Brain" /><published>2025-08-26T08:00:00+00:00</published><updated>2025-08-26T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/task-management</id><content type="html" xml:base="https://thomasmcleanjr.cv/task-management"><![CDATA[<p>I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: <strong>“What’s something you didn’t expect would be a challenge as a developer?”</strong></p>
 
 <p>After sitting with that question for a while, I realized I had a few answers:</p>
 <ul>
