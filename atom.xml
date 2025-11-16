@@ -8,6 +8,22 @@
     
       
       <item>
+        <title>Connecting Cards to Documentation</title>
+        
+          <description>&lt;blockquote&gt;
+&quot;What happens if I&apos;m hit by a bus tomorrow?&quot;
+&lt;/blockquote&gt;
+</description>
+        
+        <pubDate>Mon, 27 Oct 2025 08:00:00 +0000</pubDate>
+        <link>
+        https://thomasmcleanjr.cv/cards-to-docs</link>
+        <guid isPermaLink="true">https://thomasmcleanjr.cv/cards-to-docs</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>Task Management and My Second Brain</title>
         
           <description>&lt;p&gt;I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: &lt;strong&gt;“What’s something you didn’t expect would be a challenge as a developer?”&lt;/strong&gt;&lt;/p&gt;

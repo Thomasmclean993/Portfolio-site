@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
   <link href="https://thomasmcleanjr.cv/tag/setup/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" />
-  <updated>2025-10-15T12:38:40+00:00</updated>
+  <updated>2025-11-16T03:09:56+00:00</updated>
   <id>https://thomasmcleanjr.cv/tag/setup/feed.xml</id>
 
   
@@ -34,6 +34,7 @@
       <content type="html" xml:base="https://thomasmcleanjr.cv/task-management">&lt;p&gt;I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: &lt;strong&gt;“What’s something you didn’t expect would be a challenge as a developer?”&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;After sitting with that question for a while, I realized I had a few answers:&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Communicating with different types of people.&lt;/li&gt;
   &lt;li&gt;Writing clear documentation.&lt;/li&gt;
@@ -45,6 +46,7 @@
 &lt;h2 id=&quot;how-many-tasks-do-i-usually-own&quot;&gt;How Many Tasks Do I Usually Own?&lt;/h2&gt;
 
 &lt;p&gt;I work at a company that keeps teams pretty lean while still chasing quarterly objectives. Translation: it’s rare for anyone to own just one thing at a time. A typical week for me looks like:&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;A KPI-related project with a hard deadline&lt;/strong&gt;&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;Another project aligned with a longer‑term objective&lt;/strong&gt; (something that eventually impacts a KPI)&lt;/li&gt;
@@ -61,6 +63,7 @@
 &lt;p&gt;A &lt;strong&gt;Second Brain&lt;/strong&gt; is basically a knowledge management system — an external place to capture, organize, and connect information so your actual brain doesn’t have to juggle 300 unrelated things at once. I spun mine up in Notion.&lt;/p&gt;
 
 &lt;p&gt;Imagine a mix of:&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;A projects-and-tasks database&lt;/li&gt;
   &lt;li&gt;A notes section&lt;/li&gt;
@@ -80,14 +83,19 @@
 &lt;p&gt;The point is: Obsidian completely changed how I was managing tasks. At first, I recreated my Notion workflow: task tables, sub-tasks, each task with its own linked note page. But that quickly led to a graveyard of dead links and pointless pages. Obsidian wasn’t the problem here — I was. I had rebuilt Notion inside of Obsidian. To make matters worse, I piled on plugins, automations, daily notes, reminders, and calendars until it all started to crumble under its own weight. My once-lightweight markdown app froze up like it was running on dial-up. Something had to change.&lt;/p&gt;
 
 &lt;h2 id=&quot;my-current-minimalist-setup&quot;&gt;My Current Minimalist Setup&lt;/h2&gt;
+
 &lt;p&gt;I finally stripped everything back down. Now my system is simple, lightweight, and portable across all my machines:&lt;/p&gt;
+
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://taskwarrior.org/docs/start/&quot;&gt;Taskwarrior&lt;/a&gt;&lt;/strong&gt; for task management – a CLI tool that lets me keep tasks in their purest form, with a few optional fields for tracking what actually matters.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://obsidian.md&quot;&gt;Obsidian&lt;/a&gt;&lt;/strong&gt; for notes – yes, I kept it, but now it’s just for actual note-taking. No bloated project databases, no endless documentation dumps. I only write down what I &lt;em&gt;need&lt;/em&gt;. And that’s it.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;closing-thoughts&quot;&gt;Closing Thoughts&lt;/h2&gt;
-&lt;p&gt;What started as me trying to wrangle my ever-shifting list of daily tasks somehow spiraled into building a full-blown digital encyclopedia… twice. But along the way, I learned something that was simple but liberating: &lt;strong&gt;figuring out how to manage my tasks without them managing me.&lt;/strong&gt;&lt;/p&gt;</content>
+
+&lt;p&gt;What started as me trying to wrangle my ever-shifting list of daily tasks somehow spiraled into building a full-blown digital encyclopedia… twice. But along the way, I learned something that was simple but liberating: &lt;strong&gt;figuring out how to manage my tasks without them managing me.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Peace out! 🫶🏻&lt;/p&gt;</content>
 
       
       

@@ -1,6 +1,90 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://thomasmcleanjr.cv/feed.xml" rel="self" type="application/atom+xml" /><link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" /><updated>2025-10-15T12:38:40+00:00</updated><id>https://thomasmcleanjr.cv/feed.xml</id><title type="html">My Portfolio</title><subtitle>My Professional Portfolio and Resume</subtitle><entry><title type="html">Task Management and My Second Brain</title><link href="https://thomasmcleanjr.cv/task-management" rel="alternate" type="text/html" title="Task Management and My Second Brain" /><published>2025-08-26T08:00:00+00:00</published><updated>2025-08-26T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/task-management</id><content type="html" xml:base="https://thomasmcleanjr.cv/task-management"><![CDATA[<p>I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: <strong>“What’s something you didn’t expect would be a challenge as a developer?”</strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://thomasmcleanjr.cv/feed.xml" rel="self" type="application/atom+xml" /><link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" /><updated>2025-11-16T03:09:56+00:00</updated><id>https://thomasmcleanjr.cv/feed.xml</id><title type="html">My Portfolio</title><subtitle>My Professional Portfolio and Resume</subtitle><entry><title type="html">Connecting Cards to Documentation</title><link href="https://thomasmcleanjr.cv/cards-to-docs" rel="alternate" type="text/html" title="Connecting Cards to Documentation" /><published>2025-10-27T08:00:00+00:00</published><updated>2025-10-27T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/cards-to-docs</id><content type="html" xml:base="https://thomasmcleanjr.cv/cards-to-docs"><![CDATA[<blockquote>
+"What happens if I'm hit by a bus tomorrow?"
+</blockquote>
+
+<p><img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMm5ud2V6Nmd2YW9kMWZ3aXJza2NsZGNhNXVtZTY1Ym9renFleWx0YyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/1yT0KoIBdn8KzQVBJX/giphy.gif" alt="Truck-kun" /></p>
+
+<p>There are few sayings that remain as true as this one. It’s often said when one person or a small number of people has all the important information about a project or part of the stack, but no physical documentation exists anywhere(A silo).</p>
+
+<p>It’s something that was hammered into me since I was a junior. Documentation un-silos information, allowing any dev to pick up work and make progress. Documentation can be used to track progress as well, outside of a kanban system or whatever flavor your team uses.</p>
+
+<p>Something recently happened that changed my approach, and I wanted to discuss it here.</p>
+
+<h2 id="the-problem">The Problem</h2>
+<p>I had to take some sudden PTO. I couldn’t check my phone or my laptop. Now, I was also the owner of a project that was nearing its deadline. I left it up to my team to finish a final piece of the project: adding some creds to connect to a client and flipping a toggle to enable some testing for an internal partner.</p>
+
+<p>Before I left, I updated my documentation and shared links with my team.</p>
+
+<p>Came back after a few days–not only was the testing not complete, it wasn’t even started. There was some confusion on how the creds were being used forthis integration. The seniors couldn’t help much because they didn’t know are well. Suddenly I found myself, once again as a silo. The card sat untouched til the day that I got back.</p>
+
+<p>Why did this happen? I shared my documentation in the teams channel. I even shared the documentation with my leader before leaving. This bothered me because the project could have been complete earlier than planned, unblocking another project. This is also not the first time something like this happened.</p>
+
+<p>During stand up, I asked, and the answer surprised me. <strong>“What documentation?”</strong></p>
+
+<p>Our manager had to attend an RTO onsite that week, a launch of another project, and they were human. The links I shared were buried in the Teams chat.</p>
+
+<p><strong>So, Problem: Documentation is not readily available to others due to lack of visibility.</strong>
+<img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDA2ZW40ZzZybnFoc2JzbzRneXZueDdnaHFxc2xjcGJjOTgybHA2NSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/syoBxnXVugdtDkKOxw/giphy.gif" alt="My Problem" /></p>
+
+<h2 id="the-solution-i-didnt-love">The “Solution” I Didn’t Love</h2>
+
+<p>During retro, I asked our team, mostly the seniors, what the best practice was for sharing documentation.</p>
+
+<p>“Put the documentation on the card” was the overall verdict.</p>
+
+<p>I didn’t and still don’t agree with this method. What about:</p>
+
+<ul>
+  <li>The information that isn’t necessary for the work on the card but is necessary for the project as a whole?</li>
+  <li>What about test cases?</li>
+  <li>Requirements?</li>
+  <li>What are our business partners doing on their end to help complete the project?</li>
+</ul>
+
+<p>There is so much information that may be needed. This all can’t live on a card.</p>
+
+<h2 id="my-compromise">My Compromise</h2>
+
+<p>I wanted me team to be able to find the documentation that was necessary for the card, on the card. I don’t want to add unnecessary documentation on the vard but still available when needed. I needed something that was unobtrusive while also very visible. So I came up with a compromise that will make my team happy and rememdy the curse of the silo.
+<img src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3amMxMnRyZ28yaXplZzY2cndtOGY2dzk2YTc3emFkbzNzOHV1bjhpMSZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/BYdpzXoQskl9Yh6FAY/giphy.gif" alt="The Curse" /></p>
+
+<p><strong>First</strong>, I started adding links to my documentation on the cards themselves. It was a happy compromise. If someone needed to figure something out and I wasn’t available, it’s right there.</p>
+
+<p><strong>Second</strong>, on the documentation itself, I added links to the cards for the associated work. I was basically home-brewing Obsidian’s data connection web. So there can’t be any questions about what they should read and what can be skipped</p>
+
+<h2 id="foreseen-and-unforeseen-benefits">Foreseen and unforeseen Benefits</h2>
+
+<p>Surprisingly, this style of documentation linking came with some unforeseen benefits:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Benefit</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Understanding the cards and the projects as a whole</td>
+      <td>The work on the card and the User story/ Acceptance Criteria was much easier</td>
+    </tr>
+    <tr>
+      <td>Epics/Stories — the group of cards — are more complete</td>
+      <td>Fewer cards were added later to fill in the gaps</td>
+    </tr>
+    <tr>
+      <td>A lot less questions</td>
+      <td>I’m asked a lot less questions. When I am, usually during refinement of the cards, it is something that was missing from the documentation.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This strategy opened up some doors for me. It made project planning and the refinement stage much more easier, allowing me to juggle multiple projects without dropping the ball. Sometimes the simplest- just linking things together- make all the difference.</p>
+
+<p>Peace out! 🫶🏻</p>]]></content><author><name>Thomas M</name></author><category term="rants" /><category term="woek-experience" /><summary type="html"><![CDATA["What happens if I'm hit by a bus tomorrow?"]]></summary></entry><entry><title type="html">Task Management and My Second Brain</title><link href="https://thomasmcleanjr.cv/task-management" rel="alternate" type="text/html" title="Task Management and My Second Brain" /><published>2025-08-26T08:00:00+00:00</published><updated>2025-08-26T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/task-management</id><content type="html" xml:base="https://thomasmcleanjr.cv/task-management"><![CDATA[<p>I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: <strong>“What’s something you didn’t expect would be a challenge as a developer?”</strong></p>
 
 <p>After sitting with that question for a while, I realized I had a few answers:</p>
+
 <ul>
   <li>Communicating with different types of people.</li>
   <li>Writing clear documentation.</li>
@@ -12,6 +96,7 @@
 <h2 id="how-many-tasks-do-i-usually-own">How Many Tasks Do I Usually Own?</h2>
 
 <p>I work at a company that keeps teams pretty lean while still chasing quarterly objectives. Translation: it’s rare for anyone to own just one thing at a time. A typical week for me looks like:</p>
+
 <ul>
   <li><strong>A KPI-related project with a hard deadline</strong></li>
   <li><strong>Another project aligned with a longer‑term objective</strong> (something that eventually impacts a KPI)</li>
@@ -28,6 +113,7 @@
 <p>A <strong>Second Brain</strong> is basically a knowledge management system — an external place to capture, organize, and connect information so your actual brain doesn’t have to juggle 300 unrelated things at once. I spun mine up in Notion.</p>
 
 <p>Imagine a mix of:</p>
+
 <ul>
   <li>A projects-and-tasks database</li>
   <li>A notes section</li>
@@ -47,14 +133,19 @@
 <p>The point is: Obsidian completely changed how I was managing tasks. At first, I recreated my Notion workflow: task tables, sub-tasks, each task with its own linked note page. But that quickly led to a graveyard of dead links and pointless pages. Obsidian wasn’t the problem here — I was. I had rebuilt Notion inside of Obsidian. To make matters worse, I piled on plugins, automations, daily notes, reminders, and calendars until it all started to crumble under its own weight. My once-lightweight markdown app froze up like it was running on dial-up. Something had to change.</p>
 
 <h2 id="my-current-minimalist-setup">My Current Minimalist Setup</h2>
+
 <p>I finally stripped everything back down. Now my system is simple, lightweight, and portable across all my machines:</p>
+
 <ul>
   <li><strong><a href="https://taskwarrior.org/docs/start/">Taskwarrior</a></strong> for task management – a CLI tool that lets me keep tasks in their purest form, with a few optional fields for tracking what actually matters.</li>
   <li><strong><a href="https://obsidian.md">Obsidian</a></strong> for notes – yes, I kept it, but now it’s just for actual note-taking. No bloated project databases, no endless documentation dumps. I only write down what I <em>need</em>. And that’s it.</li>
 </ul>
 
 <h2 id="closing-thoughts">Closing Thoughts</h2>
-<p>What started as me trying to wrangle my ever-shifting list of daily tasks somehow spiraled into building a full-blown digital encyclopedia… twice. But along the way, I learned something that was simple but liberating: <strong>figuring out how to manage my tasks without them managing me.</strong></p>]]></content><author><name>Thomas M</name></author><category term="setup" /><category term="rants" /><summary type="html"><![CDATA[I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: “What’s something you didn’t expect would be a challenge as a developer?”]]></summary></entry><entry><title type="html">How I Added Custom Datadog Metrics using an Unsupported Language.</title><link href="https://thomasmcleanjr.cv/datadog-metrics" rel="alternate" type="text/html" title="How I Added Custom Datadog Metrics using an Unsupported Language." /><published>2025-08-11T09:00:00+00:00</published><updated>2025-08-11T09:00:00+00:00</updated><id>https://thomasmcleanjr.cv/datadog-metrics</id><content type="html" xml:base="https://thomasmcleanjr.cv/datadog-metrics"><![CDATA[<p>First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.</p>
+
+<p>What started as me trying to wrangle my ever-shifting list of daily tasks somehow spiraled into building a full-blown digital encyclopedia… twice. But along the way, I learned something that was simple but liberating: <strong>figuring out how to manage my tasks without them managing me.</strong></p>
+
+<p>Peace out! 🫶🏻</p>]]></content><author><name>Thomas M</name></author><category term="setup" /><category term="rants" /><summary type="html"><![CDATA[I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: “What’s something you didn’t expect would be a challenge as a developer?”]]></summary></entry><entry><title type="html">How I Added Custom Datadog Metrics using an Unsupported Language.</title><link href="https://thomasmcleanjr.cv/datadog-metrics" rel="alternate" type="text/html" title="How I Added Custom Datadog Metrics using an Unsupported Language." /><published>2025-08-11T09:00:00+00:00</published><updated>2025-08-11T09:00:00+00:00</updated><id>https://thomasmcleanjr.cv/datadog-metrics</id><content type="html" xml:base="https://thomasmcleanjr.cv/datadog-metrics"><![CDATA[<p>First, let me address the elephant in the room: OpenTelemetry. Yes, I’m aware of the protocol, and my team could have used it. But due to some limiting factors, it wasn’t an option for us.</p>
 
 <p>We tried it before and ran into issues. This was before I owned the project, so I don’t know all the specifics.
 Our DevOps team advised against it due to constraints within our organization’s Datadog setup.
