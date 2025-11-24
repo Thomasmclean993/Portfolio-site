@@ -1,11 +1,11 @@
 ---
 layout: post
 current: post
-cover: assets/images/report-card.gif
+cover: assets/images/Silo.gif
 navigation: True
-title: Connecting Cards to Documentation
+title: Defeating the Silo, Connecting Cards to Documentation
 date: 2025-10-27 8:00:00
-tags: [rants, woek-experience]
+tags: [work-experience]
 class: post-template
 subclass: "post"
 author: thomas
@@ -19,19 +19,19 @@ author: thomas
 
 There are few sayings that remain as true as this one. It's often said when one person or a small number of people has all the important information about a project or part of the stack, but no physical documentation exists anywhere(A silo).
 
-
 It's something that was hammered into me since I was a junior. Documentation un-silos information, allowing any dev to pick up work and make progress. Documentation can be used to track progress as well, outside of a kanban system or whatever flavor your team uses.
 
 Something recently happened that changed my approach, and I wanted to discuss it here.
 
-## The Problem 
+## The Problem
+
 I had to take some sudden PTO. I couldn't check my phone or my laptop. Now, I was also the owner of a project that was nearing its deadline. I left it up to my team to finish a final piece of the project: adding some creds to connect to a client and flipping a toggle to enable some testing for an internal partner.
 
-Before I left, I updated my documentation and shared links with my team. 
+Before I left, I updated my documentation and shared links with my team.
 
-Came back after a few days--not only was the testing not complete, it wasn't even started. There was some confusion on how the creds were being used forthis integration. The seniors couldn't help much because they didn't know are well. Suddenly I found myself, once again as a silo. The card sat untouched til the day that I got back. 
+Came back after a few days--not only was the testing not complete, it wasn't even started. There was some confusion on how the creds were being used forthis integration. The seniors couldn't help much because they didn't know are well. Suddenly I found myself, once again as a silo. The card sat untouched til the day that I got back.
 
-Why did this happen? I shared my documentation in the teams channel. I even shared the documentation with my leader before leaving. This bothered me because the project could have been complete earlier than planned, unblocking another project. This is also not the first time something like this happened. 
+Why did this happen? I shared my documentation in the teams channel. I even shared the documentation with my leader before leaving. This bothered me because the project could have been complete earlier than planned, unblocking another project. This is also not the first time something like this happened.
 
 During stand up, I asked, and the answer surprised me. **"What documentation?"**
 
@@ -68,11 +68,12 @@ I wanted me team to be able to find the documentation that was necessary for the
 
 Surprisingly, this style of documentation linking came with some unforeseen benefits:
 
-| Benefit | Details |
-| --- | --- |
-| Understanding the cards and the projects as a whole | The work on the card and the User story/ Acceptance Criteria was much easier |
-| Epics/Stories — the group of cards — are more complete | Fewer cards were added later to fill in the gaps |
-| A lot less questions | I'm asked a lot less questions. When I am, usually during refinement of the cards, it is something that was missing from the documentation. |
+- Understanding the cards and the projects as a whole
+  - the work on the card and the User story/ Acceptance Criteria was much easier
+- Epics/Stories — the group of cards — are more complete
+  - Fewer cards were added later to fill in the gaps
+- A lot less questions
+  - I'm asked a lot less questions. When I am, usually during refinement of the cards, it is something that was missing from the documentation.
 
 This strategy opened up some doors for me. It made project planning and the refinement stage much more easier, allowing me to juggle multiple projects without dropping the ball. Sometimes the simplest- just linking things together- make all the difference.
 
