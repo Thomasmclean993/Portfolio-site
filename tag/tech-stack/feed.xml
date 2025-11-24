@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator>
   <link href="https://thomasmcleanjr.cv/tag/tech-stack/feed.xml" rel="self" type="application/atom+xml" />
   <link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" />
-  <updated>2025-11-16T03:09:59+00:00</updated>
+  <updated>2025-11-24T22:21:37+00:00</updated>
   <id>https://thomasmcleanjr.cv/tag/tech-stack/feed.xml</id>
 
   
@@ -501,16 +501,14 @@ alias l=&apos;ls -CF&apos;    # List files in columns
         &lt;/tr&gt;
         &lt;tr&gt;
           &lt;td&gt;
-            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/python.svg&quot; alt=&quot;Python&quot;&gt;
-            Python
+            &lt;img class=&quot;icon&quot; src=&quot;/assets/images/go.svg&quot; alt=&quot;Go&quot;&gt;
+            Go
           &lt;/td&gt;
           &lt;td&gt;
             &lt;ul&gt;
-              &lt;li&gt;&lt;a href=&quot;https://docs.djangoproject.com/en/stable/&quot; target=&quot;_blank&quot;&gt;Django&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;https://flask.palletsprojects.com/en/latest/&quot; target=&quot;_blank&quot;&gt;Flask&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;https://pandas.pydata.org/docs/&quot; target=&quot;_blank&quot;&gt;Pandas&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;https://numpy.org/doc/&quot; target=&quot;_blank&quot;&gt;NumPy&lt;/a&gt;&lt;/li&gt;
-              &lt;li&gt;&lt;a href=&quot;https://fastapi.tiangolo.com/&quot; target=&quot;_blank&quot;&gt;FastAPI&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://cobra.dev/&quot; target=&quot;_blank&quot;&gt;Cobra&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://gin-gonic.com/docs/&quot; target=&quot;_blank&quot;&gt;Gin&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;https://github.com/charmbracelet/bubbletea&quot; target=&quot;_blank&quot;&gt;BubbleTea&lt;/a&gt;&lt;/li&gt;
             &lt;/ul&gt;
           &lt;/td&gt;
           &lt;td&gt;&lt;/td&gt;

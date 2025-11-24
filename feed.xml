@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://thomasmcleanjr.cv/feed.xml" rel="self" type="application/atom+xml" /><link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" /><updated>2025-11-16T03:09:59+00:00</updated><id>https://thomasmcleanjr.cv/feed.xml</id><title type="html">My Portfolio</title><subtitle>My Professional Portfolio and Resume</subtitle><entry><title type="html">Connecting Cards to Documentation</title><link href="https://thomasmcleanjr.cv/cards-to-docs" rel="alternate" type="text/html" title="Connecting Cards to Documentation" /><published>2025-10-27T08:00:00+00:00</published><updated>2025-10-27T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/cards-to-docs</id><content type="html" xml:base="https://thomasmcleanjr.cv/cards-to-docs"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://thomasmcleanjr.cv/feed.xml" rel="self" type="application/atom+xml" /><link href="https://thomasmcleanjr.cv/" rel="alternate" type="text/html" /><updated>2025-11-24T22:21:37+00:00</updated><id>https://thomasmcleanjr.cv/feed.xml</id><title type="html">My Portfolio</title><subtitle>My Professional Portfolio and Resume</subtitle><entry><title type="html">Defeating the Silo, Connecting Cards to Documentation</title><link href="https://thomasmcleanjr.cv/cards-to-docs" rel="alternate" type="text/html" title="Defeating the Silo, Connecting Cards to Documentation" /><published>2025-10-27T08:00:00+00:00</published><updated>2025-10-27T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/cards-to-docs</id><content type="html" xml:base="https://thomasmcleanjr.cv/cards-to-docs"><![CDATA[<blockquote>
 "What happens if I'm hit by a bus tomorrow?"
 </blockquote>
 
@@ -11,6 +11,7 @@
 <p>Something recently happened that changed my approach, and I wanted to discuss it here.</p>
 
 <h2 id="the-problem">The Problem</h2>
+
 <p>I had to take some sudden PTO. I couldn’t check my phone or my laptop. Now, I was also the owner of a project that was nearing its deadline. I left it up to my team to finish a final piece of the project: adding some creds to connect to a client and flipping a toggle to enable some testing for an internal partner.</p>
 
 <p>Before I left, I updated my documentation and shared links with my team.</p>
@@ -56,32 +57,27 @@
 
 <p>Surprisingly, this style of documentation linking came with some unforeseen benefits:</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Benefit</th>
-      <th>Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Understanding the cards and the projects as a whole</td>
-      <td>The work on the card and the User story/ Acceptance Criteria was much easier</td>
-    </tr>
-    <tr>
-      <td>Epics/Stories — the group of cards — are more complete</td>
-      <td>Fewer cards were added later to fill in the gaps</td>
-    </tr>
-    <tr>
-      <td>A lot less questions</td>
-      <td>I’m asked a lot less questions. When I am, usually during refinement of the cards, it is something that was missing from the documentation.</td>
-    </tr>
-  </tbody>
-</table>
+<ul>
+  <li>Understanding the cards and the projects as a whole
+    <ul>
+      <li>the work on the card and the User story/ Acceptance Criteria was much easier</li>
+    </ul>
+  </li>
+  <li>Epics/Stories — the group of cards — are more complete
+    <ul>
+      <li>Fewer cards were added later to fill in the gaps</li>
+    </ul>
+  </li>
+  <li>A lot less questions
+    <ul>
+      <li>I’m asked a lot less questions. When I am, usually during refinement of the cards, it is something that was missing from the documentation.</li>
+    </ul>
+  </li>
+</ul>
 
 <p>This strategy opened up some doors for me. It made project planning and the refinement stage much more easier, allowing me to juggle multiple projects without dropping the ball. Sometimes the simplest- just linking things together- make all the difference.</p>
 
-<p>Peace out! 🫶🏻</p>]]></content><author><name>Thomas M</name></author><category term="rants" /><category term="woek-experience" /><summary type="html"><![CDATA["What happens if I'm hit by a bus tomorrow?"]]></summary></entry><entry><title type="html">Task Management and My Second Brain</title><link href="https://thomasmcleanjr.cv/task-management" rel="alternate" type="text/html" title="Task Management and My Second Brain" /><published>2025-08-26T08:00:00+00:00</published><updated>2025-08-26T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/task-management</id><content type="html" xml:base="https://thomasmcleanjr.cv/task-management"><![CDATA[<p>I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: <strong>“What’s something you didn’t expect would be a challenge as a developer?”</strong></p>
+<p>Peace out! 🫶🏻</p>]]></content><author><name>Thomas M</name></author><category term="work-experience" /><summary type="html"><![CDATA["What happens if I'm hit by a bus tomorrow?"]]></summary></entry><entry><title type="html">Task Management and My Second Brain</title><link href="https://thomasmcleanjr.cv/task-management" rel="alternate" type="text/html" title="Task Management and My Second Brain" /><published>2025-08-26T08:00:00+00:00</published><updated>2025-08-26T08:00:00+00:00</updated><id>https://thomasmcleanjr.cv/task-management</id><content type="html" xml:base="https://thomasmcleanjr.cv/task-management"><![CDATA[<p>I was pairing with an intern the other day. They were a little confused about how some of my Elixir code behaved, so they started asking questions. After some back-and-forth, they hit me with a surprisingly good one: <strong>“What’s something you didn’t expect would be a challenge as a developer?”</strong></p>
 
 <p>After sitting with that question for a while, I realized I had a few answers:</p>
 
@@ -616,7 +612,7 @@ I'm a self-taught full-stack developer that enjoys tackling new challenges and i
 <h3 id="role">📁 Current Role</h3>
 
 <p>
-I serve as a Product/Integration Engineer, where I am involved in the entire lifecycle of product implementation, from initial brainstorming to project completion. My responsibilities encompass design, implementation, testing, and deployment, which has allowed me to gain experience with a diverse range of technologies.
+I serve as a Product/Integration Engineer, where I am involved in the entire life-cycle of product implementation, from initial brainstorming to project completion. My responsibilities encompass design, implementation, testing, and deployment, which has allowed me to gain experience with a diverse range of technologies.
 </p>
 
 <h3 id="responsibilities">📁 Key Responsibilities</h3>
@@ -802,16 +798,14 @@ Additionally, I am frequently assigned Proof of Concept (POC) projects to test m
         </tr>
         <tr>
           <td>
-            <img class="icon" src="/assets/images/python.svg" alt="Python">
-            Python
+            <img class="icon" src="/assets/images/go.svg" alt="Go">
+            Go
           </td>
           <td>
             <ul>
-              <li><a href="https://docs.djangoproject.com/en/stable/" target="_blank">Django</a></li>
-              <li><a href="https://flask.palletsprojects.com/en/latest/" target="_blank">Flask</a></li>
-              <li><a href="https://pandas.pydata.org/docs/" target="_blank">Pandas</a></li>
-              <li><a href="https://numpy.org/doc/" target="_blank">NumPy</a></li>
-              <li><a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI</a></li>
+              <li><a href="https://cobra.dev/" target="_blank">Cobra</a></li>
+              <li><a href="https://gin-gonic.com/docs/" target="_blank">Gin</a></li>
+              <li><a href="https://github.com/charmbracelet/bubbletea" target="_blank">BubbleTea</a></li>
             </ul>
           </td>
           <td></td>
